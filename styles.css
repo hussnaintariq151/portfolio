@@ -297,6 +297,137 @@ main{padding-top:var(--nav-h);}
   background:var(--accent);box-shadow:0 0 0 3px var(--accent-fade);
 }
 
+/* ---------- 5b. Cinematic hero (home page only) ---------- */
+
+/* On the home page the nav floats over the image until you scroll. */
+body.home main{padding-top:0;}
+body.home header.nav{background:transparent;border-bottom-color:transparent;box-shadow:none;}
+body.home header.nav:not(.scrolled){-webkit-backdrop-filter:none;backdrop-filter:none;}
+body.home header.nav.scrolled{
+  background:var(--bg-glass);border-bottom-color:var(--line);box-shadow:var(--shadow);
+  -webkit-backdrop-filter:blur(12px) saturate(160%);backdrop-filter:blur(12px) saturate(160%);
+}
+
+.cinema{
+  position:relative;isolation:isolate;overflow:hidden;
+  min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding-block:calc(var(--nav-h) + 3rem) 6rem;
+}
+
+/* Base layer doubles as the first frame, so the hero is never blank. */
+.cinema__bg{
+  position:absolute;inset:0;z-index:-2;
+  background:#04121c url("hero-1.jpg") center/cover no-repeat;
+}
+
+.cinema__slide{
+  position:absolute;inset:0;
+  background-image:var(--img);
+  background-size:cover;background-position:center;
+  opacity:0;
+  animation:cinemaFade 27s infinite;
+  will-change:opacity,transform;
+}
+.cinema__slide:nth-child(1){animation-delay:0s;}
+.cinema__slide:nth-child(2){animation-delay:9s;}
+.cinema__slide:nth-child(3){animation-delay:18s;}
+
+/* Crossfade + slow Ken Burns push-in */
+@keyframes cinemaFade{
+  0%   {opacity:0;transform:scale(1.11);}
+  5%   {opacity:1;}
+  32%  {opacity:1;}
+  37%  {opacity:0;transform:scale(1.005);}
+  100% {opacity:0;transform:scale(1.11);}
+}
+
+/* Darkening scrim — keeps the headline readable on every frame */
+.cinema__scrim{
+  position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(180deg,
+      rgba(4,9,18,.88) 0%,
+      rgba(4,9,18,.42) 24%,
+      rgba(4,9,18,.40) 52%,
+      rgba(4,9,18,.92) 100%),
+    radial-gradient(125% 85% at 50% 44%, transparent 28%, rgba(4,9,18,.58) 100%);
+}
+
+.cinema__inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.5rem;}
+
+.cinema .status{align-self:center;margin-bottom:0;background:rgba(10,25,47,.55);}
+
+.cinema__eyebrow{
+  font-family:var(--font-mono);font-size:clamp(.7rem,1.5vw,.82rem);
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--accent);
+}
+
+.cinema__title{
+  max-width:17ch;
+  font-size:clamp(2.1rem,7vw,6rem);
+  font-weight:300;
+  letter-spacing:.01em;
+  line-height:1.04;
+  text-transform:uppercase;
+  color:#fff;
+  text-shadow:0 2px 46px rgba(0,0,0,.55);
+}
+
+.cinema__sub{
+  max-width:46ch;
+  font-family:var(--font-mono);
+  font-size:clamp(.8rem,1.7vw,.95rem);
+  letter-spacing:.13em;text-transform:uppercase;
+  color:rgba(255,255,255,.78);
+}
+
+.cinema .btn-row{justify-content:center;margin-top:.75rem;}
+.cinema .btn:not(.btn-solid){
+  border-color:rgba(255,255,255,.55);color:#fff;
+  background:rgba(4,9,18,.28);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+.cinema .btn:not(.btn-solid):hover{border-color:var(--accent);color:var(--accent);background:var(--accent-fade);}
+
+/* Scroll cue */
+.cinema__cue{
+  position:absolute;left:50%;bottom:2.2rem;translate:-50% 0;
+  width:26px;height:42px;border:1px solid rgba(255,255,255,.4);border-radius:99px;
+  display:grid;place-items:start center;padding-top:8px;
+  transition:border-color .2s ease;
+}
+.cinema__cue:hover{border-color:var(--accent);}
+.cinema__cue span{
+  width:3px;height:7px;border-radius:99px;background:rgba(255,255,255,.85);
+  animation:cueDrop 1.9s var(--ease) infinite;
+}
+.cinema__cue:hover span{background:var(--accent);}
+@keyframes cueDrop{
+  0%,100%{transform:translateY(0);opacity:0;}
+  25%{opacity:1;}
+  70%{transform:translateY(15px);opacity:0;}
+}
+
+@media (max-width:640px){
+  .cinema__cue{display:none;}
+  .cinema__title{max-width:14ch;}
+}
+
+/* Phones get the still first frame only — display:none stops the browser
+   fetching slides 2 and 3, saving ~950 KB on a mobile connection. */
+@media (max-width:700px){
+  .cinema__slide{display:none;}
+}
+
+/* Motion-sensitive visitors get a single still frame, no pan, no cue loop. */
+@media (prefers-reduced-motion:reduce){
+  .cinema__slide{animation:none;opacity:0;}
+  .cinema__cue span{animation:none;opacity:1;}
+}
+
 /* ---------- 6. Buttons & sections ---------- */
 
 .btn{

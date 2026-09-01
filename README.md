@@ -18,6 +18,7 @@ portfolio/
 ├── styles.css          # Shared design system
 ├── main.js             # Menu, nav scroll state, scroll progress, reveals
 ├── favicon.svg         # "HT" mark
+├── hero-1..3.jpg       # Home-page hero slideshow frames (2400px wide)
 ├── og.png              # 1200×630 social preview card
 ├── robots.txt          # Crawler rules + sitemap pointer
 ├── sitemap.xml         # Six URLs
@@ -35,6 +36,26 @@ portfolio/
 - **Responsive**: 320px mobile up; nav collapses to a menu below 760px
 - **Motion**: scroll-driven reveals, all disabled under `prefers-reduced-motion`
 - **Print**: `@media print` switches to a light, chrome-free layout for PDF export
+
+## Home-page hero
+
+The home page uses a full-bleed cinematic hero (`.cinema` in `styles.css`): three
+photos crossfade with a slow Ken Burns push-in, the nav floats transparently over
+the image until you scroll, and a dark scrim keeps the headline readable on every
+frame. It is CSS-only — no JavaScript drives the slideshow.
+
+- **Swapping photos**: replace `hero-1.jpg`, `hero-2.jpg`, `hero-3.jpg`. Keep them
+  ~2400px wide, landscape, and reasonably dark or low-detail. `hero-1.jpg` is also
+  the static base layer (and the preloaded LCP image), so make it the strongest shot.
+- **Mobile**: slides 2 and 3 are `display:none` below 700px, so phones only download
+  `hero-1.jpg` — about 950 KB saved. The hero is a still image there.
+- **Reduced motion**: the crossfade and the scroll cue stop; a single still frame shows.
+- **Photo credits**: Timo Volz, Da Shika, Sascha Albert — via Unsplash
+  ([Unsplash License](https://unsplash.com/license): free for commercial use,
+  attribution not required).
+
+Only `index.html` carries `<body class="home">`; every other page keeps the standard
+solid nav and compact hero.
 
 ## Behaviour notes
 
