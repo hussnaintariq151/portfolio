@@ -51,19 +51,20 @@
 
 <main id="main">
 
-  <!-- HERO — the home page's cinematic treatment, running the two code shots
-       as a two-frame crossfade. Photos: Safar Safarov, Rahul Mishra
-       (Unsplash License). The base layer doubles as frame one, so the hero is
-       never blank and phones can skip the second download entirely. -->
-  <section class="cinema cinema--duo" aria-labelledby="page-title">
+  <!-- HERO — the home page's cinematic treatment on three code shots.
+       Photos: Safar Safarov, Rahul Mishra, Mohammad Rahmani (Unsplash
+       License). The base layer doubles as frame one, so the hero is never
+       blank and phones skip the other two downloads entirely. -->
+  <section class="cinema cinema--code" aria-labelledby="page-title">
     <div class="cinema__bg" aria-hidden="true" style="background-image:url('blueprint-desk.jpg')">
       <div class="cinema__slide" style="--img:url('blueprint-desk.jpg')"></div>
       <div class="cinema__slide" style="--img:url('blueprint-code.jpg')"></div>
+      <div class="cinema__slide" style="--img:url('blueprint-night.jpg')"></div>
     </div>
     <div class="cinema__scrim" aria-hidden="true"></div>
 
     <div class="wrap cinema__inner">
-      <p class="cinema__eyebrow reveal d2">Hussnain Tariq &mdash; Backend &amp; MLOps Engineer</p>
+      <p class="cinema__eyebrow reveal d2">Hussnain Tariq &mdash; Backend, DevOps &amp; IaC Engineer</p>
       <h1 id="page-title" class="cinema__title reveal d3">I ship backends that survive production</h1>
       <p class="cinema__sub reveal d4">Security &middot; API design &middot; Performance &middot; Reliability &middot; Observability &middot; Data integrity &middot; Scalability &middot; Delivery</p>
     </div>
