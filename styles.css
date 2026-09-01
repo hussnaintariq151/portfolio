@@ -272,45 +272,10 @@ main{padding-top:var(--nav-h);}
 .hero-sub{min-height:auto;padding-top:5rem;padding-bottom:1rem;justify-content:flex-start;}
 .hero-sub .lede{margin-top:1.5rem;margin-bottom:0;}
 
-/* ---------- 5b. Full-bleed photo sections ---------- */
+/* ---------- 5b. Proof strip ---------- */
 
-/* Shared two-layer treatment: photo underneath, scrim over it. Both layers are
-   decorative divs rather than pseudo-elements, because .hero::before is already
-   spoken for by the accent glow. */
-.shot__bg{
-  position:absolute;inset:0;z-index:-2;
-  background-image:var(--shot);
-  background-size:cover;background-position:var(--shot-pos,center);
-  background-repeat:no-repeat;
-  opacity:.30;
-}
-.shot__scrim{
-  position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(102deg,
-    rgba(10,25,47,.97) 0%,
-    rgba(10,25,47,.90) 42%,
-    rgba(10,25,47,.68) 100%);
-}
-.shot__scrim--flat{
-  background:linear-gradient(180deg,
-    rgba(10,25,47,.95) 0%,
-    rgba(10,25,47,.90) 35%,
-    rgba(10,25,47,.93) 100%);
-}
-
-/* Photo hero — the accent glow would fight the image, so it is switched off. */
-.hero-shot{
-  position:relative;isolation:isolate;overflow:hidden;
-  min-height:calc(100svh - var(--nav-h));
-  padding-block:clamp(4rem,9vw,6rem);
-  border-bottom:1px solid var(--line);
-}
-.hero-shot::before{display:none;}
-.hero-shot .lede{max-width:56ch;}
-@media (max-width:720px){.hero-shot{min-height:auto;padding-block:4.5rem 3.5rem;}}
-
-/* Proof strip under a sub-page hero. Every figure is repeated in the body
-   copy below it, so this is a summary, not a new claim. */
+/* Every figure here is repeated in the body copy further down the page, so
+   this is a summary rather than a new claim. */
 .stats{
   display:grid;grid-template-columns:repeat(4,auto);justify-content:start;
   gap:1.4rem 2.75rem;margin-top:2.25rem;
@@ -323,13 +288,13 @@ main{padding-top:var(--nav-h);}
 .stats span{font-size:.82rem;color:var(--muted);max-width:16ch;line-height:1.35;}
 @media (max-width:720px){.stats{grid-template-columns:repeat(2,1fr);gap:1.4rem 1.5rem;}}
 
-/* ---------- 5c. Cinematic hero (home page only) ---------- */
+/* ---------- 5c. Cinematic hero ---------- */
 
-/* On the home page the nav floats over the image until you scroll. */
-body.home main{padding-top:0;}
-body.home header.nav{background:transparent;border-bottom-color:transparent;box-shadow:none;}
-body.home header.nav:not(.scrolled){-webkit-backdrop-filter:none;backdrop-filter:none;}
-body.home header.nav.scrolled{
+/* Wherever a cinematic hero runs, the nav floats over it until you scroll. */
+body.home main,body.page-software main{padding-top:0;}
+body.home header.nav,body.page-software header.nav{background:transparent;border-bottom-color:transparent;box-shadow:none;}
+body.home header.nav:not(.scrolled),body.page-software header.nav:not(.scrolled){-webkit-backdrop-filter:none;backdrop-filter:none;}
+body.home header.nav.scrolled,body.page-software header.nav.scrolled{
   background:var(--bg-glass);border-bottom-color:var(--line);box-shadow:var(--shadow);
   -webkit-backdrop-filter:blur(12px) saturate(160%);backdrop-filter:blur(12px) saturate(160%);
 }
@@ -369,6 +334,33 @@ body.home header.nav.scrolled{
   100% {opacity:0;transform:scale(1.11);}
 }
 
+/* Two-frame variant: same crossfade, half the cycle, half the payload. */
+.cinema--duo .cinema__slide{animation-name:cinemaFadeDuo;animation-duration:18s;}
+.cinema--duo .cinema__slide:nth-child(2){animation-delay:9s;}
+
+/* Screenshots of code are dense, legible text end to end — left sharp they
+   fight the headline for attention. A little blur turns them back into
+   texture, and this hero gets a heavier scrim than the home page's, whose
+   photographs are smooth enough to sit under type untouched. */
+.cinema--duo .cinema__bg{filter:blur(2.5px) saturate(.8);transform:scale(1.03);}
+.cinema--duo .cinema__scrim{
+  background:
+    linear-gradient(180deg,
+      rgba(4,9,18,.93) 0%,
+      rgba(4,9,18,.74) 28%,
+      rgba(4,9,18,.76) 62%,
+      rgba(4,9,18,.96) 100%),
+    radial-gradient(120% 80% at 50% 45%, rgba(4,9,18,.42) 0%, rgba(4,9,18,.82) 100%);
+}
+
+@keyframes cinemaFadeDuo{
+  0%   {opacity:0;transform:scale(1.10);}
+  6%   {opacity:1;}
+  44%  {opacity:1;}
+  50%  {opacity:0;transform:scale(1.005);}
+  100% {opacity:0;transform:scale(1.10);}
+}
+
 /* Darkening scrim — keeps the headline readable on every frame */
 .cinema__scrim{
   position:absolute;inset:0;z-index:-1;pointer-events:none;
@@ -403,13 +395,15 @@ body.home header.nav.scrolled{
   text-shadow:0 2px 46px rgba(0,0,0,.55);
 }
 
-/* Kept on one line at desktop widths — no max-width cap. */
+/* One line at desktop widths on the home page; the software page lists all
+   eight pillars, so it is allowed to wrap rather than shrink out of legibility. */
 .cinema__sub{
   font-family:var(--font-mono);
   font-size:clamp(.72rem,1.35vw,.92rem);
   letter-spacing:.11em;text-transform:uppercase;
   color:rgba(255,255,255,.82);
   text-shadow:0 2px 18px rgba(0,0,0,.6);
+  max-width:74ch;line-height:1.9;
 }
 
 .cinema .btn-row{justify-content:center;margin-top:.75rem;}
@@ -785,8 +779,24 @@ body.rails-dark .rail::after{background:#9aa6bb;}
   position:relative;isolation:isolate;overflow:hidden;
   padding-block:clamp(4rem,9vw,6.5rem);
   border-block:1px solid var(--line);
+  background:var(--bg-2);
 }
-.blueprint .shot__bg{opacity:.24;}
+
+/* Drawing paper: a faint accent grid, then a vignette so it fades into the
+   page instead of stopping at a hard edge. */
+.blueprint::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background-image:
+    linear-gradient(var(--accent-fade) 1px,transparent 1px),
+    linear-gradient(90deg,var(--accent-fade) 1px,transparent 1px);
+  background-size:100% 44px,44px 100%;
+}
+.blueprint::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(115% 85% at 50% 42%,transparent 18%,var(--bg) 94%);
+}
+
+.blueprint .stats{margin:0 0 2.5rem;}
 .bp-eyebrow{
   font-family:var(--font-mono);color:var(--accent);
   font-size:clamp(.85rem,1.8vw,.95rem);margin-bottom:1.1rem;

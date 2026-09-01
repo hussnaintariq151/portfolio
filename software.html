@@ -51,37 +51,30 @@
 
 <main id="main">
 
-  <!-- HERO — full-bleed over the workstation shot.
-       Photo: Safar Safarov (Unsplash License). The scrim carries the contrast;
-       the photo sits at low opacity so the headline stays readable. -->
-  <section class="hero hero-shot" aria-labelledby="page-title">
-    <div class="shot__bg" aria-hidden="true" style="--shot:url('blueprint-desk.jpg');--shot-pos:center 16%"></div>
-    <div class="shot__scrim" aria-hidden="true"></div>
-
-    <div class="wrap">
-      <p class="greeting reveal d1">// 01. software engineering</p>
-      <h1 id="page-title" class="reveal d2">Backends that keep<br>running after the demo.</h1>
-      <p class="lede reveal d3">
-        Most systems break in the same few places: the retry that duplicates a row, the migration
-        that takes the site down, the worker that quietly stops. This page is the
-        <strong>blueprint I build against</strong> so those failures are designed out rather than
-        discovered in production.
-      </p>
-      <ul class="stats reveal d4">
-        <li><b>90+</b><span>REST endpoints</span></li>
-        <li><b>18+</b><span>forward-only migrations</span></li>
-        <li><b>4</b><span>long-running workers</span></li>
-        <li><b>1</b><span>codebase, two topologies</span></li>
-      </ul>
+  <!-- HERO — the home page's cinematic treatment, running the two code shots
+       as a two-frame crossfade. Photos: Safar Safarov, Rahul Mishra
+       (Unsplash License). The base layer doubles as frame one, so the hero is
+       never blank and phones can skip the second download entirely. -->
+  <section class="cinema cinema--duo" aria-labelledby="page-title">
+    <div class="cinema__bg" aria-hidden="true" style="background-image:url('blueprint-desk.jpg')">
+      <div class="cinema__slide" style="--img:url('blueprint-desk.jpg')"></div>
+      <div class="cinema__slide" style="--img:url('blueprint-code.jpg')"></div>
     </div>
+    <div class="cinema__scrim" aria-hidden="true"></div>
+
+    <div class="wrap cinema__inner">
+      <p class="cinema__eyebrow reveal d2">Hussnain Tariq &mdash; Backend &amp; MLOps Engineer</p>
+      <h1 id="page-title" class="cinema__title reveal d3">I ship backends that survive production</h1>
+      <p class="cinema__sub reveal d4">Security &middot; API design &middot; Performance &middot; Reliability &middot; Observability &middot; Data integrity &middot; Scalability &middot; Delivery</p>
+    </div>
+
+    <a class="cinema__cue" href="#blueprint" aria-label="Scroll to content"><span aria-hidden="true"></span></a>
   </section>
 
-  <!-- THE BLUEPRINT — full-bleed index into the eight pillars below.
-       Photo: Rahul Mishra (Unsplash License). -->
-  <section class="blueprint" aria-labelledby="bp-title">
-    <div class="shot__bg" aria-hidden="true" style="--shot:url('blueprint-code.jpg');--shot-pos:center"></div>
-    <div class="shot__scrim shot__scrim--flat" aria-hidden="true"></div>
-
+  <!-- THE BLUEPRINT — full-bleed index into the eight pillars below. The
+       backdrop is a CSS grid rather than a photo, so it reads as drawing
+       paper and does not repeat the shot already running in the hero. -->
+  <section class="blueprint" id="blueprint" aria-labelledby="bp-title">
     <div class="wrap">
       <p class="bp-eyebrow reveal">// the blueprint</p>
       <h2 id="bp-title" class="bp-title reveal d1">Eight pillars a backend has to stand on.</h2>
@@ -92,7 +85,14 @@
         it says so.
       </p>
 
-      <ul class="bp-grid reveal d3">
+      <ul class="stats reveal d3">
+        <li><b>90+</b><span>REST endpoints</span></li>
+        <li><b>18+</b><span>forward-only migrations</span></li>
+        <li><b>4</b><span>long-running workers</span></li>
+        <li><b>1</b><span>codebase, two topologies</span></li>
+      </ul>
+
+      <ul class="bp-grid reveal d4">
         <li><a href="#p1"><span class="bp-n">01</span><b>Security</b><span class="bp-d">auth, authorization, secrets</span></a></li>
         <li><a href="#p2"><span class="bp-n">02</span><b>API design</b><span class="bp-d">the contract clients live with</span></a></li>
         <li><a href="#p3"><span class="bp-n">03</span><b>Performance</b><span class="bp-d">latency where users feel it</span></a></li>
@@ -103,7 +103,7 @@
         <li><a href="#p8"><span class="bp-n">08</span><b>Delivery</b><span class="bp-d">code to production, repeatably</span></a></li>
       </ul>
 
-      <p class="bp-count reveal d4">
+      <p class="bp-count reveal d5">
         <span><b>8</b> pillars</span><span><b>52</b> controls</span><span><b>8</b> trade-offs I&rsquo;d defend</span>
       </p>
     </div>

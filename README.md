@@ -26,8 +26,8 @@ portfolio/
 ├── about-portrait.jpg  # Home-page "About me" portrait
 ├── industries-lab.jpg  # Home-page Industries band photo
 ├── software-portrait.jpg # 01 · "Who you’d be working with" portrait
-├── blueprint-desk.jpg  # 01 · Hero background (Safar Safarov, Unsplash)
-├── blueprint-code.jpg  # 01 · Blueprint band background (Rahul Mishra, Unsplash)
+├── blueprint-desk.jpg  # 01 · Hero frame 1 (Safar Safarov, Unsplash)
+├── blueprint-code.jpg  # 01 · Hero frame 2 (Rahul Mishra, Unsplash)
 ├── work-desk.jpg       # 01 · "At the desk" row (1 of 3)
 ├── work-lab.jpg        # 01 · "At the desk" row (2 of 3)
 ├── work-cafe.jpg       # 01 · "At the desk" row (3 of 3)
