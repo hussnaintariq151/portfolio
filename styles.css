@@ -334,22 +334,6 @@ body.home header.nav.scrolled,body.page-software header.nav.scrolled{
   100% {opacity:0;transform:scale(1.11);}
 }
 
-/* Code-photograph variant. Screenshots of code are dense, legible text end to
-   end — left sharp they fight the headline for attention. A little blur turns
-   them back into texture, and this hero carries a heavier scrim than the home
-   page's, whose photographs are smooth enough to sit under type untouched.
-   The frame count and timing are the shared three-frame ones. */
-.cinema--code .cinema__bg{filter:blur(2.5px) saturate(.8);transform:scale(1.03);}
-.cinema--code .cinema__scrim{
-  background:
-    linear-gradient(180deg,
-      rgba(4,9,18,.93) 0%,
-      rgba(4,9,18,.74) 28%,
-      rgba(4,9,18,.76) 62%,
-      rgba(4,9,18,.96) 100%),
-    radial-gradient(120% 80% at 50% 45%, rgba(4,9,18,.42) 0%, rgba(4,9,18,.82) 100%);
-}
-
 /* Darkening scrim — keeps the headline readable on every frame */
 .cinema__scrim{
   position:absolute;inset:0;z-index:-1;pointer-events:none;

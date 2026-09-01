@@ -22,13 +22,10 @@ portfolio/
 ├── styles.css          # Shared design system
 ├── main.js             # Menu, nav scroll state, scroll progress, reveals
 ├── favicon.svg         # "HT" mark
-├── hero-1..3.jpg       # Home-page hero slideshow frames (2400px wide)
+├── hero-1..3.jpg       # Hero slideshow frames, shared by home and 01 (2400px)
 ├── about-portrait.jpg  # Home-page "About me" portrait
 ├── industries-lab.jpg  # Home-page Industries band photo
 ├── software-portrait.jpg # 01 · "Who you’d be working with" portrait
-├── blueprint-desk.jpg  # 01 · Hero frame 1 (Safar Safarov, Unsplash)
-├── blueprint-code.jpg  # 01 · Hero frame 2 (Rahul Mishra, Unsplash)
-├── blueprint-night.jpg # 01 · Hero frame 3 (Mohammad Rahmani, Unsplash)
 ├── work-desk.jpg       # 01 · "At the desk" row (1 of 3)
 ├── work-lab.jpg        # 01 · "At the desk" row (2 of 3)
 ├── work-cafe.jpg       # 01 · "At the desk" row (3 of 3)

@@ -21,7 +21,7 @@
 <meta name="twitter:creator" content="@hussnaintari326" />
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-<link rel="preload" as="image" href="blueprint-desk.jpg" fetchpriority="high" />
+<link rel="preload" as="image" href="hero-1.jpg" fetchpriority="high" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -51,15 +51,15 @@
 
 <main id="main">
 
-  <!-- HERO — the home page's cinematic treatment on three code shots.
-       Photos: Safar Safarov, Rahul Mishra, Mohammad Rahmani (Unsplash
-       License). The base layer doubles as frame one, so the hero is never
-       blank and phones skip the other two downloads entirely. -->
-  <section class="cinema cinema--code" aria-labelledby="page-title">
-    <div class="cinema__bg" aria-hidden="true" style="background-image:url('blueprint-desk.jpg')">
-      <div class="cinema__slide" style="--img:url('blueprint-desk.jpg')"></div>
-      <div class="cinema__slide" style="--img:url('blueprint-code.jpg')"></div>
-      <div class="cinema__slide" style="--img:url('blueprint-night.jpg')"></div>
+  <!-- HERO — the same cinematic treatment and the same three frames as the
+       home page, so moving between the two reads as one site and the images
+       are already in cache by the time anyone gets here.
+       Photos: Timo Volz, Da Shika, Sascha Albert (Unsplash License). -->
+  <section class="cinema" aria-labelledby="page-title">
+    <div class="cinema__bg" aria-hidden="true">
+      <div class="cinema__slide" style="--img:url('hero-1.jpg')"></div>
+      <div class="cinema__slide" style="--img:url('hero-2.jpg')"></div>
+      <div class="cinema__slide" style="--img:url('hero-3.jpg')"></div>
     </div>
     <div class="cinema__scrim" aria-hidden="true"></div>
 
