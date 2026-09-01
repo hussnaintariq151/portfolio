@@ -21,6 +21,7 @@
 <meta name="twitter:creator" content="@hussnaintari326" />
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preload" as="image" href="hero-1.jpg" fetchpriority="high" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -49,109 +50,638 @@
 </header>
 
 <main id="main">
-  <section class="wrap hero hero-sub" aria-labelledby="page-title">
-    <p class="greeting reveal d1">// 03. chemistry</p>
-    <h1 id="page-title" class="reveal d2">Where the science<br>meets the code.</h1>
-    <p class="lede reveal d3">
-      An <strong>MS in Chemistry</strong> is the foundation of how I think as an engineer.
-      I turn <strong>R&amp;D data from battery, hydrogen, and pharmaceutical</strong> work into
-      production ML models — the kind that respect measurement, uncertainty, and the
-      physical world they came from.
-    </p>
-  </section>
 
-  <section class="band wrap" aria-labelledby="focus-title">
-    <h2 class="band-head reveal" id="focus-title"><span class="num">01.</span>My R&amp;D focus</h2>
-    <div class="features">
-      <div class="feature reveal d1">
-        <h3>Battery materials</h3>
-        <p>Cell chemistry, electrolyte behaviour, and degradation — building predictive models for capacity, lifetime, and failure modes.</p>
-      </div>
-      <div class="feature reveal d1">
-        <h3>Hydrogen systems</h3>
-        <p>Production, storage, and catalysis data — connecting experimental measurements to models that guide the next experiment.</p>
-      </div>
-      <div class="feature reveal d2">
-        <h3>Drug discovery</h3>
-        <p>Cheminformatics and pharmaceutical R&amp;D — property prediction, screening, and turning messy assay data into usable datasets.</p>
-      </div>
-      <div class="feature reveal d2">
-        <h3>Scientific data engineering</h3>
-        <p>Lab data ingestion, cleaning, and versioning — the invisible pipeline that turns hard-won measurements into a trustworthy dataset.</p>
-      </div>
+  <!-- HERO — the same cinematic treatment and frames as the other pages.
+       Photos: Timo Volz, Da Shika, Sascha Albert (Unsplash License). -->
+  <section class="cinema" aria-labelledby="page-title">
+    <div class="cinema__bg" aria-hidden="true">
+      <div class="cinema__slide" style="--img:url('hero-1.jpg')"></div>
+      <div class="cinema__slide" style="--img:url('hero-2.jpg')"></div>
+      <div class="cinema__slide" style="--img:url('hero-3.jpg')"></div>
     </div>
+    <div class="cinema__scrim" aria-hidden="true"></div>
+
+    <div class="wrap cinema__inner">
+      <p class="cinema__eyebrow reveal d2">Hussnain Tariq &mdash; MS Chemistry &amp; Scientific ML</p>
+      <h1 id="page-title" class="cinema__title reveal d3">I turn bench data into models you can trust</h1>
+      <p class="cinema__sub reveal d4">Measurement &middot; Provenance &middot; Representation &middot; Features &middot; Validation &middot; Screening &middot; Experiment design &middot; Reproducibility</p>
+    </div>
+
+    <a class="cinema__cue" href="#blueprint" aria-label="Scroll to content"><span aria-hidden="true"></span></a>
   </section>
 
-  <section class="band wrap" aria-labelledby="brings-title">
-    <h2 class="band-head reveal" id="brings-title"><span class="num">02.</span>What the science brings</h2>
-    <div class="two-col">
-      <div class="prose reveal">
-        <p>
-          Chemistry taught me habits that most software engineers have to learn the hard way.
-          <strong>First-principles thinking</strong> — breaking a problem down to what&rsquo;s actually
-          happening underneath, instead of pattern-matching to the nearest solution.
+  <!-- THE PILLARS — on a white band, collapsed into the same accordion the
+       other discipline pages use. -->
+  <section class="band band-light blueprint" id="blueprint" aria-labelledby="bp-title">
+    <div class="wrap">
+      <h2 class="band-head band-head--center reveal" id="bp-title">How I turn lab data into models</h2>
+
+      <div class="ind-intro">
+        <p class="lede reveal">
+          Every point on a plot cost somebody a day in the lab. That is the difference between
+          scientific data and the kind most models are trained on &mdash; it is expensive, there is
+          never enough of it, and it arrives with an error bar attached. Each pillar below opens
+          into the practices it covers; open any one of those for what it actually is.
         </p>
-        <p>
-          <strong>Respect for measurement.</strong> Error, noise, and confidence are first-class
-          citizens in a lab notebook — a number without its uncertainty is just a rumour.
-          I bring that same discipline to model outputs, benchmarks, and metrics.
-        </p>
-        <p>
-          <strong>Data from the real world is expensive.</strong> Every point on a plot cost
-          somebody a day in the lab. That perspective changes how I approach dataset design,
-          active learning, and where a model is allowed to fail.
-        </p>
-        <p>
-          The through-line to the rest of my work is simple: I&rsquo;m most useful when a problem
-          sits between the <strong>bench and the terminal</strong>.
-        </p>
+
+        <figure class="ind-photo reveal d2">
+          <img src="industries-lab.jpg" width="1200" height="674" loading="lazy"
+               alt="Hussnain Tariq wiring a multi-channel battery cycler to a thermal test chamber in a laboratory." />
+        </figure>
       </div>
-      <div class="reveal d2">
-        <h3 class="subhead">// education</h3>
-        <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-year">2023 — present</div>
-            <h3>MS, Chemistry</h3>
-            <p>The Islamia University Bahawalpur</p>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">2019 — 2023</div>
-            <h3>BS, Chemistry</h3>
-            <p>The Islamia University Bahawalpur</p>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">Awards</div>
-            <h3>PEEF Scholarship</h3>
-            <p>CM Youth Initiative Laptop Selection</p>
+
+      <ul class="stats reveal">
+        <li><b>2019</b><span>first year in a lab</span></li>
+        <li><b>2</b><span>chemistry degrees, BS &amp; MS</span></li>
+        <li><b>3</b><span>R&amp;D domains</span></li>
+        <li><b>2</b><span>merit awards</span></li>
+      </ul>
+
+      <p class="note reveal">
+        <strong>Where this connects:</strong> the chemistry is not a separate track. It is why the
+        AI page insists on an evaluation set before a model, and why the software page treats a
+        migration as something you cannot take back.
+      </p>
+
+      <div class="industries">
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">01</span>
+          <span class="ind__name">Measurement &amp; uncertainty</span>
+          <span class="ind__note">a number without its error is a rumour</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Error propagation</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Carrying instrument and replicate error through every calculation, so the final figure arrives with a range rather than a false precision.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Replicates &amp; controls</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Running the same condition more than once, with a known control beside it, so a difference can be told apart from noise.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Detection limits</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Knowing the value below which the instrument is reporting its own noise, and refusing to model anything underneath it.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Calibration curves</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Relating instrument signal to real concentration through a fitted standard series, and re-running it when the instrument drifts.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Significant figures</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Reporting only the digits the measurement supports. A model that returns six of them is not more accurate, only less honest.</p>
+          </details>
           </div>
         </div>
+      </details>
+
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">02</span>
+          <span class="ind__name">Experimental data &amp; provenance</span>
+          <span class="ind__note">what the instrument actually gave you</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Instrument exports</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Getting data out of whatever format the instrument writes, without losing the metadata attached to it on the way.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Run &amp; batch metadata</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Recording which instrument, which operator, which day, which batch &mdash; because those are the confounders that surface later.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Unit normalisation</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Putting everything into one unit system before anything is compared. A large share of scientific data bugs are unit bugs.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Outlier triage</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Deciding whether a strange point is a failed measurement or a real result by going back to the run, not by reaching for a statistical rule.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Dataset versioning</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Pinning the exact dataset behind a figure, so a result from six months ago can be reproduced rather than approximately recalled.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">03</span>
+          <span class="ind__name">Molecular &amp; materials representation</span>
+          <span class="ind__note">turning matter into features</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">SMILES &amp; molecular graphs</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Representing a molecule as a string or a graph a model can read, canonicalised so the same molecule has exactly one form.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Molecular descriptors</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Computed physicochemical properties &mdash; mass, logP, polar surface area, atom counts &mdash; as the tabular features a classical model needs.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Fingerprints</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Encoding which substructures are present as a bit vector, which is what similarity search and most screening models actually run on.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Composition &amp; structure features</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">For materials: stoichiometry, crystal structure and processing conditions turned into columns rather than left in the method section.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Standardisation</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Salts stripped, tautomers and charge states resolved, so two records of one compound do not enter the dataset as two compounds.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">04</span>
+          <span class="ind__name">Feature engineering from chemistry</span>
+          <span class="ind__note">domain knowledge as columns</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Physically meaningful features</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Building the features the underlying chemistry says should matter, rather than throwing every computable descriptor at the model and hoping.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Derived rates &amp; slopes</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Turning a time series into the quantity that carries the signal &mdash; a capacity fade slope, a rate constant, a degradation rate.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Condition encoding</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Temperature, C-rate, pH, pressure and solvent captured as features, because a result only means anything alongside the conditions that produced it.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Correlated feature pruning</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Removing descriptors that measure the same thing, so importance stays readable and the model is not counting one property five times.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">05</span>
+          <span class="ind__name">Validation for scientific data</span>
+          <span class="ind__note">splits that don&rsquo;t lie</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Scaffold &amp; cluster splits</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Splitting by molecular scaffold or material family rather than at random, so the test set is genuinely new chemistry instead of near-duplicates.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Grouped splits</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Keeping every measurement from one batch, cell or plate on the same side of the split, so a batch effect cannot leak the answer across.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Temporal splits</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Training on earlier experiments and testing on later ones, because that is the order in which the model will actually be used.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Applicability domain</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Stating where the model is allowed to be trusted, and having it decline rather than extrapolate outside the chemistry it was shown.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Uncertainty on predictions</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Every prediction carrying a confidence, so a screening list can be ordered by expected value rather than by point estimate alone.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">06</span>
+          <span class="ind__name">Modelling &amp; screening</span>
+          <span class="ind__note">from dataset to a shortlist</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Baselines from chemistry</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">A physical or rule-based estimate first, because a model that cannot beat a known correlation has not added anything yet.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Property prediction</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Regression or classification on a measured property &mdash; solubility, capacity, activity &mdash; with the error bar carried through to the output.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Virtual screening</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Ranking a large candidate library so the lab tests the top of a list instead of a random slice of it.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Small-data methods</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Techniques that work at a few hundred points, because that is what a real lab produces &mdash; regularisation, priors, and transfer from related tasks.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Interpretability</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Being able to point at which descriptors drove a prediction, so a chemist can agree with it or argue with it.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d4">
+        <summary class="ind__head">
+          <span class="ind__n">07</span>
+          <span class="ind__name">Active learning &amp; experiment design</span>
+          <span class="ind__note">which experiment to run next</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Acquisition strategy</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Choosing the next experiments by expected information gain rather than by best predicted value, so the model keeps learning instead of confirming itself.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Exploration vs exploitation</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Balancing candidates that look good against candidates the model is unsure about &mdash; deliberately, with a stated ratio, not by accident.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Design of experiments</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Varying conditions on a designed grid instead of one factor at a time, so interactions become visible within the same number of runs.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Closing the loop</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Feeding measured results back as labelled data, so every round of experiments makes the next round of predictions better.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d4">
+        <summary class="ind__head">
+          <span class="ind__n">08</span>
+          <span class="ind__name">Reproducibility &amp; reporting</span>
+          <span class="ind__note">a result somebody else can get</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Notebook to pipeline</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Moving analysis out of an ad-hoc notebook into a script that runs the same way twice, in the same order, from the same inputs.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Pinned environments</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Fixed dependency versions and fixed seeds, so a rerun produces the same numbers on a different machine a year later.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Figures from code</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Every plot regenerated from the data by a script, so a figure and the numbers behind it cannot quietly drift apart.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Reporting negatives</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Recording what did not work. In R&amp;D that is half the information, and it is almost never written down.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Audit trail</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Who changed what and when, so a result that ends up in a decision can be traced back to the run that produced it.</p>
+          </details>
+          </div>
+        </div>
+      </details>
       </div>
+
+      <p class="note note--honest reveal">
+        <strong>Read this as the standard, not the r&eacute;sum&eacute;:</strong> it is the list I
+        hold scientific work to. Large-scale quantum chemistry, automated high-throughput
+        experimentation, and GLP or GMP-regulated pipelines I have not run &mdash; I know the
+        shapes and the trade-offs, and I would rather say so plainly than claim scars I do not
+        have.
+      </p>
+
+      <p class="bp-count reveal">
+        <span><b>8</b> pillars</span><span><b>38</b> practices</span>
+      </p>
     </div>
   </section>
 
-  <section class="band wrap" aria-labelledby="areas-title">
-    <h2 class="band-head reveal" id="areas-title"><span class="num">03.</span>Areas &amp; methods</h2>
-    <ul class="tags reveal">
-      <li class="tag">Computational chemistry</li>
-      <li class="tag">Cheminformatics</li>
-      <li class="tag">Battery R&amp;D data</li>
-      <li class="tag">Hydrogen systems</li>
-      <li class="tag">Drug discovery</li>
-      <li class="tag">Scientific modelling</li>
-      <li class="tag">Statistics &amp; uncertainty</li>
-      <li class="tag">Data analysis</li>
-      <li class="tag">Lab methods</li>
-    </ul>
+  <!-- Domains & methods — the chemistry equivalent of the stack accordion. -->
+  <section class="band band-light band-light--next" aria-labelledby="dom-title">
+    <div class="wrap">
+    <h2 class="band-head band-head--center reveal" id="dom-title">Domains &amp; methods</h2>
+    <p class="lede lede--center reveal">
+      Three R&amp;D fields, one habit of mind. Open any of them for what I actually add once the
+      measurements are in.
+    </p>
+
+    <div class="atwork atwork--center">
+      <figure class="reveal d1">
+        <img src="about-portrait.jpg" width="1100" height="734" loading="lazy"
+             alt="Hussnain Tariq holding a sample vial beside analytical instrumentation in a laboratory." />
+      </figure>
+      <figure class="reveal d2">
+        <img src="work-desk.jpg" width="1000" height="750" loading="lazy"
+             alt="Hussnain Tariq working across a laptop and an external monitor full of code." />
+      </figure>
+    </div>
+
+    <div class="industries">
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">01</span>
+          <span class="ind__name">Battery materials</span>
+          <span class="ind__note">cells, cycling and degradation</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">Cell chemistry</li>
+            <li class="tag">Electrolytes</li>
+            <li class="tag">Degradation</li>
+            <li class="tag">Cycling data</li>
+          </ul>
+          <p class="ind__what"><b>What I add</b>
+            Cycling, impedance and degradation data arrives noisy and split across instruments. I turn it into a versioned dataset and build capacity and lifetime models that carry their own uncertainty, so the cell team gets a range rather than a single confident number.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">02</span>
+          <span class="ind__name">Hydrogen systems</span>
+          <span class="ind__note">production, storage, catalysis</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">Production</li>
+            <li class="tag">Storage</li>
+            <li class="tag">Catalysis</li>
+          </ul>
+          <p class="ind__what"><b>What I add</b>
+            Catalyst and storage screening produces far more candidates than any lab can test. The useful work is the ranking model and the pipeline around it, so the next dozen experiments are chosen rather than guessed.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">03</span>
+          <span class="ind__name">Drug discovery</span>
+          <span class="ind__note">molecules to properties</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">Cheminformatics</li>
+            <li class="tag">Property prediction</li>
+            <li class="tag">Virtual screening</li>
+            <li class="tag">Assay data</li>
+          </ul>
+          <p class="ind__what"><b>What I add</b>
+            Assay data is messy, batch-effected and regulated. I build the pipeline with a real audit trail &mdash; append-only logs, versioned datasets, reproducible runs &mdash; so a property-prediction model can survive a review rather than only a demo.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">04</span>
+          <span class="ind__name">Scientific data engineering</span>
+          <span class="ind__note">the invisible pipeline</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">Ingestion</li>
+            <li class="tag">Cleaning</li>
+            <li class="tag">Versioning</li>
+            <li class="tag">Pipelines</li>
+          </ul>
+          <p class="ind__what"><b>What I add</b>
+            Lab data ingestion, cleaning and versioning: the unglamorous layer that turns hard-won measurements into a dataset somebody else can trust and rerun.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">05</span>
+          <span class="ind__name">Statistics &amp; uncertainty</span>
+          <span class="ind__note">error as a first-class citizen</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">Error propagation</li>
+            <li class="tag">Experimental design</li>
+            <li class="tag">Confidence intervals</li>
+            <li class="tag">Significance</li>
+          </ul>
+          <p class="ind__what"><b>What I add</b>
+            Error, noise and confidence are first-class in a lab notebook, and they should be in a model report too. This is the habit chemistry teaches that most engineering never does.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">06</span>
+          <span class="ind__name">Tooling</span>
+          <span class="ind__note">what the analysis runs on</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">Python</li>
+            <li class="tag">Pandas</li>
+            <li class="tag">NumPy</li>
+            <li class="tag">scikit-learn</li>
+            <li class="tag">Matplotlib</li>
+            <li class="tag">Plotly</li>
+          </ul>
+          <p class="ind__what"><b>What I add</b>
+            Python for the whole analysis path, scikit-learn for the modelling, and plots generated from the data by a script rather than assembled by hand.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d4">
+        <summary class="ind__head">
+          <span class="ind__n">07</span>
+          <span class="ind__name">Education</span>
+          <span class="ind__note">where the habits came from</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-year">2023 &mdash; present</div>
+              <h3>MS, Chemistry</h3>
+              <p>The Islamia University Bahawalpur</p>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2019 &mdash; 2023</div>
+              <h3>BS, Chemistry</h3>
+              <p>The Islamia University Bahawalpur</p>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">Awards</div>
+              <h3>PEEF Scholarship</h3>
+              <p>CM Youth Initiative Laptop Selection</p>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+    </div>
   </section>
 
-  <section class="band wrap" aria-labelledby="cta-title">
-    <div class="contact-block reveal">
-      <span class="num">// science-meets-code problem?</span>
-      <h2 id="cta-title" class="h-sm">That&rsquo;s exactly my space.</h2>
-      <p>If your project sits between the lab and the terminal — battery, hydrogen, pharma, or materials — I&rsquo;d like to hear about it.</p>
-      <div class="btn-row">
-        <a class="btn" href="software.html">See software work →</a>
-        <a class="btn btn-solid" href="contact.html">Get in touch</a>
+  <!-- Closing call to action — the portrait beside the ask. -->
+  <section class="band band-light band-light--next" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="who">
+        <figure class="who-photo reveal">
+          <img src="software-portrait.jpg" width="1140" height="768" loading="lazy"
+               alt="Hussnain Tariq standing beside a glass partition in an office corridor." />
+        </figure>
+
+        <div class="who-copy cta-copy reveal d2">
+          <h2 id="cta-title">That&rsquo;s exactly my space.</h2>
+          <p>
+            I am most useful where a problem sits between the bench and the terminal. If your
+            project is in battery, hydrogen, pharma or materials and the data is already there but
+            not doing anything, I&rsquo;d like to hear about it.
+          </p>
+          <div class="btn-row">
+            <a class="btn" href="software.html">See how I build it</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>

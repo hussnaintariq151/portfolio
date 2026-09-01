@@ -15,7 +15,9 @@ portfolio/
 ├── ai.html             # 02 · AI engineering — same shape as 01: eight pillars
 │                       #      in a white accordion band, a stack accordion,
 │                       #      and the closing ask
-├── chemistry.html      # 03 · Chemistry MS (battery, hydrogen, drugs)
+├── chemistry.html      # 03 · Chemistry — same shape as 01 and 02: eight
+│                       #      pillars, a domains accordion carrying the
+│                       #      education timeline, and the closing ask
 ├── about.html          # 04 · Story, education, self-learning, experience
 ├── contact.html        # Email + socials
 ├── 404.html            # Not-found page (styled, matches the site)

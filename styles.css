@@ -290,10 +290,10 @@ main{padding-top:var(--nav-h);}
 /* ---------- 5c. Cinematic hero ---------- */
 
 /* Wherever a cinematic hero runs, the nav floats over it until you scroll. */
-body.home main,body.page-software main,body.page-ai main{padding-top:0;}
-body.home header.nav,body.page-software header.nav,body.page-ai header.nav{background:transparent;border-bottom-color:transparent;box-shadow:none;}
-body.home header.nav:not(.scrolled),body.page-software header.nav:not(.scrolled),body.page-ai header.nav:not(.scrolled){-webkit-backdrop-filter:none;backdrop-filter:none;}
-body.home header.nav.scrolled,body.page-software header.nav.scrolled,body.page-ai header.nav.scrolled{
+body.home main,body.page-software main,body.page-ai main,body.page-chemistry main{padding-top:0;}
+body.home header.nav,body.page-software header.nav,body.page-ai header.nav,body.page-chemistry header.nav{background:transparent;border-bottom-color:transparent;box-shadow:none;}
+body.home header.nav:not(.scrolled),body.page-software header.nav:not(.scrolled),body.page-ai header.nav:not(.scrolled),body.page-chemistry header.nav:not(.scrolled){-webkit-backdrop-filter:none;backdrop-filter:none;}
+body.home header.nav.scrolled,body.page-software header.nav.scrolled,body.page-ai header.nav.scrolled,body.page-chemistry header.nav.scrolled{
   background:var(--bg-glass);border-bottom-color:var(--line);box-shadow:var(--shadow);
   -webkit-backdrop-filter:blur(12px) saturate(160%);backdrop-filter:blur(12px) saturate(160%);
 }
