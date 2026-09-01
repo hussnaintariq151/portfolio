@@ -437,38 +437,7 @@ body.home header.nav.scrolled{
 .band-head--center{justify-content:center;text-align:center;margin-bottom:clamp(2rem,4vw,3rem);}
 .band-head--center::after{display:none;}
 
-/* ---------- 7. Domain cards ---------- */
-
-.domains{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
-.domain-card{
-  position:relative;overflow:hidden;
-  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);
-  padding:1.8rem 1.6rem;color:var(--ink-2);
-  display:flex;flex-direction:column;gap:.7rem;
-  transition:transform .25s var(--ease),border-color .2s ease,background .2s ease,box-shadow .25s ease;
-}
-.domain-card::after{
-  content:"";position:absolute;inset:auto 0 0 0;height:2px;
-  background:linear-gradient(90deg,var(--card-accent,var(--accent)),transparent);
-  opacity:0;transition:opacity .25s ease;
-}
-.domain-card:hover,.domain-card:focus-visible{
-  transform:translateY(-6px);border-color:var(--card-accent,var(--accent));
-  background:var(--bg-3);color:var(--ink-2);box-shadow:var(--shadow);
-}
-.domain-card:hover::after{opacity:1;}
-.domain-card .swatch{
-  width:2.4rem;height:.3rem;border-radius:2rem;margin-bottom:.5rem;
-  background:var(--card-accent,var(--accent));
-}
-.domain-card h3{color:var(--ink);font-size:1.35rem;}
-.domain-card p{color:var(--muted);font-size:.95rem;flex:1;}
-.domain-card .go{color:var(--card-accent,var(--accent));font-family:var(--font-mono);font-size:.85rem;margin-top:.4rem;}
-.domain-card .go::after{content:" →";display:inline-block;transition:transform .2s var(--ease);}
-.domain-card:hover .go::after{transform:translateX(4px);}
-@media (max-width:760px){.domains{grid-template-columns:1fr;}}
-
-/* ---------- 8. Prose ---------- */
+/* ---------- 7. Prose ---------- */
 
 .prose{max-width:64ch;}
 .prose p{margin-bottom:1rem;color:var(--ink-2);}
