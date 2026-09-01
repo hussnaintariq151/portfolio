@@ -9,11 +9,11 @@ Plain HTML/CSS/JS — no build step, no dependencies. Deploys anywhere static.
 ```
 portfolio/
 ├── index.html          # Home (hero + about + 3 disciplines + featured work)
-├── software.html       # 01 · Software engineering — a blueprint band plus one
-│                       #      section per pillar (security, API design,
-│                       #      performance, reliability, observability, data
-│                       #      integrity, scalability, delivery), then work,
-│                       #      stack and the portrait band
+├── software.html       # 01 · Software engineering — eight pillars in a white
+│                       #      accordion band (security, API design, performance,
+│                       #      reliability, observability, data integrity,
+│                       #      scalability, delivery), then work, stack and the
+│                       #      portrait band
 ├── ai.html             # 02 · AI engineering (ML, DL, GenAI, RAG)
 ├── chemistry.html      # 03 · Chemistry MS (battery, hydrogen, drugs)
 ├── about.html          # 04 · Story, education, self-learning, experience

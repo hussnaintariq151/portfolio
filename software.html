@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Software Engineering — Hussnain Tariq</title>
-<meta name="description" content="A production backend blueprint by Hussnain Tariq — eight pillars, 52 controls and the trade-off behind each one: security, API design, performance, reliability, observability, data integrity, scalability and delivery." />
+<meta name="description" content="How Hussnain Tariq builds software systems — eight pillars, 52 controls and the trade-off behind each one: security, API design, performance, reliability, observability, data integrity, scalability and delivery." />
 <meta name="author" content="Hussnain Tariq" />
 <meta name="theme-color" content="#0a192f" />
 <link rel="canonical" href="https://hussnaintariq.vercel.app/software" />
@@ -72,421 +72,376 @@
     <a class="cinema__cue" href="#blueprint" aria-label="Scroll to content"><span aria-hidden="true"></span></a>
   </section>
 
-  <!-- THE BLUEPRINT — full-bleed index into the eight pillars below. The
-       backdrop is a CSS grid rather than a photo, so it reads as drawing
-       paper and does not repeat the shot already running in the hero. -->
-  <section class="blueprint" id="blueprint" aria-labelledby="bp-title">
+  <!-- THE PILLARS — on a white band, collapsed into the same accordion the
+       home page uses for industries. -->
+  <section class="band band-light blueprint" id="blueprint" aria-labelledby="bp-title">
     <div class="wrap">
-      <p class="bp-eyebrow reveal">// the blueprint</p>
-      <h2 id="bp-title" class="bp-title reveal d1">Eight pillars a backend has to stand on.</h2>
-      <p class="bp-lede reveal d2">
-        Every section below is one pillar: what it is for, what I have actually shipped inside it,
-        the controls I check before calling the work done, and one trade-off I made and would
-        defend. Nothing here is aspirational &mdash; where I have not run something in production,
-        it says so.
-      </p>
+      <h2 class="band-head band-head--center reveal" id="bp-title">How I build software systems</h2>
 
-      <ul class="stats reveal d3">
+      <div class="ind-intro">
+        <p class="lede reveal">
+          Most teams can get a service running. What tends to be missing is everything that keeps
+          it running &mdash; the retry that doesn&rsquo;t duplicate a row, the migration that
+          doesn&rsquo;t take the site down, the worker that says something when it stops. Each
+          pillar below is one of those: what it is for, what I have actually shipped inside it, the
+          controls I check before calling the work done, and one trade-off I made and would defend.
+        </p>
+
+        <figure class="ind-photo reveal d2">
+          <img src="work-desk.jpg" width="1000" height="750" loading="lazy"
+               alt="Hussnain Tariq working across a laptop and an external monitor full of code." />
+        </figure>
+      </div>
+
+      <ul class="stats reveal">
         <li><b>90+</b><span>REST endpoints</span></li>
         <li><b>18+</b><span>forward-only migrations</span></li>
         <li><b>4</b><span>long-running workers</span></li>
         <li><b>1</b><span>codebase, two topologies</span></li>
       </ul>
 
-      <ul class="bp-grid reveal d4">
-        <li><a href="#p1"><span class="bp-n">01</span><b>Security</b><span class="bp-d">auth, authorization, secrets</span></a></li>
-        <li><a href="#p2"><span class="bp-n">02</span><b>API design</b><span class="bp-d">the contract clients live with</span></a></li>
-        <li><a href="#p3"><span class="bp-n">03</span><b>Performance</b><span class="bp-d">latency where users feel it</span></a></li>
-        <li><a href="#p4"><span class="bp-n">04</span><b>Reliability</b><span class="bp-d">what happens when things fail</span></a></li>
-        <li><a href="#p5"><span class="bp-n">05</span><b>Observability</b><span class="bp-d">seeing it before users do</span></a></li>
-        <li><a href="#p6"><span class="bp-n">06</span><b>Data integrity</b><span class="bp-d">the incident you can&rsquo;t hotfix</span></a></li>
-        <li><a href="#p7"><span class="bp-n">07</span><b>Scalability</b><span class="bp-d">state in the right place</span></a></li>
-        <li><a href="#p8"><span class="bp-n">08</span><b>Delivery</b><span class="bp-d">code to production, repeatably</span></a></li>
-      </ul>
+      <p class="note reveal">
+        <strong>Scope note:</strong> the platform referenced throughout is under NDA, so every
+        &ldquo;In production&rdquo; block describes the engineering rather than the client or the
+        product. It is one real system, read through eight different lenses.
+      </p>
 
-      <p class="bp-count reveal d5">
+      <div class="industries">
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">01</span>
+          <span class="ind__name">Security</span>
+          <span class="ind__note">auth, authorization, secrets</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="pillar-grid">
+            <div class="pillar-built">
+              <h3>In production</h3>
+              <p>HMAC-SHA256 signed session cookies with constant-time verification and no server-side session store. scrypt password hashing, role checks that run in middleware before any handler, and row-level security enabled on every table. Private media is served through short-lived signed URLs, and PII is stored only as a salted hash.</p>
+              <div class="p-stack">HMAC sessions &middot; scrypt &middot; RBAC middleware &middot; row-level security &middot; signed URLs &middot; PII hashing</div>
+            </div>
+            <div class="pillar-controls">
+              <h3>Controls</h3>
+              <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
+              <ul class="checks">
+                <li class="done">Signed session cookies &mdash; HMAC-SHA256, constant-time verify</li>
+                <li class="done">Password hashing with scrypt, PII only as a salted hash</li>
+                <li class="done">RBAC in middleware, before any handler runs</li>
+                <li class="done">Row-level security on every table</li>
+                <li class="done">Origin-whitelisted CORS &mdash; never a wildcard</li>
+                <li class="done">Rate limiting on public endpoints</li>
+                <li class="done">Secrets in env, never in the repo &mdash; fail fast if missing</li>
+                <li>Schema validation on every inbound body, query and header</li>
+              </ul>
+            </div>
+          </div>
+
+          <article class="decision">
+            <h3><span class="decision__n">the call</span>RLS on, but every write goes through one service role</h3>
+            <p class="decision__call">Row-level security is enabled on every table, yet authorization is concentrated in a single middleware layer instead of being expressed as per-role database policies.</p>
+            <dl class="tradeoff">
+              <div><dt>Buys</dt><dd>One auditable place to read the access rules, and no policy drift between the database and the application as roles change.</dd></div>
+              <div class="cost"><dt>Costs</dt><dd>The database cannot independently enforce who wrote what. A middleware bug is a real breach, not a contained one.</dd></div>
+              <div><dt>Undo when</dt><dd>A second write path appears &mdash; a direct client connection, or another service touching the same tables.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </details>
+
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">02</span>
+          <span class="ind__name">API design</span>
+          <span class="ind__note">the contract clients live with</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="pillar-grid">
+            <div class="pillar-built">
+              <h3>In production</h3>
+              <p>90+ REST endpoints across session auth, resource CRUD, async job triggers, a multi-stage review workflow, and a CORS-gated external feed. Long jobs return <code>202</code> and are polled rather than held open; list endpoints page in bounded chunks; every error leaves with the same shape and a trace id.</p>
+              <div class="p-stack">Express &middot; TypeScript &middot; REST &middot; 202 + polling &middot; bounded pagination</div>
+            </div>
+            <div class="pillar-controls">
+              <h3>Controls</h3>
+              <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
+              <ul class="checks">
+                <li class="done">HTTP semantics that mean what they say &mdash; 202 async, 204 delete</li>
+                <li class="done">Idempotency: every write has a natural key, retry is a no-op</li>
+                <li class="done">Bounded, paged list endpoints &mdash; no unbounded result sets</li>
+                <li class="done">One error shape across the whole surface, with a trace id</li>
+                <li>URL versioning with a documented deprecation window</li>
+                <li>OpenAPI spec committed alongside the code</li>
+              </ul>
+            </div>
+          </div>
+
+          <article class="decision">
+            <h3><span class="decision__n">the call</span>Idempotency by natural key, not by a key store</h3>
+            <p class="decision__call">Every write derives a unique key from the data itself and leans on a database constraint, instead of a client-supplied <code>Idempotency-Key</code> cached in Redis.</p>
+            <dl class="tradeoff">
+              <div><dt>Buys</dt><dd>Retry safety with no extra infrastructure and no TTL to expire at the wrong moment. The guarantee lives in the schema, so every code path inherits it.</dd></div>
+              <div class="cost"><dt>Costs</dt><dd>It only prevents the duplicate &mdash; it does not replay the original response. Writes with no natural identity need the header approach instead.</dd></div>
+              <div><dt>Undo when</dt><dd>A client needs the first response back on retry, not merely the guarantee that nothing ran twice.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </details>
+
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">03</span>
+          <span class="ind__name">Performance</span>
+          <span class="ind__note">latency where users feel it</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="pillar-grid">
+            <div class="pillar-built">
+              <h3>In production</h3>
+              <p>Indexes chosen from real query plans rather than guesses, and every expensive operation &mdash; transcription, model scoring, report generation &mdash; moved off the request path into workers so the API stays responsive under load. Eager loading at the ORM boundary keeps list endpoints from turning into N+1 loops.</p>
+              <div class="p-stack">EXPLAIN ANALYZE &middot; composite indexes &middot; async workers &middot; eager loading</div>
+            </div>
+            <div class="pillar-controls">
+              <h3>Controls</h3>
+              <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
+              <ul class="checks">
+                <li class="done">Indexes chosen from real query plans, not guesses</li>
+                <li class="done">Slow work moved off the request path into workers</li>
+                <li class="done">N+1 queries hunted down at the ORM boundary</li>
+                <li>Connection pooling sized to the box, not left at the default</li>
+                <li>Cache layers with explicit TTLs and invalidation on write</li>
+                <li>p95/p99 budgets per endpoint, not average latency</li>
+              </ul>
+            </div>
+          </div>
+
+          <article class="decision">
+            <h3><span class="decision__n">the call</span>Poll for job status &mdash; don&rsquo;t hold the connection open</h3>
+            <p class="decision__call">Long jobs return <code>202</code> with a job id and clients poll for the result, instead of a held-open request, a websocket, or a webhook callback.</p>
+            <dl class="tradeoff">
+              <div><dt>Buys</dt><dd>No connection held open per in-flight job, nothing to reconnect after a deploy, and it survives every proxy and serverless timeout in the path.</dd></div>
+              <div class="cost"><dt>Costs</dt><dd>A latency floor equal to the poll interval, and a stream of requests that mostly answer &ldquo;still running&rdquo;.</dd></div>
+              <div><dt>Undo when</dt><dd>Clients need sub-second updates, or poll traffic starts costing more than a push channel would.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </details>
+
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">04</span>
+          <span class="ind__name">Reliability</span>
+          <span class="ind__note">what happens when things fail</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="pillar-grid">
+            <div class="pillar-built">
+              <h3>In production</h3>
+              <p>Transient upstream failures back off exponentially; repeat offenders get parked in a cooldown map so one bad dependency cannot stall the whole backlog. A scheduled reconciliation sweep self-heals four separate fault modes and keeps the pipeline eventually consistent. Health checks are wired to a restart policy rather than to a dashboard nobody reads.</p>
+              <div class="p-stack">Exponential backoff &middot; cooldown parking &middot; self-healing sweep &middot; health checks</div>
+            </div>
+            <div class="pillar-controls">
+              <h3>Controls</h3>
+              <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
+              <ul class="checks">
+                <li class="done">Exponential backoff with jitter on transient failures</li>
+                <li class="done">Repeat offenders parked in a cooldown so the backlog drains</li>
+                <li class="done">A reconciliation sweep that self-heals known fault modes</li>
+                <li class="done">Health checks wired to a restart policy</li>
+                <li>Explicit timeouts at every level &mdash; connect, read, query, job</li>
+                <li>Dead-letter path for poison messages, with an alert on depth</li>
+                <li>Graceful shutdown: drain in-flight work, then exit</li>
+              </ul>
+            </div>
+          </div>
+
+          <article class="decision">
+            <h3><span class="decision__n">the call</span>A self-healing sweep instead of a dead-letter queue</h3>
+            <p class="decision__call">Rows that get stuck are recovered by a scheduled reconciliation pass that knows the fault modes, rather than being moved to a DLQ for a human to inspect.</p>
+            <dl class="tradeoff">
+              <div><dt>Buys</dt><dd>Four known failure modes recover with nobody paged, and the backlog keeps draining straight through a bad upstream day.</dd></div>
+              <div class="cost"><dt>Costs</dt><dd>It only heals what it was taught. A genuinely new failure mode sits there quietly, and there is no queue depth to alert on.</dd></div>
+              <div><dt>Undo when</dt><dd>Failures stop being enumerable, or a stuck record needs a human to look at it before it is retried.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">05</span>
+          <span class="ind__name">Observability</span>
+          <span class="ind__note">seeing it before users do</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="pillar-grid">
+            <div class="pillar-built">
+              <h3>In production</h3>
+              <p>Append-only audit tables record who did what and when &mdash; inserted into, never updated, never deleted. Structured logs carry a request id through every stage of a job, so one identifier reconstructs the whole path, and secrets never reach them.</p>
+              <div class="p-stack">Append-only audit tables &middot; structured logs &middot; correlation id</div>
+            </div>
+            <div class="pillar-controls">
+              <h3>Controls</h3>
+              <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
+              <ul class="checks">
+                <li class="done">Append-only audit tables &mdash; who did what, when, never updated</li>
+                <li class="done">Structured logs with a request id, and no secrets in them</li>
+                <li>Error tracking with grouping and alerts on new failure types</li>
+                <li>RED metrics on every endpoint, USE metrics on the box</li>
+                <li>Distributed tracing once more than one service is involved</li>
+                <li>SLOs with an error budget, agreed before launch</li>
+              </ul>
+            </div>
+          </div>
+
+          <article class="decision">
+            <h3><span class="decision__n">the call</span>The audit trail is a table, not a log stream</h3>
+            <p class="decision__call">Sensitive actions are written to append-only Postgres tables in the same transaction as the change itself, instead of being emitted into the logging pipeline.</p>
+            <dl class="tradeoff">
+              <div><dt>Buys</dt><dd>The audit record commits or rolls back with the thing it describes, so the two can never disagree &mdash; and it is queryable with a join, not a log search.</dd></div>
+              <div class="cost"><dt>Costs</dt><dd>It grows inside the OLTP database, needs its own retention plan, and is not free-text searchable the way logs are.</dd></div>
+              <div><dt>Undo when</dt><dd>Audit volume starts competing with production traffic for the same database.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">06</span>
+          <span class="ind__name">Data integrity</span>
+          <span class="ind__note">the incident you can&rsquo;t hotfix</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="pillar-grid">
+            <div class="pillar-built">
+              <h3>In production</h3>
+              <p>18+ forward-only Postgres migrations &mdash; never edited, only added to. One universal join key that every domain table hangs off, cascade deletes so orphan rows can&rsquo;t exist, and JSONB where the shape is still moving. Business invariants live in the database as triggers and CHECK constraints, so no application bug can bypass them.</p>
+              <div class="p-stack">Postgres &middot; forward-only migrations &middot; triggers &middot; CHECK constraints &middot; cascade deletes &middot; JSONB</div>
+            </div>
+            <div class="pillar-controls">
+              <h3>Controls</h3>
+              <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
+              <ul class="checks">
+                <li class="done">Forward-only migrations &mdash; added to, never edited</li>
+                <li class="done">Expand &rarr; backfill &rarr; contract, so deploys need no downtime</li>
+                <li class="done">Invariants as triggers and CHECK constraints, not just app code</li>
+                <li class="done">Cascade deletes, so orphan rows cannot exist</li>
+                <li class="done">Atomic claim on shared work &mdash; two workers never take one row</li>
+                <li>Soft deletes with a written retention policy</li>
+                <li>Backups with a restore actually tested, plus an RTO/RPO on paper</li>
+              </ul>
+            </div>
+          </div>
+
+          <article class="decision">
+            <h3><span class="decision__n">the call</span>Forward-only migrations, expand &rarr; backfill &rarr; contract</h3>
+            <p class="decision__call">A migration is never edited once merged, and destructive schema changes are split into three deploys instead of one.</p>
+            <dl class="tradeoff">
+              <div><dt>Buys</dt><dd>Old and new code run against the same schema during a rollout, so deploys need no downtime and a rollback does not need a database restore.</dd></div>
+              <div class="cost"><dt>Costs</dt><dd>Schema work takes three times as long, duplicate columns live in production for a while, and backfills have to be watched.</dd></div>
+              <div><dt>Undo when</dt><dd>Only on greenfield work, before a second environment or a single real user depends on the data.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </details>
+
+      <details class="ind reveal d4">
+        <summary class="ind__head">
+          <span class="ind__n">07</span>
+          <span class="ind__name">Scalability</span>
+          <span class="ind__note">state in the right place</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="pillar-grid">
+            <div class="pillar-built">
+              <h3>In production</h3>
+              <p>No server-side session store, so any instance can serve any request and the web tier scales out without sticky sessions. Uploads live in object storage, not on the box. Workers claim their work atomically straight from the database, so adding a second worker needs no coordinator and no config change.</p>
+              <div class="p-stack">Stateless web tier &middot; object storage &middot; atomic claim &middot; horizontal workers</div>
+            </div>
+            <div class="pillar-controls">
+              <h3>Controls</h3>
+              <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
+              <ul class="checks">
+                <li class="done">Stateless web tier &mdash; no session store pinning a user to a box</li>
+                <li class="done">Files in object storage, not on the instance</li>
+                <li class="done">Workers that scale out horizontally without a coordinator</li>
+                <li>A broker (Kafka / SQS / RabbitMQ) once the queue outgrows the database</li>
+                <li>CDN and edge caching for anything publicly cacheable</li>
+                <li>Partitioning before a table is big enough to hurt</li>
+              </ul>
+            </div>
+          </div>
+
+          <article class="decision">
+            <h3><span class="decision__n">the call</span>The database is the queue</h3>
+            <p class="decision__call">Workers poll a status column and claim a batch atomically inside a transaction, rather than sitting behind Kafka, SQS or RabbitMQ.</p>
+            <dl class="tradeoff">
+              <div><dt>Buys</dt><dd>One less system to run, monitor and pay for. Job state and business data commit together, so a crash cannot leave the two disagreeing.</dd></div>
+              <div class="cost"><dt>Costs</dt><dd>A polling-interval latency floor, no free fan-out or replay, and throughput bounded by one Postgres instance.</dd></div>
+              <div><dt>Undo when</dt><dd>A second consumer needs the same events, or claim contention starts showing up in query plans.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </details>
+
+      <details class="ind reveal d4">
+        <summary class="ind__head">
+          <span class="ind__n">08</span>
+          <span class="ind__name">Delivery</span>
+          <span class="ind__note">code to production, repeatably</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="pillar-grid">
+            <div class="pillar-built">
+              <h3>In production</h3>
+              <p>One codebase, two shapes: a single container running the web tier plus every long-running worker, or an esbuild-bundled serverless function for the stateless web tier with the polling workers hosted separately. 12-factor env config that fails fast on a missing variable, a pinned runtime version, and CI that lints, tests and builds on every commit.</p>
+              <div class="p-stack">Railway &middot; Vercel &middot; esbuild &middot; Terraform &middot; GitHub Actions &middot; 12-factor config</div>
+            </div>
+            <div class="pillar-controls">
+              <h3>Controls</h3>
+              <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
+              <ul class="checks">
+                <li class="done">CI on every commit &mdash; lint, tests, build, then deploy</li>
+                <li class="done">Infrastructure as code in Terraform, environments separated</li>
+                <li class="done">12-factor config and a pinned runtime version</li>
+                <li class="done">Containerised builds that run the same locally and in prod</li>
+                <li>Canary or blue-green when a bad deploy would be expensive</li>
+                <li>Deliberate fault injection, once there is enough to break</li>
+              </ul>
+            </div>
+          </div>
+
+          <article class="decision">
+            <h3><span class="decision__n">the call</span>One codebase, two deploy topologies</h3>
+            <p class="decision__call">The same routers either mount in-process in one container alongside the workers, or bundle into a serverless function with the workers hosted separately.</p>
+            <dl class="tradeoff">
+              <div><dt>Buys</dt><dd>The hosting decision stays reversible and cost-driven rather than architectural, and there is one place to fix a bug.</dd></div>
+              <div class="cost"><dt>Costs</dt><dd>Two deploy paths to keep green, and a hard constraint to respect: polling loops and in-memory state do not survive serverless timeouts.</dd></div>
+              <div><dt>Undo when</dt><dd>Web tier and workers need to scale on genuinely different curves &mdash; then they earn separate repos and separate on-call.</dd></div>
+            </dl>
+          </article>
+        </div>
+      </details>
+      </div>
+
+      <p class="note note--honest reveal">
+        <strong>What I have not run in production:</strong> database sharding, CQRS with separate
+        read and write models, and scheduled chaos engineering. I know the shapes and the
+        trade-offs, but I would rather say that plainly than claim scars I do not have.
+      </p>
+
+      <p class="bp-count reveal">
         <span><b>8</b> pillars</span><span><b>52</b> controls</span><span><b>8</b> trade-offs I&rsquo;d defend</span>
       </p>
     </div>
-  </section>
-
-  <!-- One scope note covering every "In production" block below. -->
-  <section class="band wrap band-tight" aria-label="Scope note">
-    <p class="note reveal">
-      <strong>Scope note:</strong> the platform referenced throughout is under NDA, so every
-      &ldquo;In production&rdquo; block describes the engineering rather than the client or the
-      product. It is one real system, read through eight different lenses.
-    </p>
-  </section>
-
-  <!-- ============ 01 · SECURITY ============ -->
-  <section class="band wrap pillar-sec" id="p1" aria-labelledby="p1-title">
-    <h2 class="band-head reveal" id="p1-title"><span class="num">01.</span>Security</h2>
-    <p class="lede reveal">Authentication is not a feature you add later &mdash; it is the floor everything else stands on.</p>
-
-    <div class="pillar-grid">
-      <div class="pillar-built reveal d1">
-        <h3>In production</h3>
-        <p>
-          HMAC-SHA256 signed session cookies with constant-time verification and no server-side
-          session store. scrypt password hashing, role checks that run in middleware before any
-          handler, and row-level security enabled on every table. Private media is served through
-          short-lived signed URLs, and PII is stored only as a salted hash.
-        </p>
-        <div class="p-stack">HMAC sessions &middot; scrypt &middot; RBAC middleware &middot; row-level security &middot; signed URLs &middot; PII hashing</div>
-      </div>
-
-      <div class="pillar-controls reveal d2">
-        <h3>Controls</h3>
-        <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
-        <ul class="checks">
-          <li class="done">Signed session cookies &mdash; HMAC-SHA256, constant-time verify</li>
-          <li class="done">Password hashing with scrypt, PII only as a salted hash</li>
-          <li class="done">RBAC in middleware, before any handler runs</li>
-          <li class="done">Row-level security on every table</li>
-          <li class="done">Origin-whitelisted CORS &mdash; never a wildcard</li>
-          <li class="done">Rate limiting on public endpoints</li>
-          <li class="done">Secrets in env, never in the repo &mdash; fail fast if missing</li>
-          <li>Schema validation on every inbound body, query and header</li>
-        </ul>
-      </div>
-    </div>
-
-    <article class="decision reveal d3">
-      <h3><span class="decision__n">the call</span>RLS on, but every write goes through one service role</h3>
-      <p class="decision__call">
-        Row-level security is enabled on every table, yet authorization is concentrated in a single
-        middleware layer instead of being expressed as per-role database policies.
-      </p>
-      <dl class="tradeoff">
-        <div><dt>Buys</dt><dd>One auditable place to read the access rules, and no policy drift between the database and the application as roles change.</dd></div>
-        <div class="cost"><dt>Costs</dt><dd>The database cannot independently enforce who wrote what. A middleware bug is a real breach, not a contained one.</dd></div>
-        <div><dt>Undo when</dt><dd>A second write path appears &mdash; a direct client connection, or another service touching the same tables.</dd></div>
-      </dl>
-    </article>
-  </section>
-
-  <!-- ============ 02 · API DESIGN ============ -->
-  <section class="band wrap pillar-sec" id="p2" aria-labelledby="p2-title">
-    <h2 class="band-head reveal" id="p2-title"><span class="num">02.</span>API design</h2>
-    <p class="lede reveal">The contract is the product for everyone integrating with you &mdash; including the team three months from now.</p>
-
-    <div class="pillar-grid">
-      <div class="pillar-built reveal d1">
-        <h3>In production</h3>
-        <p>
-          90+ REST endpoints across session auth, resource CRUD, async job triggers, a multi-stage
-          review workflow, and a CORS-gated external feed. Long jobs return <code>202</code> and are
-          polled rather than held open; list endpoints page in bounded chunks; every error leaves
-          with the same shape and a trace id.
-        </p>
-        <div class="p-stack">Express &middot; TypeScript &middot; REST &middot; 202 + polling &middot; bounded pagination</div>
-      </div>
-
-      <div class="pillar-controls reveal d2">
-        <h3>Controls</h3>
-        <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
-        <ul class="checks">
-          <li class="done">HTTP semantics that mean what they say &mdash; 202 async, 204 delete</li>
-          <li class="done">Idempotency: every write has a natural key, retry is a no-op</li>
-          <li class="done">Bounded, paged list endpoints &mdash; no unbounded result sets</li>
-          <li class="done">One error shape across the whole surface, with a trace id</li>
-          <li>URL versioning with a documented deprecation window</li>
-          <li>OpenAPI spec committed alongside the code</li>
-        </ul>
-      </div>
-    </div>
-
-    <article class="decision reveal d3">
-      <h3><span class="decision__n">the call</span>Idempotency by natural key, not by a key store</h3>
-      <p class="decision__call">
-        Every write derives a unique key from the data itself and leans on a database constraint,
-        instead of a client-supplied <code>Idempotency-Key</code> cached in Redis.
-      </p>
-      <dl class="tradeoff">
-        <div><dt>Buys</dt><dd>Retry safety with no extra infrastructure and no TTL to expire at the wrong moment. The guarantee lives in the schema, so every code path inherits it.</dd></div>
-        <div class="cost"><dt>Costs</dt><dd>It only prevents the duplicate &mdash; it does not replay the original response. Writes with no natural identity need the header approach instead.</dd></div>
-        <div><dt>Undo when</dt><dd>A client needs the first response back on retry, not merely the guarantee that nothing ran twice.</dd></div>
-      </dl>
-    </article>
-  </section>
-
-  <!-- ============ 03 · PERFORMANCE ============ -->
-  <section class="band wrap pillar-sec" id="p3" aria-labelledby="p3-title">
-    <h2 class="band-head reveal" id="p3-title"><span class="num">03.</span>Performance</h2>
-    <p class="lede reveal">Average latency lies. The tail is what users actually feel, and the tail is where the bad queries hide.</p>
-
-    <div class="pillar-grid">
-      <div class="pillar-built reveal d1">
-        <h3>In production</h3>
-        <p>
-          Indexes chosen from real query plans rather than guesses, and every expensive operation
-          &mdash; transcription, model scoring, report generation &mdash; moved off the request path
-          into workers so the API stays responsive under load. Eager loading at the ORM boundary
-          keeps list endpoints from turning into N+1 loops.
-        </p>
-        <div class="p-stack">EXPLAIN ANALYZE &middot; composite indexes &middot; async workers &middot; eager loading</div>
-      </div>
-
-      <div class="pillar-controls reveal d2">
-        <h3>Controls</h3>
-        <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
-        <ul class="checks">
-          <li class="done">Indexes chosen from real query plans, not guesses</li>
-          <li class="done">Slow work moved off the request path into workers</li>
-          <li class="done">N+1 queries hunted down at the ORM boundary</li>
-          <li>Connection pooling sized to the box, not left at the default</li>
-          <li>Cache layers with explicit TTLs and invalidation on write</li>
-          <li>p95/p99 budgets per endpoint, not average latency</li>
-        </ul>
-      </div>
-    </div>
-
-    <article class="decision reveal d3">
-      <h3><span class="decision__n">the call</span>Poll for job status &mdash; don&rsquo;t hold the connection open</h3>
-      <p class="decision__call">
-        Long jobs return <code>202</code> with a job id and clients poll for the result, instead of
-        a held-open request, a websocket, or a webhook callback.
-      </p>
-      <dl class="tradeoff">
-        <div><dt>Buys</dt><dd>No connection held open per in-flight job, nothing to reconnect after a deploy, and it survives every proxy and serverless timeout in the path.</dd></div>
-        <div class="cost"><dt>Costs</dt><dd>A latency floor equal to the poll interval, and a stream of requests that mostly answer &ldquo;still running&rdquo;.</dd></div>
-        <div><dt>Undo when</dt><dd>Clients need sub-second updates, or poll traffic starts costing more than a push channel would.</dd></div>
-      </dl>
-    </article>
-  </section>
-
-  <!-- ============ 04 · RELIABILITY ============ -->
-  <section class="band wrap pillar-sec" id="p4" aria-labelledby="p4-title">
-    <h2 class="band-head reveal" id="p4-title"><span class="num">04.</span>Reliability</h2>
-    <p class="lede reveal">Every dependency you have will fail. The only question is whether your system notices and keeps going.</p>
-
-    <div class="pillar-grid">
-      <div class="pillar-built reveal d1">
-        <h3>In production</h3>
-        <p>
-          Transient upstream failures back off exponentially; repeat offenders get parked in a
-          cooldown map so one bad dependency cannot stall the whole backlog. A scheduled
-          reconciliation sweep self-heals four separate fault modes and keeps the pipeline
-          eventually consistent. Health checks are wired to a restart policy rather than to a
-          dashboard nobody reads.
-        </p>
-        <div class="p-stack">Exponential backoff &middot; cooldown parking &middot; self-healing sweep &middot; health checks</div>
-      </div>
-
-      <div class="pillar-controls reveal d2">
-        <h3>Controls</h3>
-        <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
-        <ul class="checks">
-          <li class="done">Exponential backoff with jitter on transient failures</li>
-          <li class="done">Repeat offenders parked in a cooldown so the backlog drains</li>
-          <li class="done">A reconciliation sweep that self-heals known fault modes</li>
-          <li class="done">Health checks wired to a restart policy</li>
-          <li>Explicit timeouts at every level &mdash; connect, read, query, job</li>
-          <li>Dead-letter path for poison messages, with an alert on depth</li>
-          <li>Graceful shutdown: drain in-flight work, then exit</li>
-        </ul>
-      </div>
-    </div>
-
-    <article class="decision reveal d3">
-      <h3><span class="decision__n">the call</span>A self-healing sweep instead of a dead-letter queue</h3>
-      <p class="decision__call">
-        Rows that get stuck are recovered by a scheduled reconciliation pass that knows the fault
-        modes, rather than being moved to a DLQ for a human to inspect.
-      </p>
-      <dl class="tradeoff">
-        <div><dt>Buys</dt><dd>Four known failure modes recover with nobody paged, and the backlog keeps draining straight through a bad upstream day.</dd></div>
-        <div class="cost"><dt>Costs</dt><dd>It only heals what it was taught. A genuinely new failure mode sits there quietly, and there is no queue depth to alert on.</dd></div>
-        <div><dt>Undo when</dt><dd>Failures stop being enumerable, or a stuck record needs a human to look at it before it is retried.</dd></div>
-      </dl>
-    </article>
-  </section>
-
-  <!-- ============ 05 · OBSERVABILITY ============ -->
-  <section class="band wrap pillar-sec" id="p5" aria-labelledby="p5-title">
-    <h2 class="band-head reveal" id="p5-title"><span class="num">05.</span>Observability</h2>
-    <p class="lede reveal">If a customer is the one telling you the system is down, you did not have observability &mdash; you had hope.</p>
-
-    <div class="pillar-grid">
-      <div class="pillar-built reveal d1">
-        <h3>In production</h3>
-        <p>
-          Append-only audit tables record who did what and when &mdash; inserted into, never
-          updated, never deleted. Structured logs carry a request id through every stage of a job,
-          so one identifier reconstructs the whole path, and secrets never reach them.
-        </p>
-        <div class="p-stack">Append-only audit tables &middot; structured logs &middot; correlation id</div>
-      </div>
-
-      <div class="pillar-controls reveal d2">
-        <h3>Controls</h3>
-        <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
-        <ul class="checks">
-          <li class="done">Append-only audit tables &mdash; who did what, when, never updated</li>
-          <li class="done">Structured logs with a request id, and no secrets in them</li>
-          <li>Error tracking with grouping and alerts on new failure types</li>
-          <li>RED metrics on every endpoint, USE metrics on the box</li>
-          <li>Distributed tracing once more than one service is involved</li>
-          <li>SLOs with an error budget, agreed before launch</li>
-        </ul>
-      </div>
-    </div>
-
-    <article class="decision reveal d3">
-      <h3><span class="decision__n">the call</span>The audit trail is a table, not a log stream</h3>
-      <p class="decision__call">
-        Sensitive actions are written to append-only Postgres tables in the same transaction as the
-        change itself, instead of being emitted into the logging pipeline.
-      </p>
-      <dl class="tradeoff">
-        <div><dt>Buys</dt><dd>The audit record commits or rolls back with the thing it describes, so the two can never disagree &mdash; and it is queryable with a join, not a log search.</dd></div>
-        <div class="cost"><dt>Costs</dt><dd>It grows inside the OLTP database, needs its own retention plan, and is not free-text searchable the way logs are.</dd></div>
-        <div><dt>Undo when</dt><dd>Audit volume starts competing with production traffic for the same database.</dd></div>
-      </dl>
-    </article>
-  </section>
-
-  <!-- ============ 06 · DATA INTEGRITY ============ -->
-  <section class="band wrap pillar-sec" id="p6" aria-labelledby="p6-title">
-    <h2 class="band-head reveal" id="p6-title"><span class="num">06.</span>Data integrity</h2>
-    <p class="lede reveal">Every other incident can be fixed with a deploy. Corrupt or missing data cannot.</p>
-
-    <div class="pillar-grid">
-      <div class="pillar-built reveal d1">
-        <h3>In production</h3>
-        <p>
-          18+ forward-only Postgres migrations &mdash; never edited, only added to. One universal
-          join key that every domain table hangs off, cascade deletes so orphan rows can&rsquo;t
-          exist, and JSONB where the shape is still moving. Business invariants live in the database
-          as triggers and CHECK constraints, so no application bug can bypass them.
-        </p>
-        <div class="p-stack">Postgres &middot; forward-only migrations &middot; triggers &middot; CHECK constraints &middot; cascade deletes &middot; JSONB</div>
-      </div>
-
-      <div class="pillar-controls reveal d2">
-        <h3>Controls</h3>
-        <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
-        <ul class="checks">
-          <li class="done">Forward-only migrations &mdash; added to, never edited</li>
-          <li class="done">Expand &rarr; backfill &rarr; contract, so deploys need no downtime</li>
-          <li class="done">Invariants as triggers and CHECK constraints, not just app code</li>
-          <li class="done">Cascade deletes, so orphan rows cannot exist</li>
-          <li class="done">Atomic claim on shared work &mdash; two workers never take one row</li>
-          <li>Soft deletes with a written retention policy</li>
-          <li>Backups with a restore actually tested, plus an RTO/RPO on paper</li>
-        </ul>
-      </div>
-    </div>
-
-    <article class="decision reveal d3">
-      <h3><span class="decision__n">the call</span>Forward-only migrations, expand &rarr; backfill &rarr; contract</h3>
-      <p class="decision__call">
-        A migration is never edited once merged, and destructive schema changes are split into three
-        deploys instead of one.
-      </p>
-      <dl class="tradeoff">
-        <div><dt>Buys</dt><dd>Old and new code run against the same schema during a rollout, so deploys need no downtime and a rollback does not need a database restore.</dd></div>
-        <div class="cost"><dt>Costs</dt><dd>Schema work takes three times as long, duplicate columns live in production for a while, and backfills have to be watched.</dd></div>
-        <div><dt>Undo when</dt><dd>Only on greenfield work, before a second environment or a single real user depends on the data.</dd></div>
-      </dl>
-    </article>
-  </section>
-
-  <!-- ============ 07 · SCALABILITY ============ -->
-  <section class="band wrap pillar-sec" id="p7" aria-labelledby="p7-title">
-    <h2 class="band-head reveal" id="p7-title"><span class="num">07.</span>Scalability</h2>
-    <p class="lede reveal">Most scaling problems are not throughput problems. They are state sitting in the wrong place.</p>
-
-    <div class="pillar-grid">
-      <div class="pillar-built reveal d1">
-        <h3>In production</h3>
-        <p>
-          No server-side session store, so any instance can serve any request and the web tier
-          scales out without sticky sessions. Uploads live in object storage, not on the box.
-          Workers claim their work atomically straight from the database, so adding a second worker
-          needs no coordinator and no config change.
-        </p>
-        <div class="p-stack">Stateless web tier &middot; object storage &middot; atomic claim &middot; horizontal workers</div>
-      </div>
-
-      <div class="pillar-controls reveal d2">
-        <h3>Controls</h3>
-        <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
-        <ul class="checks">
-          <li class="done">Stateless web tier &mdash; no session store pinning a user to a box</li>
-          <li class="done">Files in object storage, not on the instance</li>
-          <li class="done">Workers that scale out horizontally without a coordinator</li>
-          <li>A broker (Kafka / SQS / RabbitMQ) once the queue outgrows the database</li>
-          <li>CDN and edge caching for anything publicly cacheable</li>
-          <li>Partitioning before a table is big enough to hurt</li>
-        </ul>
-      </div>
-    </div>
-
-    <article class="decision reveal d3">
-      <h3><span class="decision__n">the call</span>The database is the queue</h3>
-      <p class="decision__call">
-        Workers poll a status column and claim a batch atomically inside a transaction, rather than
-        sitting behind Kafka, SQS or RabbitMQ.
-      </p>
-      <dl class="tradeoff">
-        <div><dt>Buys</dt><dd>One less system to run, monitor and pay for. Job state and business data commit together, so a crash cannot leave the two disagreeing.</dd></div>
-        <div class="cost"><dt>Costs</dt><dd>A polling-interval latency floor, no free fan-out or replay, and throughput bounded by one Postgres instance.</dd></div>
-        <div><dt>Undo when</dt><dd>A second consumer needs the same events, or claim contention starts showing up in query plans.</dd></div>
-      </dl>
-    </article>
-  </section>
-
-  <!-- ============ 08 · DELIVERY ============ -->
-  <section class="band wrap pillar-sec" id="p8" aria-labelledby="p8-title">
-    <h2 class="band-head reveal" id="p8-title"><span class="num">08.</span>Delivery</h2>
-    <p class="lede reveal">A change that cannot be shipped safely on a Friday afternoon is not finished.</p>
-
-    <div class="pillar-grid">
-      <div class="pillar-built reveal d1">
-        <h3>In production</h3>
-        <p>
-          One codebase, two shapes: a single container running the web tier plus every long-running
-          worker, or an esbuild-bundled serverless function for the stateless web tier with the
-          polling workers hosted separately. 12-factor env config that fails fast on a missing
-          variable, a pinned runtime version, and CI that lints, tests and builds on every commit.
-        </p>
-        <div class="p-stack">Railway &middot; Vercel &middot; esbuild &middot; Terraform &middot; GitHub Actions &middot; 12-factor config</div>
-      </div>
-
-      <div class="pillar-controls reveal d2">
-        <h3>Controls</h3>
-        <p class="ctrl-key">&#10003; shipped &nbsp;&middot;&nbsp; &bull; when the system needs it</p>
-        <ul class="checks">
-          <li class="done">CI on every commit &mdash; lint, tests, build, then deploy</li>
-          <li class="done">Infrastructure as code in Terraform, environments separated</li>
-          <li class="done">12-factor config and a pinned runtime version</li>
-          <li class="done">Containerised builds that run the same locally and in prod</li>
-          <li>Canary or blue-green when a bad deploy would be expensive</li>
-          <li>Deliberate fault injection, once there is enough to break</li>
-        </ul>
-      </div>
-    </div>
-
-    <article class="decision reveal d3">
-      <h3><span class="decision__n">the call</span>One codebase, two deploy topologies</h3>
-      <p class="decision__call">
-        The same routers either mount in-process in one container alongside the workers, or bundle
-        into a serverless function with the workers hosted separately.
-      </p>
-      <dl class="tradeoff">
-        <div><dt>Buys</dt><dd>The hosting decision stays reversible and cost-driven rather than architectural, and there is one place to fix a bug.</dd></div>
-        <div class="cost"><dt>Costs</dt><dd>Two deploy paths to keep green, and a hard constraint to respect: polling loops and in-memory state do not survive serverless timeouts.</dd></div>
-        <div><dt>Undo when</dt><dd>Web tier and workers need to scale on genuinely different curves &mdash; then they earn separate repos and separate on-call.</dd></div>
-      </dl>
-    </article>
-
-    <p class="note note--honest reveal">
-      <strong>What I have not run in production:</strong> database sharding, CQRS with separate read
-      and write models, and scheduled chaos engineering. I know the shapes and the trade-offs, but I
-      would rather say that plainly than claim scars I do not have.
-    </p>
   </section>
 
   <!-- Photo break between the eight-pillar run and the closing sections.
@@ -494,17 +449,13 @@
        recomposited so the person in frame is me. -->
   <section class="band wrap" aria-labelledby="desk-title">
     <h2 class="band-head reveal" id="desk-title">At the desk</h2>
-    <p class="lede reveal">Most of the eight sections above were written the same way they were built &mdash; slowly, with a query plan open on the other screen.</p>
+    <p class="lede reveal">The eight pillars above were written the same way they were built &mdash; slowly, with a query plan open on the other screen.</p>
     <div class="atwork">
       <figure class="reveal d1">
-        <img src="work-desk.jpg" width="1000" height="750" loading="lazy"
-             alt="Hussnain Tariq working across a laptop and an external monitor full of code." />
-      </figure>
-      <figure class="reveal d2">
         <img src="work-lab.jpg" width="1000" height="750" loading="lazy"
              alt="Hussnain Tariq reading code on a monitor in a shared engineering room." />
       </figure>
-      <figure class="reveal d3">
+      <figure class="reveal d2">
         <img src="work-cafe.jpg" width="1000" height="750" loading="lazy"
              alt="Hussnain Tariq working on a laptop at a cafe table, portable drive beside a bag." />
       </figure>
