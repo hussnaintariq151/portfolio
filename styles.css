@@ -455,6 +455,13 @@ body.home header.nav.scrolled,body.page-software header.nav.scrolled{
 .band-head--center{justify-content:center;text-align:center;margin-bottom:clamp(2rem,4vw,3rem);}
 .band-head--center::after{display:none;}
 
+/* Centred lede to match a centred heading. */
+.lede--center{margin-inline:auto;text-align:center;}
+
+/* Two light bands running back to back would read as one section, so the
+   second takes a hairline rule where they meet. */
+.band-light--next{border-top:1px solid var(--line);}
+
 /* ---------- 7. Prose ---------- */
 
 .prose{max-width:64ch;}
@@ -821,6 +828,7 @@ body.rails-dark .rail::after{background:#9aa6bb;}
   display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;
   max-width:860px;margin-bottom:2.25rem;
 }
+.atwork--center{margin-inline:auto;}
 .atwork figure{margin:0;}
 .atwork img{
   width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;
