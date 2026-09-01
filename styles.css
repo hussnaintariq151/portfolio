@@ -188,7 +188,6 @@ header.nav.scrolled{border-color:var(--line);box-shadow:var(--shadow);}
 }
 .nav-links a{color:var(--ink);position:relative;transition:color .18s ease;}
 .nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--accent);}
-.nav-links a .num{color:var(--accent);margin-right:.35rem;}
 
 /* Underline for the current page (desktop) */
 @media (min-width:761px){
