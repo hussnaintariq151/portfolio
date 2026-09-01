@@ -100,10 +100,21 @@ vercel          # preview deploy
 vercel --prod   # production deploy
 ```
 
-`vercel.json` turns on clean URLs (`/about`, not `/about.html`), sets sensible
-security headers, and caches CSS/JS/images for a day. Internal links still use
-`.html` so the site works when opened from a plain file server too — Vercel
-redirects those to the clean URL automatically.
+`vercel.json` turns on clean URLs (`/about`, not `/about.html`) and sets security
+headers. Internal links still use `.html` so the site works when opened from a plain
+file server too — Vercel redirects those to the clean URL automatically.
+
+**Cache policy — do not raise the CSS/JS max-age.** Filenames here are not
+content-hashed (`styles.css` is always `styles.css`), so a long `max-age` means a
+returning visitor gets fresh HTML paired with a stale stylesheet, and the page
+renders new markup with no matching rules. CSS and JS therefore revalidate on
+every load — ETags make that a cheap `304`. Media gets one hour plus
+`stale-while-revalidate`. If you ever add a build step that hashes filenames,
+long caching becomes safe again.
+
+Note that `vercel.json` is validated against a strict schema
+(`additionalProperties: false`): a `"comment"` key inside a `headers` entry fails
+the build. That is why this explanation lives here rather than in the file.
 
 Also works on Netlify (drag the folder to app.netlify.com/drop) or GitHub Pages,
 though the `vercel.json` headers are Vercel-specific.

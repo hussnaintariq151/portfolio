@@ -14,14 +14,12 @@
       ]
     },
     {
-      "comment": "Filenames are not content-hashed, so CSS/JS must revalidate on every load. A long max-age here would serve stale styles for a day after a deploy and silently break the page. ETags make revalidation a cheap 304.",
       "source": "/(.*)\\.(css|js)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     },
     {
-      "comment": "Media is swapped rarely; an hour of staleness is acceptable.",
       "source": "/(.*)\\.(svg|png|jpg|jpeg|webp|woff2)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
