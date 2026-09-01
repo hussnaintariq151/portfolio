@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software Engineering — Hussnain Tariq</title>
+<meta name="description" content="Software engineering work by Hussnain Tariq — backend APIs, Postgres schema design, async worker pipelines, security, MLOps, and infrastructure as code, broken down layer by layer." />
+<meta name="author" content="Hussnain Tariq" />
+<meta name="theme-color" content="#0a192f" />
+<link rel="canonical" href="https://hussnaintariq.vercel.app/software" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Hussnain Tariq" />
+<meta property="og:title" content="Software Engineering — Hussnain Tariq" />
+<meta property="og:description" content="Backend systems and MLOps infrastructure — FastAPI, Docker, Terraform, and CI/CD on AWS and Azure." />
+<meta property="og:url" content="https://hussnaintariq.vercel.app/software" />
+<meta property="og:image" content="https://hussnaintariq.vercel.app/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@hussnaintari326" />
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="page-software">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Hussnain Tariq — home">HT</a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="software.html" aria-current="page"><span class="num">01.</span>Software</a></li>
+        <li><a href="ai.html"><span class="num">02.</span>AI</a></li>
+        <li><a href="chemistry.html"><span class="num">03.</span>Chemistry</a></li>
+        <li><a href="about.html"><span class="num">04.</span>About</a></li>
+        <li><a class="nav-cta" href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="wrap hero hero-sub" aria-labelledby="page-title">
+    <p class="greeting reveal d1">// 01. software engineering</p>
+    <h1 id="page-title" class="reveal d2">Backend systems &amp;<br>MLOps infrastructure.</h1>
+    <p class="lede reveal d3">
+      I build the <strong>services, pipelines, and infrastructure</strong> that AI systems run on —
+      from FastAPI endpoints and Docker containers to full CI/CD pipelines on AWS and Azure.
+      Boring, reliable, and testable on purpose.
+    </p>
+  </section>
+
+  <section class="band wrap" aria-labelledby="how-title">
+    <h2 class="band-head reveal" id="how-title"><span class="num">01.</span>How I work</h2>
+    <div class="features">
+      <div class="feature reveal d1">
+        <h3>Backend &amp; APIs</h3>
+        <p>Production FastAPI &amp; Django services with clear contracts, auth, and clean data models — designed to be replaced when needed.</p>
+      </div>
+      <div class="feature reveal d1">
+        <h3>MLOps pipelines</h3>
+        <p>End-to-end ML deployment with Docker, GitHub Actions, DVC for data versioning, and MLflow for tracking experiments and models.</p>
+      </div>
+      <div class="feature reveal d2">
+        <h3>Infrastructure as Code</h3>
+        <p>Reproducible cloud infrastructure with Terraform — every environment codified, versioned, and destroyable without fear.</p>
+      </div>
+      <div class="feature reveal d2">
+        <h3>Observability</h3>
+        <p>Prometheus and Grafana for pipeline monitoring, so drift, latency, and cost problems show up before users report them.</p>
+      </div>
+      <div class="feature reveal d3">
+        <h3>Data engineering</h3>
+        <p>Batch &amp; streaming pipelines with Azure Data Factory, Databricks, and Kafka — moving data reliably from source to model.</p>
+      </div>
+      <div class="feature reveal d3">
+        <h3>Cloud deployment</h3>
+        <p>AWS (EC2, S3, Lambda) and Azure (ADF, Databricks) — containerised, monitored, and cost-aware from day one.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band wrap" aria-labelledby="stack-title">
+    <h2 class="band-head reveal" id="stack-title"><span class="num">02.</span>Tech stack</h2>
+    <ul class="stack reveal">
+      <li>Python</li><li>SQL</li><li>Bash / PowerShell</li>
+      <li>FastAPI</li><li>Django &amp; DRF</li>
+      <li>Docker</li><li>Terraform</li><li>GitHub Actions</li>
+      <li>DVC &amp; MLflow</li><li>Prometheus &amp; Grafana</li>
+      <li>AWS (EC2, S3, Lambda)</li><li>Azure (ADF, Databricks)</li>
+      <li>PostgreSQL &amp; MySQL</li><li>MongoDB &amp; Redis</li>
+      <li>Apache Kafka</li><li>Cassandra</li>
+      <li>Node &amp; TypeScript</li><li>Express</li>
+      <li>Supabase</li><li>Railway &amp; Vercel</li>
+    </ul>
+  </section>
+
+  <section class="band wrap" aria-labelledby="layers-title">
+    <h2 class="band-head reveal" id="layers-title"><span class="num">03.</span>Inside a production backend</h2>
+
+    <p class="note reveal">
+      <strong>Scope note:</strong> the platform below is under NDA, so this describes the
+      engineering rather than the client or the product. It is one system, broken into the
+      layers it is actually built from — and what I built inside each one.
+    </p>
+
+    <div class="layers">
+      <div class="layer reveal d1">
+        <div class="layer__n">L1</div>
+        <div>
+          <h3>API layer</h3>
+          <p>
+            90+ REST endpoints across session auth, resource CRUD, async job triggers, a
+            multi-stage review workflow, and a CORS-gated external feed. Role checks run in
+            middleware before any handler; long jobs return <code>202</code> and are polled
+            rather than held open; list endpoints page in bounded chunks. The same routers
+            mount in-process for a one-container deploy or run standalone — one codebase,
+            two topologies.
+          </p>
+          <div class="p-stack">Express · TypeScript · REST · RBAC middleware</div>
+        </div>
+      </div>
+
+      <div class="layer reveal d1">
+        <div class="layer__n">L2</div>
+        <div>
+          <h3>Data layer</h3>
+          <p>
+            18+ forward-only Postgres migrations — never edited, only added to. One universal
+            join key that every domain table hangs off, cascade deletes so orphan rows can&rsquo;t
+            exist, JSONB where the shape is still moving, and append-only audit tables that are
+            inserted into but never updated. Business invariants live in the database as
+            triggers and CHECK constraints, so no application bug can bypass them.
+          </p>
+          <div class="p-stack">Postgres · SQL migrations · JSONB · triggers · indexing</div>
+        </div>
+      </div>
+
+      <div class="layer reveal d2">
+        <div class="layer__n">L3</div>
+        <div>
+          <h3>Concurrency &amp; pipeline layer</h3>
+          <p>
+            Long-running workers poll a status column and claim a batch <em>atomically</em>
+            (pending → processing) so two processes never take the same row — no external
+            message broker needed. Every write has a natural key, so a retry is a no-op instead
+            of a duplicate. Transient upstream failures back off exponentially; repeat offenders
+            get parked in a cooldown map so the backlog keeps draining. A scheduled
+            reconciliation sweep self-heals four separate fault modes and keeps the pipeline
+            eventually consistent.
+          </p>
+          <div class="p-stack">Async workers · atomic claim · idempotency keys · backoff · self-healing sweep</div>
+        </div>
+      </div>
+
+      <div class="layer reveal d2">
+        <div class="layer__n">L4</div>
+        <div>
+          <h3>AI integration layer</h3>
+          <p>
+            Speech-to-text and LLM scoring wired in as first-class pipeline stages rather than
+            bolted on: large structured JSON responses validated on the way back, retry and
+            backoff on rate limits and 5xx, and rubric versioning deliberately decoupled from
+            the governance workflow so editorial changes never invalidate historical scores.
+          </p>
+          <div class="p-stack">Speech-to-text · LLM grading · structured output · rubric versioning</div>
+        </div>
+      </div>
+
+      <div class="layer reveal d3">
+        <div class="layer__n">L5</div>
+        <div>
+          <h3>Security layer</h3>
+          <p>
+            HMAC-SHA256 signed session cookies with constant-time verification and no server-side
+            session store, scrypt password hashing, role-gated routes, and row-level security
+            enabled on every table with all writes flowing through a server-side service role —
+            a documented trade-off that concentrates authorization in one auditable middleware
+            layer while leaving the door open to per-role database policies later. Private media
+            is served through short-lived signed URLs, and PII is stored only as a salted hash.
+          </p>
+          <div class="p-stack">HMAC sessions · scrypt · RBAC · row-level security · signed URLs · PII hashing</div>
+        </div>
+      </div>
+
+      <div class="layer reveal d3">
+        <div class="layer__n">L6</div>
+        <div>
+          <h3>Deployment layer</h3>
+          <p>
+            One codebase, two shapes: a single container running the web tier plus every
+            long-running worker, or an esbuild-bundled serverless function for the stateless
+            web tier with the polling workers hosted separately — because polling loops and
+            in-memory state don&rsquo;t survive serverless timeouts. Health checks with a restart
+            policy, 12-factor env config that fails fast on a missing variable, and a pinned
+            runtime version.
+          </p>
+          <div class="p-stack">Railway · Vercel · esbuild · health checks · 12-factor config</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band wrap" aria-labelledby="work-title">
+    <h2 class="band-head reveal" id="work-title"><span class="num">04.</span>Selected software work</h2>
+    <div class="projects-list">
+      <!-- Client work under NDA — described by architecture only, no links. -->
+      <div class="project-row reveal d1">
+        <span class="year">2025</span>
+        <div>
+          <div class="p-title">Call-QA &amp; Compliance Platform <span class="badge">under NDA</span></div>
+          <div class="p-desc">TypeScript/Node monorepo behind a regulated voice-intake operation. Capture → transcription → automated scoring → human review → governed rule publishing, with four long-running workers, a dual-approval editorial workflow, and an append-only audit trail.</div>
+          <div class="p-stack">TypeScript · Express · Postgres · Object storage · Railway · Vercel</div>
+        </div>
+      </div>
+      <div class="project-row reveal d1">
+        <span class="year">2025</span>
+        <div>
+          <div class="p-title">Ops KPI Ingestion Service <span class="badge">under NDA</span></div>
+          <div class="p-desc">Cron-driven pipeline that pulls reporting emails over IMAP, parses CSV attachments across six report types, and joins them into daily per-agent and org-wide KPI rows for a 50+ agent operation.</div>
+          <div class="p-stack">Node · IMAP · CSV parsing · Postgres · Scheduled jobs</div>
+        </div>
+      </div>
+      <div class="project-row reveal d2">
+        <span class="year">2025</span>
+        <div>
+          <div class="p-title">Candidate Pipeline API <span class="badge">under NDA</span></div>
+          <div class="p-desc">Three-stage intake hub with server-side test grading (per-section and overall thresholds enforced on the server, never the client), no-clobber JSONB metadata merges, and an append-only event log for audit.</div>
+          <div class="p-stack">Node · Postgres · JSONB · Append-only audit log</div>
+        </div>
+      </div>
+      <div class="project-row reveal d2">
+        <span class="year">2025</span>
+        <div>
+          <div class="p-title">Embedded Feedback Service <span class="badge">under NDA</span></div>
+          <div class="p-desc">Serverless intake API for an in-app widget — rate-limited public endpoint, cropped screenshots written to a private bucket, owner-gated triage routes, and a chat notification on every submission.</div>
+          <div class="p-stack">Serverless functions · Postgres · Private object storage · Identity gating</div>
+        </div>
+      </div>
+
+      <!-- TODO: swap each href for the project's repo or live-demo URL. -->
+      <a class="project-row reveal d3" href="https://github.com/hussnaintariq151" target="_blank" rel="noopener">
+        <span class="year">2025</span>
+        <div>
+          <div class="p-title">Vehicle Insurance System</div>
+          <div class="p-desc">End-to-end insurance application with banking integrations and automated claim processing. Django backend, workflow engine, and secure APIs.</div>
+          <div class="p-stack">Django · PostgreSQL · Docker · REST APIs</div>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="project-row reveal d2" href="https://github.com/hussnaintariq151" target="_blank" rel="noopener">
+        <span class="year">2025</span>
+        <div>
+          <div class="p-title">MLOps Pipeline Template</div>
+          <div class="p-desc">Reusable CI/CD template for ML projects — DVC-tracked data, MLflow experiments, Dockerised models, and GitHub Actions deployment.</div>
+          <div class="p-stack">Python · DVC · MLflow · GitHub Actions · Terraform</div>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="project-row reveal d3" href="https://github.com/hussnaintariq151" target="_blank" rel="noopener">
+        <span class="year">2024</span>
+        <div>
+          <div class="p-title">Client Backend Systems (Upwork)</div>
+          <div class="p-desc">Multiple FastAPI backends for AI-powered products — real-time and batch workflows, containerised deployments on AWS &amp; Azure.</div>
+          <div class="p-stack">FastAPI · Docker · AWS · Azure · CI/CD</div>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="band wrap" aria-labelledby="cta-title">
+    <div class="contact-block reveal">
+      <span class="num">// need something built to last?</span>
+      <h2 id="cta-title" class="h-sm">Let&rsquo;s talk architecture.</h2>
+      <p>If your team needs to ship a service, a pipeline, or an ML system that has to survive production, I&rsquo;d like to hear about it.</p>
+      <div class="btn-row">
+        <a class="btn" href="ai.html">See AI work →</a>
+        <a class="btn btn-solid" href="contact.html">Get in touch</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="built">Designed &amp; built by Hussnain Tariq · © <span class="yr">2026</span></div>
+  <div><a href="https://github.com/hussnaintariq151" target="_blank" rel="noopener">GitHub</a> · <a href="https://linkedin.com/in/hussnain-tariq-02454934a" target="_blank" rel="noopener">LinkedIn</a> · <a href="mailto:hussnaintariq151@gmail.com">Email</a></div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
