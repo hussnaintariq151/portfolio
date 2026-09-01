@@ -16,8 +16,8 @@ portfolio/
 │                       #      in a white accordion band, a stack accordion,
 │                       #      and the closing ask
 ├── chemistry.html      # 03 · Chemistry — same shape as 01 and 02: eight
-│                       #      pillars, a domains accordion carrying the
-│                       #      education timeline, and the closing ask
+│                       #      pillars, then ten subjects opening into their
+│                       #      topics, education last, and the closing note
 ├── about.html          # 04 · Story, education, self-learning, experience
 ├── contact.html        # Email + socials
 ├── 404.html            # Not-found page (styled, matches the site)

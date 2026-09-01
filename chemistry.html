@@ -489,13 +489,14 @@
     </div>
   </section>
 
-  <!-- Domains & methods — the chemistry equivalent of the stack accordion. -->
-  <section class="band band-light band-light--next" aria-labelledby="dom-title">
+  <!-- Subjects — the chemistry the rest of the page is built on, in the same
+       two-level accordion the pillars use. -->
+  <section class="band band-light band-light--next" aria-labelledby="subj-title">
     <div class="wrap">
-    <h2 class="band-head band-head--center reveal" id="dom-title">Domains &amp; methods</h2>
+    <h2 class="band-head band-head--center reveal" id="subj-title">Subjects</h2>
     <p class="lede lede--center reveal">
-      Three R&amp;D fields, one habit of mind. Open any of them for what I actually add once the
-      measurements are in.
+      These are the subjects the data on this page comes out of. Open one for the topics inside it,
+      and any topic for what it actually means.
     </p>
 
     <div class="atwork atwork--center">
@@ -513,129 +514,495 @@
       <details class="ind reveal d1">
         <summary class="ind__head">
           <span class="ind__n">01</span>
-          <span class="ind__name">Battery materials</span>
-          <span class="ind__note">cells, cycling and degradation</span>
+          <span class="ind__name">Electrochemistry</span>
+          <span class="ind__note">charge crossing an interface</span>
           <span class="ind__chev" aria-hidden="true"></span>
         </summary>
         <div class="ind__body">
-          <ul class="tags">
-            <li class="tag">Cell chemistry</li>
-            <li class="tag">Electrolytes</li>
-            <li class="tag">Degradation</li>
-            <li class="tag">Cycling data</li>
-          </ul>
-          <p class="ind__what"><b>What I add</b>
-            Cycling, impedance and degradation data arrives noisy and split across instruments. I turn it into a versioned dataset and build capacity and lifetime models that carry their own uncertainty, so the cell team gets a range rather than a single confident number.
-          </p>
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Redox reactions</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Reactions where electrons transfer between species &mdash; one oxidised, one reduced. The electron count is what makes the equation balance.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Nernst equation</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The relationship between a cell&rsquo;s voltage and the concentrations inside it, which is why a battery&rsquo;s voltage falls as it discharges.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Electrode kinetics</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">How fast charge actually crosses the electrode surface, described by overpotential and exchange current rather than by thermodynamics alone.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Cyclic voltammetry</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Sweeping the potential back and forth while recording current, so redox processes appear as peaks whose shape says how reversible they are.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Impedance spectroscopy</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">A small AC signal applied across frequencies, separating resistance, charge transfer and diffusion &mdash; which a single DC measurement cannot tell apart.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Electrolytes</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The ion-conducting medium between electrodes. Its stability window sets the voltage a cell can reach before the electrolyte starts decomposing itself.</p>
+          </details>
+          </div>
         </div>
       </details>
 
       <details class="ind reveal d1">
         <summary class="ind__head">
           <span class="ind__n">02</span>
-          <span class="ind__name">Hydrogen systems</span>
-          <span class="ind__note">production, storage, catalysis</span>
+          <span class="ind__name">Thermodynamics</span>
+          <span class="ind__note">what a reaction is allowed to do</span>
           <span class="ind__chev" aria-hidden="true"></span>
         </summary>
         <div class="ind__body">
-          <ul class="tags">
-            <li class="tag">Production</li>
-            <li class="tag">Storage</li>
-            <li class="tag">Catalysis</li>
-          </ul>
-          <p class="ind__what"><b>What I add</b>
-            Catalyst and storage screening produces far more candidates than any lab can test. The useful work is the ranking model and the pipeline around it, so the next dozen experiments are chosen rather than guessed.
-          </p>
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Gibbs free energy</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Whether a reaction can happen at all, combining enthalpy and entropy at a temperature. Negative means spontaneous &mdash; and says nothing about how fast.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Enthalpy &amp; entropy</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Heat exchanged, and how many ways a system can arrange itself. Together they set direction; separately they explain why heating can reverse it.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Phase equilibria</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Which phases coexist at a given temperature and pressure, and where the boundaries sit &mdash; the map behind every phase diagram.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Equilibrium constants</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The ratio of products to reactants a reaction settles at, and how that ratio shifts when concentration, pressure or temperature changes.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Electrochemical potential</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Free energy per particle including the electrical term &mdash; what actually drives ions across a membrane or an electrode interface.</p>
+          </details>
+          </div>
         </div>
       </details>
 
       <details class="ind reveal d2">
         <summary class="ind__head">
           <span class="ind__n">03</span>
-          <span class="ind__name">Drug discovery</span>
-          <span class="ind__note">molecules to properties</span>
+          <span class="ind__name">Chemical kinetics</span>
+          <span class="ind__note">how fast, and by what route</span>
           <span class="ind__chev" aria-hidden="true"></span>
         </summary>
         <div class="ind__body">
-          <ul class="tags">
-            <li class="tag">Cheminformatics</li>
-            <li class="tag">Property prediction</li>
-            <li class="tag">Virtual screening</li>
-            <li class="tag">Assay data</li>
-          </ul>
-          <p class="ind__what"><b>What I add</b>
-            Assay data is messy, batch-effected and regulated. I build the pipeline with a real audit trail &mdash; append-only logs, versioned datasets, reproducible runs &mdash; so a property-prediction model can survive a review rather than only a demo.
-          </p>
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Rate laws</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">How reaction rate depends on concentration. Determined by experiment, never read off the balanced equation.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Reaction order</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The exponent on each concentration in the rate law, which points at how many species take part in the slow step.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Arrhenius behaviour</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Rate against temperature, giving the activation energy &mdash; the barrier a reaction has to clear before it can proceed at all.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Reaction mechanisms</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The sequence of elementary steps behind one overall equation, and which of those steps is rate-determining.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Catalytic cycles</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The loop a catalyst travels, regenerating itself each turn &mdash; and the step where it gets stuck when the cycle slows down.</p>
+          </details>
+          </div>
         </div>
       </details>
 
       <details class="ind reveal d2">
         <summary class="ind__head">
           <span class="ind__n">04</span>
-          <span class="ind__name">Scientific data engineering</span>
-          <span class="ind__note">the invisible pipeline</span>
+          <span class="ind__name">Crystallography</span>
+          <span class="ind__note">where the atoms sit</span>
           <span class="ind__chev" aria-hidden="true"></span>
         </summary>
         <div class="ind__body">
-          <ul class="tags">
-            <li class="tag">Ingestion</li>
-            <li class="tag">Cleaning</li>
-            <li class="tag">Versioning</li>
-            <li class="tag">Pipelines</li>
-          </ul>
-          <p class="ind__what"><b>What I add</b>
-            Lab data ingestion, cleaning and versioning: the unglamorous layer that turns hard-won measurements into a dataset somebody else can trust and rerun.
-          </p>
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Unit cells &amp; lattices</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The smallest repeating box that generates the whole crystal, described by its edge lengths and the angles between them.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Space groups</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The full set of symmetry operations a crystal obeys, which constrains what its diffraction pattern is allowed to look like.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">X-ray diffraction</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Firing X-rays at a crystal and reading the angles they scatter at, because those angles encode the spacing between planes of atoms.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Bragg&rsquo;s law</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The condition for constructive interference in diffraction, which converts a measured angle directly into a lattice spacing.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Rietveld refinement</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Fitting a whole calculated pattern to the measured one, so phase fractions and lattice parameters come out with uncertainties attached.</p>
+          </details>
+          </div>
         </div>
       </details>
 
       <details class="ind reveal d3">
         <summary class="ind__head">
           <span class="ind__n">05</span>
-          <span class="ind__name">Statistics &amp; uncertainty</span>
-          <span class="ind__note">error as a first-class citizen</span>
+          <span class="ind__name">Solid-state chemistry</span>
+          <span class="ind__note">structure to property</span>
           <span class="ind__chev" aria-hidden="true"></span>
         </summary>
         <div class="ind__body">
-          <ul class="tags">
-            <li class="tag">Error propagation</li>
-            <li class="tag">Experimental design</li>
-            <li class="tag">Confidence intervals</li>
-            <li class="tag">Significance</li>
-          </ul>
-          <p class="ind__what"><b>What I add</b>
-            Error, noise and confidence are first-class in a lab notebook, and they should be in a model report too. This is the habit chemistry teaches that most engineering never does.
-          </p>
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Crystal defects</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Vacancies, interstitials and dislocations. In a battery electrode these are not flaws &mdash; they are frequently the paths the ions actually move along.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Band structure</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">How electron energy levels spread into bands in a solid, which is the difference between a metal, a semiconductor and an insulator.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Ionic conductivity</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">How readily ions migrate through a solid, which decides whether a material can serve as a solid electrolyte at all.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Solid solutions &amp; doping</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Substituting one element for another in a lattice to tune conductivity, stability or capacity without changing the underlying structure.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Intercalation</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Ions inserting reversibly between layers of a host structure without breaking it &mdash; the mechanism a lithium-ion cathode runs on.</p>
+          </details>
+          </div>
         </div>
       </details>
 
       <details class="ind reveal d3">
         <summary class="ind__head">
           <span class="ind__n">06</span>
-          <span class="ind__name">Tooling</span>
-          <span class="ind__note">what the analysis runs on</span>
+          <span class="ind__name">Surface chemistry</span>
+          <span class="ind__note">where two phases meet</span>
           <span class="ind__chev" aria-hidden="true"></span>
         </summary>
         <div class="ind__body">
-          <ul class="tags">
-            <li class="tag">Python</li>
-            <li class="tag">Pandas</li>
-            <li class="tag">NumPy</li>
-            <li class="tag">scikit-learn</li>
-            <li class="tag">Matplotlib</li>
-            <li class="tag">Plotly</li>
-          </ul>
-          <p class="ind__what"><b>What I add</b>
-            Python for the whole analysis path, scikit-learn for the modelling, and plots generated from the data by a script rather than assembled by hand.
-          </p>
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Adsorption isotherms</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">How much of a species sticks to a surface at a given pressure or concentration. Langmuir and BET describe the common cases.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Surface area &amp; porosity</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Measured area per gram and the pore size distribution behind it, which sets how much of a catalyst or sorbent is actually reachable.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Active sites</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The specific locations on a surface where reaction happens &mdash; usually a small fraction of the total area, and the fraction that matters.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Catalyst poisoning</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">A species binding to active sites strongly enough to block them, which is why a catalyst that worked yesterday may not work today.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Interfacial layers</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Films that form where electrode meets electrolyte. The SEI in a lithium cell both protects the cell and slowly consumes it.</p>
+          </details>
+          </div>
         </div>
       </details>
 
       <details class="ind reveal d4">
         <summary class="ind__head">
           <span class="ind__n">07</span>
+          <span class="ind__name">Quantum chemistry</span>
+          <span class="ind__note">electrons, calculated</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Schr&ouml;dinger equation</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The equation whose solutions describe the electrons in a molecule. Solved exactly for hydrogen, approximated for everything else.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Molecular orbitals</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Atomic orbitals combined into orbitals spanning the whole molecule, which is where bonding, antibonding and reactivity come from.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Density functional theory</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Computing electronic structure from electron density rather than the full wavefunction &mdash; the approximation that makes real molecules tractable.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Basis sets</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The functions used to build the orbitals. Larger is more accurate and much slower, and the choice has to be reported alongside the result.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Computed properties</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Geometries, energies, vibrational frequencies and reaction barriers produced by calculation &mdash; and then checked against measurement.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d4">
+        <summary class="ind__head">
+          <span class="ind__n">08</span>
+          <span class="ind__name">Spectroscopy</span>
+          <span class="ind__note">light as a measuring instrument</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">UV-Vis</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Absorption of ultraviolet and visible light by electronic transitions, and the concentration measurement the Beer-Lambert relation gets from it.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Infrared &amp; Raman</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Vibrational spectroscopy: which bonds are present, and how their environment has changed, read from where the peaks sit and how they shift.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">NMR</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Nuclear magnetic resonance &mdash; atomic connectivity and chemical environment, and the standard way a molecular structure gets confirmed.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Mass spectrometry</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Separating ions by mass-to-charge for molecular weight, and reading the fragments for structural information.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">XPS</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">X-ray photoelectron spectroscopy: which elements are at a surface and in what oxidation state &mdash; in the top few nanometres only.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d5">
+        <summary class="ind__head">
+          <span class="ind__n">09</span>
+          <span class="ind__name">Analytical chemistry</span>
+          <span class="ind__note">getting a number you can trust</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Chromatography</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Separating a mixture by how strongly each component interacts with a stationary phase, so each can be measured on its own.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Titration</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Adding a reagent of known concentration until the reaction completes, which turns a measured volume into a concentration.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Calibration &amp; standards</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Relating instrument signal to real quantity through samples of known value, and re-running it as the instrument drifts.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Detection &amp; quantification limits</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The smallest amount that can be seen, and the smallest that can be reported as a number. Those are two different thresholds.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Sample preparation</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Everything done to a sample before it reaches the instrument. Most analytical error is created here rather than during the measurement itself.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d5">
+        <summary class="ind__head">
+          <span class="ind__n">10</span>
+          <span class="ind__name">Catalysis</span>
+          <span class="ind__note">a cheaper route to the same product</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Homogeneous catalysis</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Catalyst in the same phase as the reactants. Highly selective and well understood, and awkward to separate from the product afterwards.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Heterogeneous catalysis</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Solid catalyst, fluid reactants. Easy to separate and reuse, which is why industrial processes are built on it.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Turnover number &amp; frequency</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">How many times one active site converts substrate, and how quickly &mdash; the two numbers that make different catalysts comparable.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Selectivity</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Which product a catalyst favours among the ones it could make. Often worth more than raw activity.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Deactivation</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">How a catalyst loses performance &mdash; sintering, coking, poisoning &mdash; and how much of that can be recovered.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d6">
+        <summary class="ind__head">
+          <span class="ind__n">11</span>
           <span class="ind__name">Education</span>
-          <span class="ind__note">where the habits came from</span>
+          <span class="ind__note">where the subjects came from</span>
           <span class="ind__chev" aria-hidden="true"></span>
         </summary>
         <div class="ind__body">
@@ -659,6 +1026,10 @@
         </div>
       </details>
     </div>
+
+    <p class="bp-count reveal">
+      <span><b>10</b> subjects</span><span><b>51</b> topics</span>
+    </p>
     </div>
   </section>
 
@@ -678,9 +1049,6 @@
             project is in battery, hydrogen, pharma or materials and the data is already there but
             not doing anything, I&rsquo;d like to hear about it.
           </p>
-          <div class="btn-row">
-            <a class="btn" href="software.html">See how I build it</a>
-          </div>
         </div>
       </div>
     </div>
