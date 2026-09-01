@@ -12,7 +12,9 @@ portfolio/
 ├── software.html       # 01 · Software engineering — eight pillars in a white
 │                       #      accordion band, each opening into named practices;
 │                       #      then a stack accordion and the closing ask
-├── ai.html             # 02 · AI engineering (ML, DL, GenAI, RAG)
+├── ai.html             # 02 · AI engineering — same shape as 01: eight pillars
+│                       #      in a white accordion band, a stack accordion,
+│                       #      and the closing ask
 ├── chemistry.html      # 03 · Chemistry MS (battery, hydrogen, drugs)
 ├── about.html          # 04 · Story, education, self-learning, experience
 ├── contact.html        # Email + socials

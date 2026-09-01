@@ -290,10 +290,10 @@ main{padding-top:var(--nav-h);}
 /* ---------- 5c. Cinematic hero ---------- */
 
 /* Wherever a cinematic hero runs, the nav floats over it until you scroll. */
-body.home main,body.page-software main{padding-top:0;}
-body.home header.nav,body.page-software header.nav{background:transparent;border-bottom-color:transparent;box-shadow:none;}
-body.home header.nav:not(.scrolled),body.page-software header.nav:not(.scrolled){-webkit-backdrop-filter:none;backdrop-filter:none;}
-body.home header.nav.scrolled,body.page-software header.nav.scrolled{
+body.home main,body.page-software main,body.page-ai main{padding-top:0;}
+body.home header.nav,body.page-software header.nav,body.page-ai header.nav{background:transparent;border-bottom-color:transparent;box-shadow:none;}
+body.home header.nav:not(.scrolled),body.page-software header.nav:not(.scrolled),body.page-ai header.nav:not(.scrolled){-webkit-backdrop-filter:none;backdrop-filter:none;}
+body.home header.nav.scrolled,body.page-software header.nav.scrolled,body.page-ai header.nav.scrolled{
   background:var(--bg-glass);border-bottom-color:var(--line);box-shadow:var(--shadow);
   -webkit-backdrop-filter:blur(12px) saturate(160%);backdrop-filter:blur(12px) saturate(160%);
 }
@@ -523,6 +523,20 @@ body.home header.nav.scrolled,body.page-software header.nav.scrolled{
   --accent-fade:rgba(14,143,120,.09);
   --shadow:0 18px 40px -26px rgba(10,25,47,.35);
   color:var(--ink-2);
+}
+
+/* The light-band accent above is the darkened mint the home and software pages
+   use. Mint on white fails contrast, and so does this page's lighter blue, so
+   each per-page accent needs its own darkened twin here. */
+body.page-ai .band-light{
+  --accent:#2b56c9;
+  --accent-deep:#2145a3;
+  --accent-fade:rgba(43,86,201,.09);
+}
+body.page-chemistry .band-light{
+  --accent:#7a3fa8;
+  --accent-deep:#63318a;
+  --accent-fade:rgba(122,63,168,.09);
 }
 
 .about-grid{

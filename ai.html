@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AI Engineering — Hussnain Tariq</title>
-<meta name="description" content="AI engineering work by Hussnain Tariq — machine learning, deep learning, and Generative AI systems taken end to end, from evaluation to production." />
+<meta name="description" content="How Hussnain Tariq builds AI systems — eight pillars and 40 practices: data, modelling, evaluation, retrieval and RAG, LLM engineering, serving, monitoring and MLOps." />
 <meta name="author" content="Hussnain Tariq" />
 <meta name="theme-color" content="#0a192f" />
 <link rel="canonical" href="https://hussnaintariq.vercel.app/ai" />
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Hussnain Tariq" />
 <meta property="og:title" content="AI Engineering — Hussnain Tariq" />
-<meta property="og:description" content="ML, deep learning, and Generative AI in production — RAG, agents, MCP servers, and the evaluation that keeps them honest." />
+<meta property="og:description" content="I ship AI that survives real users — eight pillars, 40 practices, and the evaluation that keeps them honest." />
 <meta property="og:url" content="https://hussnaintariq.vercel.app/ai" />
 <meta property="og:image" content="https://hussnaintariq.vercel.app/og.png" />
 <meta property="og:image:width" content="1200" />
@@ -21,6 +21,7 @@
 <meta name="twitter:creator" content="@hussnaintari326" />
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preload" as="image" href="hero-1.jpg" fetchpriority="high" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -49,137 +50,637 @@
 </header>
 
 <main id="main">
-  <section class="wrap hero hero-sub" aria-labelledby="page-title">
-    <p class="greeting reveal d1">// 02. AI engineering</p>
-    <h1 id="page-title" class="reveal d2">ML, deep learning &amp;<br>Generative AI in production.</h1>
-    <p class="lede reveal d3">
-      I build <strong>ML, deep learning, and Generative AI systems end to end</strong> —
-      from data pipelines and evaluation through to RAG chatbots, agents, and MCP servers
-      that actually ship. The hard part isn&rsquo;t a demo; it&rsquo;s a system that behaves.
+
+  <!-- HERO — the same cinematic treatment and frames as the home and software
+       pages, so moving between them reads as one site.
+       Photos: Timo Volz, Da Shika, Sascha Albert (Unsplash License). -->
+  <section class="cinema" aria-labelledby="page-title">
+    <div class="cinema__bg" aria-hidden="true">
+      <div class="cinema__slide" style="--img:url('hero-1.jpg')"></div>
+      <div class="cinema__slide" style="--img:url('hero-2.jpg')"></div>
+      <div class="cinema__slide" style="--img:url('hero-3.jpg')"></div>
+    </div>
+    <div class="cinema__scrim" aria-hidden="true"></div>
+
+    <div class="wrap cinema__inner">
+      <p class="cinema__eyebrow reveal d2">Hussnain Tariq &mdash; AI/ML &amp; Generative AI Engineer</p>
+      <h1 id="page-title" class="cinema__title reveal d3">I ship AI that survives real users</h1>
+      <p class="cinema__sub reveal d4">Data &amp; features &middot; Modelling &middot; Evaluation &middot; Retrieval &amp; RAG &middot; LLM engineering &middot; Serving &middot; Monitoring &middot; MLOps</p>
+    </div>
+
+    <a class="cinema__cue" href="#blueprint" aria-label="Scroll to content"><span aria-hidden="true"></span></a>
+  </section>
+
+  <!-- THE PILLARS — on a white band, collapsed into the same accordion the
+       home page uses for industries. -->
+  <section class="band band-light blueprint" id="blueprint" aria-labelledby="bp-title">
+    <div class="wrap">
+      <h2 class="band-head band-head--center reveal" id="bp-title">How I build AI systems</h2>
+
+      <div class="ind-intro">
+        <p class="lede reveal">
+          A demo is easy. What is hard is the second week &mdash; when the inputs stop looking like
+          the training data, when a prompt change quietly breaks something that worked, when nobody
+          can say whether the new version is better or just different. Each pillar below opens into
+          the practices it covers; open any one of those for what it actually is.
+        </p>
+
+        <figure class="ind-photo reveal d2">
+          <img src="work-desk.jpg" width="1000" height="750" loading="lazy"
+               alt="Hussnain Tariq working across a laptop and an external monitor full of code." />
+        </figure>
+      </div>
+
+      <ul class="stats reveal">
+        <li><b>46+</b><span>rubric criteria per call</span></li>
+        <li><b>2</b><span>LLM grading pipelines in production</span></li>
+        <li><b>5</b><span>shipped RAG &amp; agent projects</span></li>
+        <li><b>1</b><span>human override loop, append-only</span></li>
+      </ul>
+
+      <p class="note reveal">
+        <strong>Scope note:</strong> the numbers above come from platforms that are under NDA, so
+        this page describes the engineering rather than the client or the product.
+      </p>
+
+      <div class="industries">
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">01</span>
+          <span class="ind__name">Data &amp; features</span>
+          <span class="ind__note">what the model learns from</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Data versioning</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Pinning the exact dataset a run was trained on, so a result can be reproduced months later instead of approximately remembered.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Leakage checks</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Making sure nothing from the future, or from the test set, reaches the model during training. Most too-good-to-be-true scores turn out to be this.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Labelling &amp; rubric design</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Writing down what a correct label actually means before anyone starts labelling, so two annotators looking at the same example reach the same answer.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Feature engineering</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Turning raw columns into signals a model can use, and discarding the ones that only look useful because they encode the answer.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Class imbalance</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Deciding deliberately how a rare class is handled &mdash; resampling, class weights, or a threshold moved after training rather than during it.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">02</span>
+          <span class="ind__name">Modelling</span>
+          <span class="ind__note">baselines before anything clever</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Honest baselines</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">A trivial model first &mdash; majority class, a linear fit, a keyword rule &mdash; so the interesting one has something real to beat.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Cross-validation</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Splitting the data so the score you measure is the score you would get on new data, rather than the one a lucky partition handed you.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Hyperparameter search</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Searching the settings systematically and against a validation split, instead of tuning on the test set until the number looks good.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Fine-tuning</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Adapting a pretrained model to a specific domain, once prompting has stopped paying for itself and there is enough labelled data to justify it.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Interpretability</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Being able to say why a prediction came out the way it did &mdash; feature importance, attention, or a worked example someone can follow.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">03</span>
+          <span class="ind__name">Evaluation</span>
+          <span class="ind__note">turning &ldquo;it feels better&rdquo; into a number</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">A real evaluation set</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">A held-out set that looks like production, built before the model exists, and never trained on. Everything else depends on this one being right.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Metrics that match the decision</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Choosing the metric from what the output is actually used for. Accuracy on an imbalanced problem tells you almost nothing.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Error analysis</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Reading the wrong predictions one at a time and grouping them, because the pattern in the failures is where the next improvement is hiding.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">LLM-as-judge &amp; calibration</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Using a model to grade outputs at scale, then checking it against human grades so the grader itself is measured rather than trusted.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Regression suite</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">A fixed set of cases that must keep passing, so a prompt or model change cannot quietly break what already worked.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">04</span>
+          <span class="ind__name">Retrieval &amp; RAG</span>
+          <span class="ind__note">grounding an answer in something real</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Chunking strategy</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Deciding how a document is split before it is embedded. Too large and retrieval is vague; too small and the context that made it meaningful is gone.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Embeddings &amp; vector search</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Turning text into vectors and finding the nearest ones, so retrieval works by meaning rather than by matching keywords.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Reranking</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">A second, more careful pass over the top candidates, because the first retrieval is tuned for recall and the answer needs precision.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Grounding &amp; citations</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Making the answer point at the passage it came from, so a reader can check it and a hallucination becomes visible instead of plausible.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Retrieval evaluation</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Measuring the retrieval step on its own. If the right passage never arrives, no amount of prompt work will fix the answer.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">05</span>
+          <span class="ind__name">LLM engineering</span>
+          <span class="ind__note">getting a model to behave</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Structured output</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Forcing the model to answer in a schema and validating it on the way back, so downstream code consumes data instead of parsing prose.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Prompt versioning</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Treating a prompt as code &mdash; versioned, diffable, and tied to the evaluation run that approved it, so a change can be traced and rolled back.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Tool use &amp; agents</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Giving a model a set of functions it can call, with the loop and the stopping condition written by you rather than decided by the model.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">MCP servers</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Exposing tools and data to a model over the Model Context Protocol, so the same capability works across clients instead of being wired into one app.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Guardrails</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Checks around the model &mdash; input filtering, output validation, refusal handling &mdash; because the model is not the last line of defence.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Retry &amp; backoff</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Handling a provider's rate limits and 5xx with growing delays and a cap, so a busy hour degrades rather than fails.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">06</span>
+          <span class="ind__name">Serving &amp; inference</span>
+          <span class="ind__note">the model as an API</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Model behind an API</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Wrapping the model in a typed HTTP interface, so callers depend on a contract rather than on somebody's notebook.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Async &amp; batching</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Moving long inference off the request path, and grouping calls where the model is meaningfully faster per item in a batch.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Caching</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Not paying twice for the same answer &mdash; cached embeddings, cached completions, cached retrieval for queries that repeat.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Cost &amp; token budgets</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Knowing what a request costs before it ships, and putting a ceiling on it, because token spend scales with traffic and nothing warns you.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Fallback models</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">A smaller or older model to fall back to when the primary one is slow, rate-limited or down, so the feature degrades instead of disappearing.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d4">
+        <summary class="ind__head">
+          <span class="ind__n">07</span>
+          <span class="ind__name">Monitoring &amp; drift</span>
+          <span class="ind__note">noticing when it stops working</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Data drift</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Watching whether production inputs still resemble the training data, because a model decays silently and nothing throws an error when it does.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Prediction monitoring</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Tracking the distribution of outputs over time. A shift there is usually the first visible sign that something upstream changed.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Human feedback loop</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Capturing corrections and overrides as labelled data, so the system improves from being used rather than only from being retrained.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Quality alerts</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Alerting on the evaluation metric, not only on latency and error rate. A model can be fast, healthy and wrong at the same time.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+
+      <details class="ind reveal d4">
+        <summary class="ind__head">
+          <span class="ind__n">08</span>
+          <span class="ind__name">MLOps &amp; reproducibility</span>
+          <span class="ind__note">the same run, twice</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <div class="items">
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Experiment tracking</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Every run's parameters, data version, code version and result recorded, so &ldquo;which one was that&rdquo; has an answer three months later.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Model registry</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">One place where a model version is registered, staged and promoted, rather than a file named final_v3 on somebody's laptop.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Reproducible runs</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">Pinned dependencies, fixed seeds and versioned data, so the same run produces the same numbers on a different machine.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">CI/CD for models</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The model pipeline in CI: tests, then an evaluation gate, then deployment &mdash; so a model that fails evaluation cannot ship.</p>
+          </details>
+          <details class="item">
+            <summary class="item__head">
+              <span class="item__name">Containerised inference</span>
+              <span class="item__chev" aria-hidden="true"></span>
+            </summary>
+            <p class="item__what">The same image locally and in production, so &ldquo;it works on my machine&rdquo; cannot apply to the model either.</p>
+          </details>
+          </div>
+        </div>
+      </details>
+      </div>
+
+      <p class="note note--honest reveal">
+        <strong>Read this as the standard, not the r&eacute;sum&eacute;:</strong> it is the list I
+        hold an AI system to. Most of it I have shipped and operated. Training a foundation model
+        from scratch, RLHF and preference tuning, and multi-GPU distributed training I have not run
+        in production &mdash; I know the shapes and the trade-offs, and I would rather say so
+        plainly than claim scars I do not have.
+      </p>
+
+      <p class="bp-count reveal">
+        <span><b>8</b> pillars</span><span><b>40</b> practices</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Stack & tooling — the same accordion as the pillars, on the same white
+       band, with two desk frames carrying the top of the section. -->
+  <section class="band band-light band-light--next" aria-labelledby="stack-title">
+    <div class="wrap">
+    <h2 class="band-head band-head--center reveal" id="stack-title">Stack &amp; tooling</h2>
+    <p class="lede lede--center reveal">
+      A deliberately small stack. Every line below is something I reach for often enough to know
+      where it breaks &mdash; open one for what it is actually doing in the systems above.
     </p>
-  </section>
 
-  <section class="band wrap" aria-labelledby="how-title">
-    <h2 class="band-head reveal" id="how-title"><span class="num">01.</span>How I work</h2>
-    <div class="features">
-      <div class="feature reveal d1">
-        <h3>Generative AI &amp; RAG</h3>
-        <p>Retrieval-augmented assistants and agents with grounded answers — LangChain, LangGraph, vector search, and MCP servers.</p>
-      </div>
-      <div class="feature reveal d1">
-        <h3>Deep learning</h3>
-        <p>Model design, training, and fine-tuning with PyTorch and Keras — from computer vision to sequence models on real datasets.</p>
-      </div>
-      <div class="feature reveal d2">
-        <h3>Classical ML</h3>
-        <p>scikit-learn pipelines for tabular problems, with honest baselines, careful feature engineering, and proper validation.</p>
-      </div>
-      <div class="feature reveal d2">
-        <h3>Evaluation first</h3>
-        <p>Before scaling anything, a real evaluation set and metrics — so &ldquo;it feels better&rdquo; becomes a number you can trust.</p>
-      </div>
-      <div class="feature reveal d3">
-        <h3>MLOps</h3>
-        <p>Model registry, versioning, and monitoring for drift and cost — treating a model like software that has to stay healthy over time.</p>
-      </div>
-      <div class="feature reveal d3">
-        <h3>Serving &amp; APIs</h3>
-        <p>FastAPI wrappers around models, containerised for AWS or Azure, with the observability to catch problems before users do.</p>
-      </div>
+    <div class="atwork atwork--center">
+      <figure class="reveal d1">
+        <img src="work-lab.jpg" width="1000" height="750" loading="lazy"
+             alt="Hussnain Tariq reading code on a monitor in a shared engineering room." />
+      </figure>
+      <figure class="reveal d2">
+        <img src="work-cafe.jpg" width="1000" height="750" loading="lazy"
+             alt="Hussnain Tariq working on a laptop at a cafe table, portable drive beside a bag." />
+      </figure>
+    </div>
+
+    <div class="industries">
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">01</span>
+          <span class="ind__name">Language &amp; data</span>
+          <span class="ind__note">what everything is written in</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">Python</li>
+            <li class="tag">Pandas</li>
+            <li class="tag">NumPy</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            Python end to end, with Pandas and NumPy for the part of the job that is really data cleaning &mdash; which is most of it, and the part that decides whether the model works.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">02</span>
+          <span class="ind__name">Classical ML</span>
+          <span class="ind__note">tabular problems, honestly measured</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">scikit-learn</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            scikit-learn pipelines for tabular work, where a well-validated gradient-boosted tree still beats a neural network more often than anyone admits.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">03</span>
+          <span class="ind__name">Deep learning</span>
+          <span class="ind__note">when the data is not tabular</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">PyTorch</li>
+            <li class="tag">Keras / TensorFlow</li>
+            <li class="tag">OpenCV</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            PyTorch for model design, training and fine-tuning; Keras where a straightforward architecture is enough; OpenCV for the image handling that sits in front of both.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">04</span>
+          <span class="ind__name">LLM &amp; agents</span>
+          <span class="ind__note">getting a model to do the work</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">LangChain</li>
+            <li class="tag">LangGraph</li>
+            <li class="tag">MCP servers</li>
+            <li class="tag">OpenAI</li>
+            <li class="tag">Open-source LLMs</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            LangChain and LangGraph for orchestration and explicit control flow, MCP servers to expose tools and data, and a mix of hosted and open-source models chosen per task rather than by default.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">05</span>
+          <span class="ind__name">Retrieval</span>
+          <span class="ind__note">what the model gets to read</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">ChromaDB</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            ChromaDB for embedding storage and similarity search &mdash; the index that decides what reaches the model's context before it answers anything.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">06</span>
+          <span class="ind__name">MLOps</span>
+          <span class="ind__note">runs you can reproduce</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">MLflow</li>
+            <li class="tag">DVC</li>
+            <li class="tag">Docker</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            MLflow for experiment tracking and the model registry, DVC so the dataset is versioned alongside the code, Docker so the run is the same everywhere.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d4">
+        <summary class="ind__head">
+          <span class="ind__n">07</span>
+          <span class="ind__name">Serving &amp; cloud</span>
+          <span class="ind__note">where it runs</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">FastAPI</li>
+            <li class="tag">AWS</li>
+            <li class="tag">Azure</li>
+            <li class="tag">Railway</li>
+            <li class="tag">Vercel</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            FastAPI in front of the model, containerised; AWS and Azure when the workload needs that control, Railway and Vercel when it does not.
+          </p>
+        </div>
+      </details>
+    </div>
     </div>
   </section>
 
-  <section class="band wrap" aria-labelledby="stack-title">
-    <h2 class="band-head reveal" id="stack-title"><span class="num">02.</span>Tech stack</h2>
-    <ul class="stack reveal">
-      <li>PyTorch</li><li>Keras / TensorFlow</li>
-      <li>scikit-learn</li><li>Pandas &amp; NumPy</li>
-      <li>LangChain &amp; LangGraph</li><li>MCP Servers</li>
-      <li>OpenAI &amp; open-source LLMs</li><li>Vector databases</li>
-      <li>OpenCV</li><li>Matplotlib &amp; Plotly</li>
-      <li>MLflow &amp; DVC</li><li>FastAPI</li>
-      <li>Docker</li><li>AWS &amp; Azure</li>
-    </ul>
-  </section>
+  <!-- Closing call to action — the portrait beside the ask. -->
+  <section class="band band-light band-light--next" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="who">
+        <figure class="who-photo reveal">
+          <img src="software-portrait.jpg" width="1140" height="768" loading="lazy"
+               alt="Hussnain Tariq standing beside a glass partition in an office corridor." />
+        </figure>
 
-  <section class="band wrap" aria-labelledby="work-title">
-    <h2 class="band-head reveal" id="work-title"><span class="num">03.</span>Selected AI work</h2>
-    <div class="projects-list">
-      <!-- Client work under NDA — described by architecture only, no links. -->
-      <div class="project-row reveal d1">
-        <span class="year">2025</span>
-        <div>
-          <div class="p-title">AI Call-Scoring Engine <span class="badge">under NDA</span></div>
-          <div class="p-desc">LLM grading pipeline that scores transcribed calls against a 46+ criterion rubric and returns evidence-linked scorecards. Weighted scoring with hard compliance gates, a human override loop logged append-only, and per-criterion override rates surfaced as a grader-calibration signal — so drift shows up as a number, not a hunch.</div>
-          <div class="p-stack">Speech-to-text · LLM structured output · Rubric versioning · Evaluation &amp; calibration</div>
+        <div class="who-copy cta-copy reveal d2">
+          <h2 id="cta-title">Let&rsquo;s ship it.</h2>
+          <p>
+            I can take an AI idea from a promising notebook to something you can put in front of
+            users &mdash; with the evaluation set that proves it works and the monitoring that
+            tells you when it stops.
+          </p>
+          <div class="btn-row">
+            <a class="btn" href="chemistry.html">See the chemistry work</a>
+          </div>
         </div>
-      </div>
-      <div class="project-row reveal d1">
-        <span class="year">2025</span>
-        <div>
-          <div class="p-title">Voice-AI Training &amp; Qualification Pipeline <span class="badge">under NDA</span></div>
-          <div class="p-desc">Qualification system that places live AI role-play calls using ephemeral per-call personas, grades the transcripts against a two-part rubric, and auto-graduates a candidate only on a rolling skill floor with zero compliance-gate failures.</div>
-          <div class="p-stack">Voice AI · LLM grading · Rubric design · Postgres</div>
-        </div>
-      </div>
-
-      <!-- TODO: swap each href for the project's repo or live-demo URL. -->
-      <a class="project-row reveal d2" href="https://github.com/hussnaintariq151" target="_blank" rel="noopener">
-        <span class="year">2025</span>
-        <div>
-          <div class="p-title">Balzi Rossi Archaeological Bot</div>
-          <div class="p-desc">Interactive chatbot exploring the Balzi Rossi archaeological site — answering visitor questions and surfacing historical insights from a curated corpus.</div>
-          <div class="p-stack">LangChain · RAG · Vector DB · OpenAI · FastAPI</div>
-        </div>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="project-row reveal d1" href="https://github.com/hussnaintariq151" target="_blank" rel="noopener">
-        <span class="year">2025</span>
-        <div>
-          <div class="p-title">Job–Resume Matcher</div>
-          <div class="p-desc">NLP system that matches resumes to job posts, highlights missing skills, and generates concrete improvement suggestions using embeddings and LLM reasoning.</div>
-          <div class="p-stack">Python · NLP · Embeddings · FastAPI · LLMs</div>
-        </div>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="project-row reveal d2" href="https://github.com/hussnaintariq151" target="_blank" rel="noopener">
-        <span class="year">2025</span>
-        <div>
-          <div class="p-title">Mock Interview Practice</div>
-          <div class="p-desc">AI system simulating realistic interview scenarios, giving structured feedback and tracking a candidate&rsquo;s improvement over time.</div>
-          <div class="p-stack">LLMs · LangGraph · FastAPI · MLOps</div>
-        </div>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="project-row reveal d2" href="https://github.com/hussnaintariq151" target="_blank" rel="noopener">
-        <span class="year">2024</span>
-        <div>
-          <div class="p-title">E-commerce Chatbot</div>
-          <div class="p-desc">Conversational assistant for online shopping — handling customer queries, product recommendations, and support tasks with grounded retrieval.</div>
-          <div class="p-stack">LangChain · RAG · Vector DB · FastAPI</div>
-        </div>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="project-row reveal d3" href="https://github.com/InstaMailAI" target="_blank" rel="noopener">
-        <span class="year">2024</span>
-        <div>
-          <div class="p-title">InstaMailAI (Collaboration)</div>
-          <div class="p-desc">Contributed to vector search pipelines and OpenAI integration for real-time email processing and RAG workflows.</div>
-          <div class="p-stack">OpenAI · Vector search · RAG · Python</div>
-        </div>
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="band wrap" aria-labelledby="cta-title">
-    <div class="contact-block reveal">
-      <span class="num">// got an AI idea stuck at the demo stage?</span>
-      <h2 id="cta-title" class="h-sm">Let&rsquo;s ship it.</h2>
-      <p>I can help take it from a promising notebook to something you can put in front of users — with the evaluation and monitoring to keep it there.</p>
-      <div class="btn-row">
-        <a class="btn" href="chemistry.html">See the science →</a>
-        <a class="btn btn-solid" href="contact.html">Get in touch</a>
       </div>
     </div>
   </section>
