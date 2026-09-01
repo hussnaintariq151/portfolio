@@ -703,19 +703,6 @@ body.rails-dark .rail::after{background:#9aa6bb;}
 /* Honest-limits variant: same shape, deliberately not accented */
 .note--honest{border-left-color:var(--line);margin:2rem 0 0;}
 
-/* ---------- 9b. Grouped stack ---------- */
-
-/* The flat list reads as a laundry list; grouping it by the job each tool
-   does at least shows the shape of the stack. */
-.stack-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:2.25rem 3rem;}
-.stack-group h3{
-  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);font-weight:500;
-  margin-bottom:.9rem;padding-bottom:.6rem;border-bottom:1px solid var(--line);
-}
-.stack-group .stack{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.4rem 1.5rem;}
-@media (max-width:720px){.stack-groups{grid-template-columns:1fr;gap:2rem;}}
-
 /* ---------- 9c. The pillar band ---------- */
 
 /* A white band that still reads as drawing paper: a faint accent grid, then a
@@ -826,11 +813,14 @@ body.rails-dark .rail::after{background:#9aa6bb;}
   padding:.18rem .6rem;
 }
 
-/* ---------- 9f. At-the-desk photo row ---------- */
+/* ---------- 9f. Desk photo row ---------- */
 
-/* One visual break between the pillar band and the closing blocks. Both
+/* Sits under the Stack heading and carries the top of that section. Both
    frames are cropped to 4:3 so the row reads level. */
-.atwork{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:860px;}
+.atwork{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;
+  max-width:860px;margin-bottom:2.25rem;
+}
 .atwork figure{margin:0;}
 .atwork img{
   width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;

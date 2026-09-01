@@ -526,12 +526,15 @@
     </div>
   </section>
 
-  <!-- Photo break between the eight-pillar run and the closing sections.
-       Sources: SanDisk, ProCreator, Patrick Amoy (Unsplash License),
-       recomposited so the person in frame is me. -->
-  <section class="band wrap" aria-labelledby="desk-title">
-    <h2 class="band-head reveal" id="desk-title">At the desk</h2>
-    <p class="lede reveal">The eight pillars above were written the same way they were built &mdash; slowly, with a query plan open on the other screen.</p>
+  <!-- Stack & tooling — the same accordion as the pillars, with the two
+       remaining desk frames carrying the top of the section. -->
+  <section class="band wrap" aria-labelledby="stack-title">
+    <h2 class="band-head reveal" id="stack-title">Stack &amp; tooling</h2>
+    <p class="lede reveal">
+      A deliberately small stack. Every line below is something I reach for often enough to know
+      where it breaks &mdash; open one for what it is actually doing in the systems above.
+    </p>
+
     <div class="atwork">
       <figure class="reveal d1">
         <img src="work-lab.jpg" width="1000" height="750" loading="lazy"
@@ -542,97 +545,134 @@
              alt="Hussnain Tariq working on a laptop at a cafe table, portable drive beside a bag." />
       </figure>
     </div>
-  </section>
 
-  <!-- ============ CLOSING: work, stack, person ============ -->
-  <section class="band wrap" aria-labelledby="work-title">
-    <h2 class="band-head reveal" id="work-title">Selected work</h2>
-    <div class="projects-list">
-      <!-- Client work under NDA — described by architecture only, no links. -->
-      <div class="project-row reveal d1">
-        <span class="year">2025</span>
-        <div>
-          <div class="p-title">Call-QA &amp; Compliance Platform <span class="badge">under NDA</span></div>
-          <div class="p-desc">TypeScript/Node monorepo behind a regulated voice-intake operation. Capture &rarr; transcription &rarr; automated scoring &rarr; human review &rarr; governed rule publishing, with four long-running workers, a dual-approval editorial workflow, and an append-only audit trail. This is the system read through all eight pillars above.</div>
-          <div class="p-stack">TypeScript &middot; Express &middot; Postgres &middot; Object storage &middot; Railway &middot; Vercel</div>
+    <div class="industries">
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">01</span>
+          <span class="ind__name">Programming language</span>
+          <span class="ind__note">what everything is written in</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">Python</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            Python end to end &mdash; services, workers, data preparation and model code in one language, so there is no boundary where the tooling and the types stop agreeing.
+          </p>
         </div>
-      </div>
-      <div class="project-row reveal d1">
-        <span class="year">2025</span>
-        <div>
-          <div class="p-title">Ops KPI Ingestion Service <span class="badge">under NDA</span></div>
-          <div class="p-desc">Cron-driven pipeline that pulls reporting emails over IMAP, parses CSV attachments across six report types, and joins them into daily per-agent and org-wide KPI rows for a 50+ agent operation.</div>
-          <div class="p-stack">Node &middot; IMAP &middot; CSV parsing &middot; Postgres &middot; Scheduled jobs</div>
-        </div>
-      </div>
-      <div class="project-row reveal d2">
-        <span class="year">2025</span>
-        <div>
-          <div class="p-title">Candidate Pipeline API <span class="badge">under NDA</span></div>
-          <div class="p-desc">Three-stage intake hub with server-side test grading (per-section and overall thresholds enforced on the server, never the client), no-clobber JSONB metadata merges, and an append-only event log for audit.</div>
-          <div class="p-stack">Node &middot; Postgres &middot; JSONB &middot; Append-only audit log</div>
-        </div>
-      </div>
-      <div class="project-row reveal d2">
-        <span class="year">2025</span>
-        <div>
-          <div class="p-title">Embedded Feedback Service <span class="badge">under NDA</span></div>
-          <div class="p-desc">Serverless intake API for an in-app widget &mdash; rate-limited public endpoint, cropped screenshots written to a private bucket, owner-gated triage routes, and a chat notification on every submission.</div>
-          <div class="p-stack">Serverless functions &middot; Postgres &middot; Private object storage &middot; Identity gating</div>
-        </div>
-      </div>
+      </details>
 
-      <!-- TODO: swap each href for the project's own repo or live-demo URL —
-           these currently all point at the GitHub profile root. -->
-      <a class="project-row reveal d3" href="https://github.com/hussnaintariq151" target="_blank" rel="noopener">
-        <span class="year">2025</span>
-        <div>
-          <div class="p-title">Vehicle Insurance System</div>
-          <div class="p-desc">End-to-end insurance application with banking integrations and automated claim processing. Django backend, workflow engine, and secure APIs.</div>
-          <div class="p-stack">Django &middot; PostgreSQL &middot; Docker &middot; REST APIs</div>
+      <details class="ind reveal d1">
+        <summary class="ind__head">
+          <span class="ind__n">02</span>
+          <span class="ind__name">Web framework</span>
+          <span class="ind__note">how a service gets served</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">FastAPI</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            FastAPI for typed request and response models, dependency injection, and an OpenAPI spec generated from the code rather than maintained beside it and left to drift.
+          </p>
         </div>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-      </a>
-      <a class="project-row reveal d2" href="https://github.com/hussnaintariq151" target="_blank" rel="noopener">
-        <span class="year">2025</span>
-        <div>
-          <div class="p-title">MLOps Pipeline Template</div>
-          <div class="p-desc">Reusable CI/CD template for ML projects &mdash; DVC-tracked data, MLflow experiments, Dockerised models, and GitHub Actions deployment.</div>
-          <div class="p-stack">Python &middot; DVC &middot; MLflow &middot; GitHub Actions &middot; Terraform</div>
-        </div>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-      </a>
-      <a class="project-row reveal d3" href="https://github.com/hussnaintariq151" target="_blank" rel="noopener">
-        <span class="year">2024</span>
-        <div>
-          <div class="p-title">Client Backend Systems (Upwork)</div>
-          <div class="p-desc">Multiple FastAPI backends for AI-powered products &mdash; real-time and batch workflows, containerised deployments on AWS &amp; Azure.</div>
-          <div class="p-stack">FastAPI &middot; Docker &middot; AWS &middot; Azure &middot; CI/CD</div>
-        </div>
-        <span class="arrow" aria-hidden="true">&rarr;</span>
-      </a>
-    </div>
-  </section>
+      </details>
 
-  <section class="band wrap" aria-labelledby="stack-title">
-    <h2 class="band-head reveal" id="stack-title">Stack &amp; tooling</h2>
-    <div class="stack-groups">
-      <div class="stack-group reveal d1">
-        <h3>Languages &amp; frameworks</h3>
-        <ul class="stack"><li>Python</li><li>TypeScript &amp; Node</li><li>SQL</li><li>Bash / PowerShell</li><li>FastAPI</li><li>Django &amp; DRF</li><li>Express</li></ul>
-      </div>
-      <div class="stack-group reveal d1">
-        <h3>Data stores</h3>
-        <ul class="stack"><li>PostgreSQL</li><li>MySQL</li><li>MongoDB</li><li>Redis</li><li>Cassandra</li><li>Supabase</li></ul>
-      </div>
-      <div class="stack-group reveal d2">
-        <h3>Pipelines &amp; ML</h3>
-        <ul class="stack"><li>Apache Kafka</li><li>Azure Data Factory</li><li>Databricks</li><li>DVC</li><li>MLflow</li></ul>
-      </div>
-      <div class="stack-group reveal d2">
-        <h3>Infrastructure &amp; delivery</h3>
-        <ul class="stack"><li>Docker</li><li>Terraform</li><li>GitHub Actions</li><li>AWS (EC2, S3, Lambda)</li><li>Azure</li><li>Railway &amp; Vercel</li><li>Prometheus &amp; Grafana</li></ul>
-      </div>
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">03</span>
+          <span class="ind__name">Databases</span>
+          <span class="ind__note">where state lives</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">PostgreSQL</li>
+            <li class="tag">MongoDB</li>
+            <li class="tag">Supabase</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            Postgres by default &mdash; constraints, transactions and migrations are the whole point. MongoDB where the shape is genuinely still moving, and Supabase when a project needs Postgres plus auth and file storage without standing all three up separately.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d2">
+        <summary class="ind__head">
+          <span class="ind__n">04</span>
+          <span class="ind__name">Vector database</span>
+          <span class="ind__note">retrieval for AI features</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">ChromaDB</li>
+            <!-- TODO: add the other vector stores in use. -->
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            ChromaDB for embedding storage and similarity search behind retrieval-augmented features &mdash; the index that decides what a model gets to read before it answers.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">05</span>
+          <span class="ind__name">Infrastructure as code</span>
+          <span class="ind__note">environments defined in code</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">Terraform</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            Terraform, so an environment is a file in the repository rather than a sequence of console clicks nobody wrote down. Plan before apply, state kept remote, dev and prod separated.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d3">
+        <summary class="ind__head">
+          <span class="ind__n">06</span>
+          <span class="ind__name">DevOps</span>
+          <span class="ind__note">build, test, ship</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">Docker</li>
+            <li class="tag">CI/CD</li>
+            <li class="tag">GitHub Actions</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            Docker so the container that runs in production is the one that ran locally. GitHub Actions on every commit &mdash; lint, tests, build, then deploy, with no manual step to forget.
+          </p>
+        </div>
+      </details>
+
+      <details class="ind reveal d4">
+        <summary class="ind__head">
+          <span class="ind__n">07</span>
+          <span class="ind__name">Cloud</span>
+          <span class="ind__note">where it runs</span>
+          <span class="ind__chev" aria-hidden="true"></span>
+        </summary>
+        <div class="ind__body">
+          <ul class="tags">
+            <li class="tag">AWS</li>
+            <li class="tag">Azure</li>
+            <li class="tag">Railway</li>
+            <li class="tag">Vercel</li>
+          </ul>
+          <p class="ind__what"><b>How I use it</b>
+            AWS and Azure at the IaaS layer when a workload needs that much control; Railway and Vercel as PaaS when it does not, and the time is better spent on the product than on the VPC.
+          </p>
+        </div>
+      </details>
     </div>
   </section>
 
