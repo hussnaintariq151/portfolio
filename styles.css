@@ -965,6 +965,12 @@ a.project-row:hover .arrow{transform:translateX(4px);}
   display:flex;flex-direction:column;justify-content:center;
 }
 
+/* The default muted grey is tuned for supporting copy in a dense band. This
+   page is one short block on white, so it carries darker, heavier type. */
+.contact-band .contact-block p,
+.contact-band .contact-meta{color:var(--ink);font-weight:500;}
+.contact-band .contact-lines dt{color:var(--ink-2);font-weight:500;}
+
 /* Labelled contact lines, replacing the single oversized mail link. */
 .contact-lines{
   display:flex;flex-direction:column;gap:.9rem;
