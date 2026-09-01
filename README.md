@@ -18,7 +18,9 @@ portfolio/
 ├── chemistry.html      # 03 · Chemistry — same shape as 01 and 02: eight
 │                       #      pillars, then ten subjects opening into their
 │                       #      topics, education last, and the closing note
-├── about.html          # 04 · Story, education, self-learning, experience
+├── about.html          # 04 · Same shape as the discipline pages: the arc,
+│                       #      signposts to 01-03, an education accordion,
+│                       #      experience, and the closing ask
 ├── contact.html        # Email + socials
 ├── 404.html            # Not-found page (styled, matches the site)
 ├── styles.css          # Shared design system
