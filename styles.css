@@ -716,44 +716,7 @@ body.rails-dark .rail::after{background:#9aa6bb;}
 .stack-group .stack{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.4rem 1.5rem;}
 @media (max-width:720px){.stack-groups{grid-template-columns:1fr;gap:2rem;}}
 
-/* ---------- 9c. Decisions & trade-offs ---------- */
-
-.decisions{display:flex;flex-direction:column;gap:1rem;}
-.decision{
-  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);
-  padding:1.5rem 1.6rem;
-  transition:border-color .2s ease,box-shadow .25s ease;
-}
-.decision:hover{border-color:var(--accent);box-shadow:var(--shadow);}
-.band-light .ind__body .decision{background:#fff;}
-.decision h3{
-  display:flex;align-items:baseline;gap:.75rem;
-  color:var(--ink);font-size:1.12rem;font-weight:600;letter-spacing:-.015em;
-  margin-bottom:.7rem;
-}
-.decision__n{
-  font-family:var(--font-mono);font-size:.68rem;font-weight:400;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
-  border:1px solid var(--line);border-radius:99px;padding:.2rem .65rem;
-  flex:none;align-self:center;
-}
-.decision__call{
-  color:var(--ink-2);font-size:.98rem;line-height:1.65;max-width:80ch;
-  padding-bottom:1.15rem;margin-bottom:1.15rem;border-bottom:1px solid var(--line-soft);
-}
-
-/* Three columns: what it buys, what it costs, and the condition to undo it.
-   A decision with no cost column is a decision that was never really made. */
-.tradeoff{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem 1.75rem;}
-.tradeoff dt{
-  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:.45rem;
-}
-.tradeoff dd{color:var(--muted);font-size:.88rem;line-height:1.55;}
-.tradeoff .cost dt{color:var(--ink-2);}
-@media (max-width:820px){.tradeoff{grid-template-columns:1fr;gap:1rem;}}
-
-/* ---------- 9d. The pillar band ---------- */
+/* ---------- 9c. The pillar band ---------- */
 
 /* A white band that still reads as drawing paper: a faint accent grid, then a
    vignette so it fades out instead of stopping at a hard edge. The background
@@ -783,44 +746,47 @@ body.rails-dark .rail::after{background:#9aa6bb;}
 }
 .bp-count b{color:var(--accent);font-weight:500;}
 
-/* ---------- 9e. Pillar detail, inside an accordion body ---------- */
+/* ---------- 9d. Practice toggles, inside a pillar row ---------- */
 
-/* Evidence on the left, checklist on the right, trade-off underneath. */
-.pillar-grid{
-  display:grid;grid-template-columns:1.1fr 1fr;
-  gap:clamp(1.5rem,3.5vw,2.75rem);align-items:start;
-  margin-bottom:1.25rem;
-}
-.pillar-built h3,.pillar-controls h3{
-  font-family:var(--font-mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);font-weight:500;
-  margin-bottom:.85rem;padding-bottom:.6rem;border-bottom:1px solid var(--line);
-}
-.pillar-built p{color:var(--ink-2);font-size:.97rem;line-height:1.7;margin-bottom:1rem;}
-.pillar-built .p-stack{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);line-height:1.7;}
+/* Second level of the accordion: a pillar opens into the practices it covers,
+   and each practice opens into one plain-English definition. Deliberately
+   quieter than the pillar row above it — a hairline rule instead of a card,
+   so the two levels never read as siblings. */
+.items{display:flex;flex-direction:column;}
 
-/* Key for the two tick states, repeated per section so a reader arriving from
-   a blueprint link never meets an unexplained symbol. */
-.ctrl-key{
-  font-family:var(--font-mono);font-size:.7rem;color:var(--muted);
-  margin:-.35rem 0 .85rem;
+.item{border-bottom:1px solid var(--line-soft);}
+.item:last-child{border-bottom:none;}
+
+.item__head{
+  display:flex;align-items:center;gap:1rem;
+  padding:.75rem .1rem;cursor:pointer;list-style:none;
+}
+.item__head::-webkit-details-marker{display:none;}
+.item__head::marker{content:"";}
+.item__head:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:var(--radius-sm);}
+
+.item__name{
+  flex:1;color:var(--ink-2);font-size:.95rem;font-weight:500;letter-spacing:-.008em;
+  transition:color .2s ease;
+}
+.item__head:hover .item__name,.item[open] .item__name{color:var(--accent);}
+
+/* Same chevron geometry as the pillar row, two thirds the size. */
+.item__chev{
+  flex:none;width:7px;height:7px;margin-right:.3rem;
+  border-right:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);
+  transform:rotate(45deg) translate(-2px,-2px);
+  transition:transform .25s var(--ease);
+}
+.item[open] .item__chev{transform:rotate(-135deg) translate(-2px,-2px);}
+
+.item__what{
+  margin:0 0 1rem;padding-left:1.1rem;
+  border-left:2px solid var(--accent);
+  color:var(--muted);font-size:.9rem;line-height:1.7;max-width:78ch;
 }
 
-.checks{display:flex;flex-direction:column;gap:.5rem;}
-.checks li{
-  position:relative;padding-left:1.5rem;
-  font-size:.88rem;line-height:1.5;color:var(--muted);
-}
-.checks li::before{
-  content:"\2022";position:absolute;left:.2rem;top:-.05rem;
-  color:var(--line);font-size:1rem;
-}
-.checks li.done{color:var(--ink-2);}
-.checks li.done::before{content:"\2713";left:0;font-size:.82rem;color:var(--accent);}
-
-@media (max-width:880px){.pillar-grid{grid-template-columns:1fr;gap:2rem;}}
-
-/* ---------- 9f. "Who you'd be working with" light band ---------- */
+/* ---------- 9e. "Who you'd be working with" light band ---------- */
 
 .who{
   display:grid;grid-template-columns:1.15fr 1fr;
@@ -860,7 +826,7 @@ body.rails-dark .rail::after{background:#9aa6bb;}
   padding:.18rem .6rem;
 }
 
-/* ---------- 9g. At-the-desk photo row ---------- */
+/* ---------- 9f. At-the-desk photo row ---------- */
 
 /* One visual break between the pillar band and the closing blocks. Both
    frames are cropped to 4:3 so the row reads level. */
