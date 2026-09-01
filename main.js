@@ -113,7 +113,7 @@
   // ---------- Side rails over light sections ----------
   // The rails are position:fixed, so a light band scrolling behind them would
   // leave them nearly invisible. Flip them to dark ink while one is in range.
-  var lightBands = document.querySelectorAll('.about-light');
+  var lightBands = document.querySelectorAll('.band-light');
 
   if (lightBands.length && 'IntersectionObserver' in window) {
     var railObserver = new IntersectionObserver(function (entries) {

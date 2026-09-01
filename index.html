@@ -86,7 +86,7 @@
   </section>
 
   <!-- ABOUT — light band, photo alongside the copy -->
-  <section id="about" class="band about-light" aria-labelledby="about-title">
+  <section id="about" class="band band-light" aria-labelledby="about-title">
     <div class="wrap">
       <h2 class="band-head band-head--center reveal" id="about-title">About me</h2>
 
@@ -146,28 +146,38 @@
   </section>
 
   <!-- INDUSTRIES -->
-  <section id="industries" class="band wrap" aria-labelledby="ind-title">
+  <section id="industries" class="band band-light" aria-labelledby="ind-title">
+    <div class="wrap">
     <h2 class="band-head band-head--center reveal" id="ind-title">Industries I work in</h2>
 
-    <p class="lede reveal">
-      Most teams in these fields already have the chemistry and the data. What tends to be
-      missing is the layer in between — someone who can read a lab notebook, build the model,
-      and then run it as a service.
-    </p>
+    <div class="ind-intro">
+      <div class="reveal">
+        <p class="lede">
+          Most teams in these fields already have the chemistry and the data. What tends to be
+          missing is the layer in between — someone who can read a lab notebook, build the model,
+          and then run it as a service.
+        </p>
 
-    <div class="triad reveal">
-      <div class="triad__item">
-        <h3>Chemistry</h3>
-        <p>I read your data the way your scientists do — uncertainty, batch effects, and what a single measurement actually cost to produce.</p>
+        <div class="triad">
+          <div class="triad__item">
+            <h3>Chemistry</h3>
+            <p>I read your data the way your scientists do — uncertainty, batch effects, and what a measurement cost to produce.</p>
+          </div>
+          <div class="triad__item">
+            <h3>AI engineering</h3>
+            <p>Honest baselines and a real evaluation set, so &ldquo;it feels better&rdquo; becomes a number you can defend.</p>
+          </div>
+          <div class="triad__item">
+            <h3>Software engineering</h3>
+            <p>It ships as a service — versioned, monitored, auditable. A notebook is where the work starts, not where it ends.</p>
+          </div>
+        </div>
       </div>
-      <div class="triad__item">
-        <h3>AI engineering</h3>
-        <p>Honest baselines and a real evaluation set, so &ldquo;it feels better&rdquo; becomes a number you can defend.</p>
-      </div>
-      <div class="triad__item">
-        <h3>Software engineering</h3>
-        <p>It ships as a service — versioned, monitored, auditable. A notebook is where the work starts, not where it ends.</p>
-      </div>
+
+      <figure class="ind-photo reveal d2">
+        <img src="industries-lab.jpg" width="1200" height="674" loading="lazy"
+             alt="Hussnain Tariq wiring a multi-channel battery cycler to a thermal test chamber in a laboratory." />
+      </figure>
     </div>
 
     <div class="industries">
@@ -315,6 +325,7 @@
           </p>
         </div>
       </details>
+    </div>
     </div>
   </section>
 
