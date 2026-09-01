@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Software Engineering — Hussnain Tariq</title>
-<meta name="description" content="Software engineering work by Hussnain Tariq — backend APIs, Postgres schema design, async worker pipelines, security, MLOps, and infrastructure as code, broken down layer by layer." />
+<meta name="description" content="Software engineering work by Hussnain Tariq — backend APIs, Postgres schema design, async worker pipelines, security, MLOps and infrastructure as code, plus the eight-pillar production standard I build every backend to." />
 <meta name="author" content="Hussnain Tariq" />
 <meta name="theme-color" content="#0a192f" />
 <link rel="canonical" href="https://hussnaintariq.vercel.app/software" />
@@ -104,8 +104,132 @@
     </ul>
   </section>
 
+  <section class="band wrap" aria-labelledby="std-title">
+    <h2 class="band-head reveal" id="std-title"><span class="num">03.</span>The bar I build to</h2>
+
+    <p class="note reveal">
+      <strong>Why this is here:</strong> &ldquo;it works on my machine&rdquo; and &ldquo;it survives
+      production&rdquo; are two different jobs. This is the standard I hold a backend to before I call
+      it done &mdash; eight pillars, and the specific controls under each. Ticked items are ones I
+      have shipped and operated; the rest I reach for when the system earns them.
+    </p>
+
+    <p class="legend reveal">
+      <span class="legend__item legend__item--done">shipped &amp; operated</span>
+      <span class="legend__item">applied when the system needs it</span>
+    </p>
+
+    <div class="pillars">
+      <article class="pillar reveal d1">
+        <h3><span class="pillar__n">01</span>Security</h3>
+        <ul class="checks">
+          <li class="done">Signed session cookies &mdash; HMAC-SHA256, constant-time verify</li>
+          <li class="done">Password hashing with scrypt, PII stored only as a salted hash</li>
+          <li class="done">RBAC in middleware, before any handler runs</li>
+          <li class="done">Row-level security on every table, writes via a service role</li>
+          <li class="done">Origin-whitelisted CORS &mdash; never a wildcard</li>
+          <li class="done">Rate limiting on public endpoints</li>
+          <li class="done">Secrets in env, never in the repo &mdash; fail fast if missing</li>
+          <li>Schema validation on every inbound body, query and header</li>
+        </ul>
+      </article>
+
+      <article class="pillar reveal d1">
+        <h3><span class="pillar__n">02</span>API design</h3>
+        <ul class="checks">
+          <li class="done">REST semantics that mean what they say &mdash; 202 for async, 204 for delete</li>
+          <li class="done">Idempotency: every write has a natural key, so a retry is a no-op</li>
+          <li class="done">Bounded, paged list endpoints &mdash; no unbounded result sets</li>
+          <li class="done">One error shape across the whole surface, with a trace id</li>
+          <li>URL versioning with a documented deprecation window</li>
+          <li>OpenAPI spec committed alongside the code</li>
+        </ul>
+      </article>
+
+      <article class="pillar reveal d2">
+        <h3><span class="pillar__n">03</span>Performance</h3>
+        <ul class="checks">
+          <li class="done">Indexes chosen from real query plans, not guesses</li>
+          <li class="done">Slow work moved off the request path into workers</li>
+          <li class="done">N+1 queries hunted down at the ORM boundary</li>
+          <li>Connection pooling sized to the box, not left at the default</li>
+          <li>Cache layers with explicit TTLs and invalidation on write</li>
+          <li>p95/p99 budgets per endpoint, not average latency</li>
+        </ul>
+      </article>
+
+      <article class="pillar reveal d2">
+        <h3><span class="pillar__n">04</span>Reliability</h3>
+        <ul class="checks">
+          <li class="done">Exponential backoff with jitter on transient upstream failures</li>
+          <li class="done">Repeat offenders parked in a cooldown so the backlog keeps draining</li>
+          <li class="done">A reconciliation sweep that self-heals known fault modes</li>
+          <li class="done">Health checks wired to a restart policy</li>
+          <li>Explicit timeouts at every level &mdash; connect, read, query, job</li>
+          <li>Dead-letter path for poison messages, with an alert on depth</li>
+          <li>Graceful shutdown: drain in-flight work, then exit</li>
+        </ul>
+      </article>
+
+      <article class="pillar reveal d3">
+        <h3><span class="pillar__n">05</span>Observability</h3>
+        <ul class="checks">
+          <li class="done">Append-only audit tables &mdash; who did what, when, never updated</li>
+          <li class="done">Structured logs with a request id, and no secrets in them</li>
+          <li>Error tracking with grouping and alerts on new failure types</li>
+          <li>RED metrics on every endpoint, USE metrics on the box</li>
+          <li>Distributed tracing once more than one service is involved</li>
+          <li>SLOs with an error budget, agreed before launch</li>
+        </ul>
+      </article>
+
+      <article class="pillar reveal d3">
+        <h3><span class="pillar__n">06</span>Data integrity</h3>
+        <ul class="checks">
+          <li class="done">Forward-only migrations &mdash; added to, never edited</li>
+          <li class="done">Expand &rarr; backfill &rarr; contract, so deploys need no downtime</li>
+          <li class="done">Invariants as triggers and CHECK constraints, not just app code</li>
+          <li class="done">Cascade deletes, so orphan rows cannot exist</li>
+          <li class="done">Atomic claim on shared work &mdash; two workers never take one row</li>
+          <li>Soft deletes with a written retention policy</li>
+          <li>Backups with a restore actually tested, plus an RTO/RPO on paper</li>
+        </ul>
+      </article>
+
+      <article class="pillar reveal d4">
+        <h3><span class="pillar__n">07</span>Scalability</h3>
+        <ul class="checks">
+          <li class="done">Stateless web tier &mdash; no session store pinning a user to one box</li>
+          <li class="done">Files in object storage, not on the instance</li>
+          <li class="done">Workers that scale out horizontally without a coordinator</li>
+          <li>A broker (Kafka / SQS / RabbitMQ) once the queue outgrows the database</li>
+          <li>CDN and edge caching for anything publicly cacheable</li>
+          <li>Partitioning before a table is big enough to hurt</li>
+        </ul>
+      </article>
+
+      <article class="pillar reveal d4">
+        <h3><span class="pillar__n">08</span>Delivery</h3>
+        <ul class="checks">
+          <li class="done">CI on every commit &mdash; lint, tests, build, then deploy</li>
+          <li class="done">Infrastructure as code in Terraform, environments separated</li>
+          <li class="done">12-factor config and a pinned runtime version</li>
+          <li class="done">Containerised builds that run the same locally and in prod</li>
+          <li>Canary or blue-green when a bad deploy would be expensive</li>
+          <li>Deliberate fault injection, once there is enough to break</li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="note note--honest reveal">
+      <strong>What I have not run in production:</strong> database sharding, CQRS with separate
+      read and write models, and scheduled chaos engineering. I know the shapes and the trade-offs,
+      but I would rather say that plainly than claim scars I do not have.
+    </p>
+  </section>
+
   <section class="band wrap" aria-labelledby="layers-title">
-    <h2 class="band-head reveal" id="layers-title"><span class="num">03.</span>Inside a production backend</h2>
+    <h2 class="band-head reveal" id="layers-title"><span class="num">04.</span>Inside a production backend</h2>
 
     <p class="note reveal">
       <strong>Scope note:</strong> the platform below is under NDA, so this describes the
@@ -211,7 +335,7 @@
   </section>
 
   <section class="band wrap" aria-labelledby="work-title">
-    <h2 class="band-head reveal" id="work-title"><span class="num">04.</span>Selected software work</h2>
+    <h2 class="band-head reveal" id="work-title"><span class="num">05.</span>Selected software work</h2>
     <div class="projects-list">
       <!-- Client work under NDA — described by architecture only, no links. -->
       <div class="project-row reveal d1">
@@ -275,6 +399,34 @@
         </div>
         <span class="arrow" aria-hidden="true">→</span>
       </a>
+    </div>
+  </section>
+
+  <section class="band band-light" aria-labelledby="who-title">
+    <div class="wrap">
+      <h2 class="band-head band-head--center reveal" id="who-title">Who you&rsquo;d be working with</h2>
+
+      <div class="who">
+        <figure class="who-photo reveal">
+          <img src="software-portrait.jpg" width="1140" height="768" loading="lazy"
+               alt="Hussnain Tariq standing beside a glass partition in an office corridor." />
+        </figure>
+
+        <div class="who-copy reveal d2">
+          <p class="lead">One engineer, end to end &mdash; from the migration file to the deploy that ships it.</p>
+          <p>
+            No handoff between a &ldquo;backend person&rdquo; and a &ldquo;DevOps person&rdquo;. The
+            schema, the workers, the auth, the pipeline and the infrastructure are one decision-set,
+            and I would rather own all of it than negotiate across it.
+          </p>
+          <ul class="who-list">
+            <li><b>Trade-offs written down.</b> Every non-obvious choice gets a short note on what it costs and when to revisit it.</li>
+            <li><b>Built to be replaced.</b> Clear seams, so the next engineer can pull out a layer without archaeology.</li>
+            <li><b>Boring where it counts.</b> Novelty belongs in the model, not in the deployment story.</li>
+          </ul>
+          <a class="btn btn-solid" href="contact.html">Start a conversation</a>
+        </div>
+      </div>
     </div>
   </section>
 

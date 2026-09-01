@@ -19,6 +19,9 @@ portfolio/
 ├── main.js             # Menu, nav scroll state, scroll progress, reveals
 ├── favicon.svg         # "HT" mark
 ├── hero-1..3.jpg       # Home-page hero slideshow frames (2400px wide)
+├── about-portrait.jpg  # Home-page "About me" portrait
+├── industries-lab.jpg  # Home-page Industries band photo
+├── software-portrait.jpg # 01 · "Who you’d be working with" portrait
 ├── og.png              # 1200×630 social preview card
 ├── robots.txt          # Crawler rules + sitemap pointer
 ├── sitemap.xml         # Six URLs
