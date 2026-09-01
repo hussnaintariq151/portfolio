@@ -958,14 +958,36 @@ a.project-row:hover .arrow{transform:translateX(4px);}
 .contact-block p{color:var(--muted);margin-bottom:2.5rem;font-size:1.05rem;}
 .contact-block .btn-row{justify-content:center;}
 
-.contact-mail{
-  display:inline-block;font-family:var(--font-mono);
-  font-size:clamp(1rem,2.5vw,1.3rem);word-break:break-word;
-  color:var(--accent);
-  border-bottom:2px solid var(--accent-fade);padding-bottom:.2rem;
-  transition:border-color .2s ease;
+/* The contact page is a single white band, so it needs the page height the
+   old .hero was providing. */
+.contact-band{
+  min-height:calc(100svh - var(--nav-h));
+  display:flex;flex-direction:column;justify-content:center;
 }
-.contact-mail:hover{border-color:var(--accent);}
+
+/* Labelled contact lines, replacing the single oversized mail link. */
+.contact-lines{
+  display:flex;flex-direction:column;gap:.9rem;
+  max-width:26rem;margin:0 auto 2rem;text-align:left;
+}
+.contact-lines > div{
+  display:grid;grid-template-columns:6.5rem 1fr;gap:1rem;align-items:baseline;
+  padding-bottom:.85rem;border-bottom:1px solid var(--line);
+}
+.contact-lines > div:last-child{border-bottom:none;padding-bottom:0;}
+.contact-lines dt{
+  font-family:var(--font-mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);
+}
+.contact-lines dd{margin:0;}
+.contact-lines a{
+  font-family:var(--font-mono);font-size:clamp(.9rem,1.9vw,1.05rem);
+  color:var(--accent);border-bottom:1px solid transparent;
+}
+.contact-lines a:hover{border-bottom-color:var(--accent);}
+@media (max-width:520px){
+  .contact-lines > div{grid-template-columns:1fr;gap:.25rem;}
+}
 
 .contact-meta{margin-top:2rem;font-size:.95rem;}
 
