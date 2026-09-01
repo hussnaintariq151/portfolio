@@ -288,7 +288,7 @@ body.home header.nav.scrolled{
   min-height:100vh;min-height:100svh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
-  padding-block:calc(var(--nav-h) + 3rem) 6rem;
+  padding-block:calc(var(--nav-h) + 2rem) 5rem;
 }
 
 /* Base layer doubles as the first frame, so the hero is never blank. */
@@ -330,31 +330,35 @@ body.home header.nav.scrolled{
     radial-gradient(125% 85% at 50% 44%, transparent 28%, rgba(4,9,18,.58) 100%);
 }
 
-.cinema__inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.5rem;}
+.cinema__inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.25rem;}
 
 .cinema__eyebrow{
-  font-family:var(--font-mono);font-size:clamp(.7rem,1.5vw,.82rem);
-  letter-spacing:.24em;text-transform:uppercase;
+  font-family:var(--font-mono);
+  font-size:clamp(.82rem,1.9vw,1.1rem);
+  font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
   color:var(--accent);
+  text-shadow:0 2px 22px rgba(0,0,0,.7);
 }
 
 .cinema__title{
-  max-width:17ch;
-  font-size:clamp(2.1rem,7vw,6rem);
+  max-width:20ch;
+  font-size:clamp(2rem,5.4vw,4.8rem);
   font-weight:300;
   letter-spacing:.01em;
-  line-height:1.04;
+  line-height:1.05;
   text-transform:uppercase;
   color:#fff;
   text-shadow:0 2px 46px rgba(0,0,0,.55);
 }
 
+/* Kept on one line at desktop widths — no max-width cap. */
 .cinema__sub{
-  max-width:46ch;
   font-family:var(--font-mono);
-  font-size:clamp(.8rem,1.7vw,.95rem);
-  letter-spacing:.13em;text-transform:uppercase;
-  color:rgba(255,255,255,.78);
+  font-size:clamp(.72rem,1.35vw,.92rem);
+  letter-spacing:.11em;text-transform:uppercase;
+  color:rgba(255,255,255,.82);
+  text-shadow:0 2px 18px rgba(0,0,0,.6);
 }
 
 .cinema .btn-row{justify-content:center;margin-top:.75rem;}
@@ -472,19 +476,6 @@ body.home header.nav.scrolled{
 .two-col{display:grid;grid-template-columns:3fr 2fr;gap:3rem;align-items:start;}
 @media (max-width:820px){.two-col{grid-template-columns:1fr;gap:2.5rem;}}
 
-/* Side panel (the "// currently" column) */
-.panel{
-  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);
-  padding:1.5rem 1.4rem;
-}
-.panel .panel-label{
-  font-family:var(--font-mono);font-size:.8rem;color:var(--accent);
-  margin-bottom:1rem;display:block;
-}
-.panel p{margin-bottom:.85rem;color:var(--muted);font-size:.95rem;}
-.panel p:last-child{margin-bottom:0;}
-.panel strong{color:var(--ink);font-weight:500;}
-
 /* ---------- 9. Features & stack ---------- */
 
 .features{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
@@ -515,6 +506,83 @@ body.home header.nav.scrolled{
   transition:border-color .2s ease;
 }
 .tag:hover{border-color:var(--accent);}
+
+/* ---------- 8b. Light "about" band ---------- */
+/* Full-bleed white section on a dark site. It re-points the theme tokens
+   locally, so every shared component inside it picks up readable colours —
+   including a darker teal, since mint on white fails contrast. */
+
+.about-light{
+  background:#fff;
+  --ink:#0a192f;
+  --ink-2:#2f3d57;
+  --muted:#55637f;
+  --line:#e2e7ef;
+  --line-soft:#eef1f6;
+  --accent:#0e8f78;
+  --accent-deep:#0b7361;
+  --accent-fade:rgba(14,143,120,.09);
+  color:var(--ink-2);
+}
+
+.about-grid{
+  display:grid;grid-template-columns:.82fr 1fr;
+  gap:clamp(2rem,5vw,4.5rem);align-items:start;
+}
+
+.about-photo{position:sticky;top:calc(var(--nav-h) + 2.5rem);margin:0;}
+.about-photo img{
+  width:100%;height:auto;display:block;
+  border-radius:var(--radius);
+  box-shadow:0 24px 50px -28px rgba(10,25,47,.55);
+}
+.about-photo figcaption{
+  margin-top:.9rem;font-family:var(--font-mono);font-size:.75rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+}
+
+.about-copy{max-width:62ch;}
+.about-copy p{margin-bottom:1.15rem;font-size:1.02rem;line-height:1.75;color:var(--muted);}
+.about-copy strong{color:var(--ink);font-weight:600;}
+
+.about-copy .lead{
+  font-size:clamp(1.15rem,2.1vw,1.4rem);line-height:1.45;
+  color:var(--ink);font-weight:600;letter-spacing:-.015em;
+  margin-bottom:1rem;
+}
+
+.about-copy .pivot{
+  margin:1.75rem 0;padding-left:1.1rem;
+  border-left:3px solid var(--accent);
+  font-size:clamp(1.05rem,1.9vw,1.28rem);font-weight:600;
+  color:var(--ink);letter-spacing:-.012em;
+}
+
+.about-copy .not-list{display:flex;flex-direction:column;gap:.55rem;margin:1.5rem 0 1.75rem;}
+.about-copy .not-list li{
+  position:relative;padding-left:1.6rem;font-size:1rem;line-height:1.6;color:var(--muted);
+}
+.about-copy .not-list li::before{
+  content:"—";position:absolute;left:0;color:var(--accent);
+}
+.about-copy .not-list li:last-child{color:var(--ink);font-weight:500;}
+
+.about-actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.75rem;}
+.about-light .btn{padding:.85rem 1.4rem;font-size:.9rem;}
+.about-light .btn:not(.btn-solid){color:var(--accent);border-color:var(--accent);}
+.about-light .btn-solid{background:var(--accent);color:#fff;}
+.about-light .btn-solid:hover{background:var(--accent-deep);color:#fff;}
+
+@media (max-width:860px){
+  .about-grid{grid-template-columns:1fr;gap:2rem;}
+  .about-photo{position:static;max-width:520px;}
+}
+
+/* The fixed side rails sit over whatever scrolls behind them, so main.js
+   flips them to dark ink while a light band is in range. */
+body.rails-dark .rail a{color:#394761;}
+body.rails-dark .rail a:hover{color:#0e8f78;}
+body.rails-dark .rail::after{background:#9aa6bb;}
 
 /* ---------- 9a. Positioning triad + industry accordion ---------- */
 

@@ -110,6 +110,21 @@
     }
   }
 
+  // ---------- Side rails over light sections ----------
+  // The rails are position:fixed, so a light band scrolling behind them would
+  // leave them nearly invisible. Flip them to dark ink while one is in range.
+  var lightBands = document.querySelectorAll('.about-light');
+
+  if (lightBands.length && 'IntersectionObserver' in window) {
+    var railObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        document.body.classList.toggle('rails-dark', entry.isIntersecting);
+      });
+    }, { rootMargin: '-55% 0px 0px 0px' }); // rails sit in the lower half of the viewport
+
+    lightBands.forEach(function (band) { railObserver.observe(band); });
+  }
+
   // ---------- Footer year ----------
   var year = String(new Date().getFullYear());
   document.querySelectorAll('.yr').forEach(function (el) { el.textContent = year; });

@@ -89,46 +89,52 @@
     <a class="cinema__cue" href="#about" aria-label="Scroll to content"><span aria-hidden="true"></span></a>
   </section>
 
-  <!-- ABOUT SNIPPET -->
-  <section id="about" class="band wrap" aria-labelledby="about-title">
-    <h2 class="band-head reveal" id="about-title"><span class="num">01.</span>About me</h2>
-    <div class="two-col">
-      <div class="prose reveal">
-        <p>
-          I started in the lab and moved toward code — and I&rsquo;ve kept one foot in each world ever since.
-          My <strong>MS in Chemistry</strong> from The Islamia University Bahawalpur taught me to reason
-          from first principles and respect messy, real-world data.
-        </p>
-        <p>
-          I work as a <strong>software and AI engineer with an MS in Chemistry</strong> — taking R&amp;D
-          data and turning it into <strong>production ML systems</strong>: the kind that ship in APIs,
-          run in the cloud, and survive contact with real users. The work sits mostly in
-          <strong>battery materials, hydrogen systems, and pharmaceutical informatics</strong>.
-        </p>
-        <p>
-          I collaborate closely with <a href="https://github.com/RaoIbrarJamal" target="_blank" rel="noopener">Rao Ibrar Jamal</a>
-          to deliver end-to-end AI and backend-heavy projects. Our philosophy: strong systems start with
-          <strong>algorithms, not frameworks</strong>.
-        </p>
-        <p>A few technologies I work with day to day:</p>
-        <ul class="stack">
-          <li>Python &amp; SQL</li>
-          <li>PyTorch &amp; scikit-learn</li>
-          <li>FastAPI &amp; Django</li>
-          <li>LangChain / LangGraph</li>
-          <li>Docker &amp; Terraform</li>
-          <li>AWS &amp; Azure</li>
-          <li>MLflow &amp; DVC</li>
-          <li>Kafka &amp; Databricks</li>
-        </ul>
-      </div>
+  <!-- ABOUT — light band, photo alongside the copy -->
+  <section id="about" class="band about-light" aria-labelledby="about-title">
+    <div class="wrap">
+      <h2 class="band-head reveal" id="about-title"><span class="num">01.</span>About me</h2>
 
-      <aside class="panel reveal d2" aria-label="At a glance">
-        <span class="panel-label">// at a glance</span>
-        <p><strong>Based in</strong> Bahawalpur, Punjab, Pakistan — working with teams worldwide.</p>
-        <p><strong>I work at</strong> the point where R&amp;D chemistry data becomes a production ML system.</p>
-        <p><strong>Current focus:</strong> materials informatics, RAG pipelines, MCP servers, and MLOps.</p>
-      </aside>
+      <div class="about-grid">
+        <figure class="about-photo reveal">
+          <img src="about-portrait.jpg" width="1100" height="734" loading="lazy"
+               alt="Hussnain Tariq holding a sample vial beside analytical instrumentation in a laboratory." />
+          <figcaption>Bahawalpur, Pakistan — working with teams worldwide</figcaption>
+        </figure>
+
+        <div class="about-copy reveal d2">
+          <p class="lead">
+            Most chemistry R&amp;D teams have a problem they don&rsquo;t talk about enough:
+            they&rsquo;re sitting on years of experimental data, and doing almost nothing with it.
+          </p>
+          <p>
+            Not because they don&rsquo;t want to. But because the people who understand the
+            chemistry can&rsquo;t build the ML systems — and the people who can build the ML
+            systems don&rsquo;t understand the chemistry.
+          </p>
+          <p class="pivot">That gap is exactly where I work.</p>
+          <p>
+            I&rsquo;m Hussnain, a <strong>Materials Informatics Engineer</strong> with a
+            <strong>Chemistry MSc</strong> and full-stack AI/ML engineering experience.
+            I help European deep-tech startups in <strong>battery, hydrogen, and drug
+            discovery</strong> turn their R&amp;D data into production ML models that actually
+            get used — not just published.
+          </p>
+          <ul class="not-list">
+            <li>I&rsquo;m not a generalist ML engineer who learned some chemistry keywords.</li>
+            <li>I&rsquo;m not a chemist who took a few ML courses.</li>
+            <li>I&rsquo;ve spent years building at the intersection of both, and that&rsquo;s a rare place to be.</li>
+          </ul>
+          <p>
+            If you&rsquo;re a chemistry-native startup drowning in data but struggling to extract
+            value from it — let&rsquo;s exchange ideas.
+          </p>
+          <div class="about-actions">
+            <!-- TODO: this Calendly URL is truncated; replace with the full booking link. -->
+            <a class="btn btn-solid" href="https://calendly.com/hu" target="_blank" rel="noopener">Book a call</a>
+            <a class="btn" href="mailto:hussnaintariq151@gmail.com">hussnaintariq151@gmail.com</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
