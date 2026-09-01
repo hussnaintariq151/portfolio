@@ -272,7 +272,58 @@ main{padding-top:var(--nav-h);}
 .hero-sub{min-height:auto;padding-top:5rem;padding-bottom:1rem;justify-content:flex-start;}
 .hero-sub .lede{margin-top:1.5rem;margin-bottom:0;}
 
-/* ---------- 5b. Cinematic hero (home page only) ---------- */
+/* ---------- 5b. Full-bleed photo sections ---------- */
+
+/* Shared two-layer treatment: photo underneath, scrim over it. Both layers are
+   decorative divs rather than pseudo-elements, because .hero::before is already
+   spoken for by the accent glow. */
+.shot__bg{
+  position:absolute;inset:0;z-index:-2;
+  background-image:var(--shot);
+  background-size:cover;background-position:var(--shot-pos,center);
+  background-repeat:no-repeat;
+  opacity:.30;
+}
+.shot__scrim{
+  position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(102deg,
+    rgba(10,25,47,.97) 0%,
+    rgba(10,25,47,.90) 42%,
+    rgba(10,25,47,.68) 100%);
+}
+.shot__scrim--flat{
+  background:linear-gradient(180deg,
+    rgba(10,25,47,.95) 0%,
+    rgba(10,25,47,.90) 35%,
+    rgba(10,25,47,.93) 100%);
+}
+
+/* Photo hero — the accent glow would fight the image, so it is switched off. */
+.hero-shot{
+  position:relative;isolation:isolate;overflow:hidden;
+  min-height:calc(100svh - var(--nav-h));
+  padding-block:clamp(4rem,9vw,6rem);
+  border-bottom:1px solid var(--line);
+}
+.hero-shot::before{display:none;}
+.hero-shot .lede{max-width:56ch;}
+@media (max-width:720px){.hero-shot{min-height:auto;padding-block:4.5rem 3.5rem;}}
+
+/* Proof strip under a sub-page hero. Every figure is repeated in the body
+   copy below it, so this is a summary, not a new claim. */
+.stats{
+  display:grid;grid-template-columns:repeat(4,auto);justify-content:start;
+  gap:1.4rem 2.75rem;margin-top:2.25rem;
+}
+.stats li{display:flex;flex-direction:column;gap:.15rem;}
+.stats b{
+  font-family:var(--font-mono);font-size:clamp(1.5rem,3.2vw,2rem);
+  font-weight:500;color:var(--accent);line-height:1;letter-spacing:-.02em;
+}
+.stats span{font-size:.82rem;color:var(--muted);max-width:16ch;line-height:1.35;}
+@media (max-width:720px){.stats{grid-template-columns:repeat(2,1fr);gap:1.4rem 1.5rem;}}
+
+/* ---------- 5c. Cinematic hero (home page only) ---------- */
 
 /* On the home page the nav floats over the image until you scroll. */
 body.home main{padding-top:0;}
@@ -665,25 +716,6 @@ body.rails-dark .rail::after{background:#9aa6bb;}
   .ind__body{padding:0 1.1rem 1.25rem;}
 }
 
-/* ---------- 9b. Layer stack (architecture deep-dive) ---------- */
-
-.layers{display:flex;flex-direction:column;gap:1rem;}
-.layer{
-  display:grid;grid-template-columns:auto 1fr;gap:1.5rem;
-  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);
-  padding:1.5rem 1.6rem;
-  transition:border-color .2s ease,transform .25s var(--ease),box-shadow .25s ease;
-}
-.layer:hover{border-color:var(--accent);transform:translateX(4px);box-shadow:var(--shadow);}
-.layer__n{
-  font-family:var(--font-mono);font-size:.8rem;letter-spacing:.1em;
-  color:var(--accent);padding-top:.4rem;white-space:nowrap;
-}
-.layer h3{color:var(--ink);font-size:1.1rem;margin-bottom:.55rem;}
-.layer p{color:var(--muted);font-size:.95rem;margin-bottom:.9rem;max-width:74ch;}
-.layer .p-stack{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);}
-@media (max-width:640px){.layer{grid-template-columns:1fr;gap:.4rem;}.layer__n{padding-top:0;}}
-
 /* Callout note (scope / NDA disclaimers) */
 .note{
   border-left:2px solid var(--accent);
@@ -696,34 +728,136 @@ body.rails-dark .rail::after{background:#9aa6bb;}
 /* Honest-limits variant: same shape, deliberately not accented */
 .note--honest{border-left-color:var(--line);margin:2rem 0 0;}
 
-/* ---------- 9c. Production-standard pillars ---------- */
+/* ---------- 9b. Grouped stack ---------- */
 
-/* Key for the two tick states below */
-.legend{
-  display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;
-  margin-bottom:1.6rem;font-family:var(--font-mono);font-size:.76rem;color:var(--muted);
+/* The flat list reads as a laundry list; grouping it by the job each tool
+   does at least shows the shape of the stack. */
+.stack-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:2.25rem 3rem;}
+.stack-group h3{
+  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);font-weight:500;
+  margin-bottom:.9rem;padding-bottom:.6rem;border-bottom:1px solid var(--line);
 }
-.legend__item{display:flex;align-items:center;gap:.5rem;}
-.legend__item::before{
-  content:"\2022";color:var(--line);font-size:1rem;line-height:1;width:.9rem;text-align:center;
-}
-.legend__item--done::before{content:"\2713";color:var(--accent);font-size:.85rem;}
+.stack-group .stack{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.4rem 1.5rem;}
+@media (max-width:720px){.stack-groups{grid-template-columns:1fr;gap:2rem;}}
 
-.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
-.pillar{
+/* ---------- 9c. Decisions & trade-offs ---------- */
+
+.decisions{display:flex;flex-direction:column;gap:1rem;}
+.decision{
   background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);
-  padding:1.4rem 1.5rem;
+  padding:1.5rem 1.6rem;
   transition:border-color .2s ease,box-shadow .25s ease;
 }
-.pillar:hover{border-color:var(--accent);box-shadow:var(--shadow);}
-.pillar h3{
-  display:flex;align-items:baseline;gap:.7rem;
-  color:var(--ink);font-size:1.05rem;font-weight:600;
-  margin-bottom:.9rem;padding-bottom:.75rem;border-bottom:1px solid var(--line-soft);
+.decision:hover{border-color:var(--accent);box-shadow:var(--shadow);}
+.decision h3{
+  display:flex;align-items:baseline;gap:.75rem;
+  color:var(--ink);font-size:1.12rem;font-weight:600;letter-spacing:-.015em;
+  margin-bottom:.7rem;
 }
-.pillar__n{font-family:var(--font-mono);font-size:.8rem;font-weight:400;color:var(--accent);}
+.decision__n{
+  font-family:var(--font-mono);font-size:.68rem;font-weight:400;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  border:1px solid var(--line);border-radius:99px;padding:.2rem .65rem;
+  flex:none;align-self:center;
+}
+.decision__call{
+  color:var(--ink-2);font-size:.98rem;line-height:1.65;max-width:80ch;
+  padding-bottom:1.15rem;margin-bottom:1.15rem;border-bottom:1px solid var(--line-soft);
+}
 
-/* Each control: a tick if it has shipped, a hollow dot if it is situational */
+/* Three columns: what it buys, what it costs, and the condition to undo it.
+   A decision with no cost column is a decision that was never really made. */
+.tradeoff{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem 1.75rem;}
+.tradeoff dt{
+  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.45rem;
+}
+.tradeoff dd{color:var(--muted);font-size:.88rem;line-height:1.55;}
+.tradeoff .cost dt{color:var(--ink-2);}
+@media (max-width:820px){.tradeoff{grid-template-columns:1fr;gap:1rem;}}
+
+/* ---------- 9d. The blueprint band ---------- */
+
+/* Full-bleed index into the eight pillar sections. Sits on its own photo, so
+   it reads as a divider between the pitch and the detail. */
+.blueprint{
+  position:relative;isolation:isolate;overflow:hidden;
+  padding-block:clamp(4rem,9vw,6.5rem);
+  border-block:1px solid var(--line);
+}
+.blueprint .shot__bg{opacity:.24;}
+.bp-eyebrow{
+  font-family:var(--font-mono);color:var(--accent);
+  font-size:clamp(.85rem,1.8vw,.95rem);margin-bottom:1.1rem;
+}
+.bp-title{
+  color:var(--ink);font-size:clamp(1.8rem,4.5vw,2.9rem);
+  letter-spacing:-.025em;line-height:1.12;margin-bottom:1.1rem;max-width:20ch;
+}
+.bp-lede{color:var(--ink-2);max-width:68ch;font-size:1.02rem;line-height:1.7;margin-bottom:2.5rem;}
+
+/* Each tile is a jump link into its section. */
+.bp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
+.bp-grid a{
+  display:flex;flex-direction:column;gap:.3rem;height:100%;
+  padding:1.05rem 1.1rem;
+  border:1px solid var(--line);border-radius:var(--radius-sm);
+  background:rgba(15,37,66,.62);
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  transition:border-color .2s ease,background .2s ease,transform .2s var(--ease);
+}
+.bp-grid a:hover,.bp-grid a:focus-visible{
+  border-color:var(--accent);background:rgba(17,42,72,.86);transform:translateY(-3px);
+}
+.bp-n{font-family:var(--font-mono);font-size:.75rem;color:var(--accent);}
+.bp-grid b{color:var(--ink);font-size:1rem;font-weight:600;letter-spacing:-.01em;}
+.bp-d{color:var(--muted);font-size:.78rem;line-height:1.4;}
+
+.bp-count{
+  display:flex;flex-wrap:wrap;gap:.6rem 2.25rem;margin-top:2rem;
+  font-family:var(--font-mono);font-size:.8rem;color:var(--muted);
+}
+.bp-count b{color:var(--accent);font-weight:500;}
+
+@media (max-width:900px){.bp-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:520px){.bp-grid{grid-template-columns:1fr;}}
+
+/* ---------- 9e. Pillar sections ---------- */
+
+/* Eight of these run back to back, so they carry less air than a standalone
+   band would, and they clear the sticky nav when jumped to from the blueprint. */
+.pillar-sec{
+  padding-block:clamp(2.75rem,6vw,4.25rem);
+  scroll-margin-top:calc(var(--nav-h) + 1.25rem);
+}
+.pillar-sec .lede{margin-bottom:1.5rem;}
+
+/* A band carrying only the scope note needs none of the usual breathing room. */
+.band-tight{padding-block:clamp(2rem,5vw,3rem) 0;}
+.band-tight .note{margin-bottom:0;}
+
+/* Evidence on the left, checklist on the right, trade-off underneath. */
+.pillar-grid{
+  display:grid;grid-template-columns:1.1fr 1fr;
+  gap:clamp(1.5rem,3.5vw,2.75rem);align-items:start;
+  margin-bottom:1.25rem;
+}
+.pillar-built h3,.pillar-controls h3{
+  font-family:var(--font-mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);font-weight:500;
+  margin-bottom:.85rem;padding-bottom:.6rem;border-bottom:1px solid var(--line);
+}
+.pillar-built p{color:var(--ink-2);font-size:.97rem;line-height:1.7;margin-bottom:1rem;}
+.pillar-built .p-stack{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);line-height:1.7;}
+
+/* Key for the two tick states, repeated per section so a reader arriving from
+   a blueprint link never meets an unexplained symbol. */
+.ctrl-key{
+  font-family:var(--font-mono);font-size:.7rem;color:var(--muted);
+  margin:-.35rem 0 .85rem;
+}
+
 .checks{display:flex;flex-direction:column;gap:.5rem;}
 .checks li{
   position:relative;padding-left:1.5rem;
@@ -736,9 +870,9 @@ body.rails-dark .rail::after{background:#9aa6bb;}
 .checks li.done{color:var(--ink-2);}
 .checks li.done::before{content:"\2713";left:0;font-size:.82rem;color:var(--accent);}
 
-@media (max-width:820px){.pillars{grid-template-columns:1fr;}}
+@media (max-width:880px){.pillar-grid{grid-template-columns:1fr;gap:2rem;}}
 
-/* ---------- 9d. "Who you'd be working with" light band ---------- */
+/* ---------- 9f. "Who you'd be working with" light band ---------- */
 
 .who{
   display:grid;grid-template-columns:1.15fr 1fr;
@@ -777,6 +911,21 @@ body.rails-dark .rail::after{background:#9aa6bb;}
   color:var(--muted);border:1px solid var(--line);border-radius:99px;
   padding:.18rem .6rem;
 }
+
+/* ---------- 9g. At-the-desk photo row ---------- */
+
+/* One visual break between the eight text-heavy pillar sections and the
+   closing blocks. All three frames are cropped to 4:3 so the row reads level. */
+.atwork{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;}
+.atwork figure{margin:0;}
+.atwork img{
+  width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;
+  border:1px solid var(--line);border-radius:var(--radius);
+  filter:saturate(.92);
+  transition:border-color .2s ease,transform .25s var(--ease);
+}
+.atwork figure:hover img{border-color:var(--accent);transform:translateY(-3px);}
+@media (max-width:780px){.atwork{grid-template-columns:1fr;gap:1rem;max-width:560px;}}
 
 /* ---------- 10. Projects ---------- */
 

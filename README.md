@@ -9,7 +9,11 @@ Plain HTML/CSS/JS — no build step, no dependencies. Deploys anywhere static.
 ```
 portfolio/
 ├── index.html          # Home (hero + about + 3 disciplines + featured work)
-├── software.html       # 01 · Software engineering (backend, MLOps, IaC)
+├── software.html       # 01 · Software engineering — a blueprint band plus one
+│                       #      section per pillar (security, API design,
+│                       #      performance, reliability, observability, data
+│                       #      integrity, scalability, delivery), then work,
+│                       #      stack and the portrait band
 ├── ai.html             # 02 · AI engineering (ML, DL, GenAI, RAG)
 ├── chemistry.html      # 03 · Chemistry MS (battery, hydrogen, drugs)
 ├── about.html          # 04 · Story, education, self-learning, experience
@@ -22,6 +26,11 @@ portfolio/
 ├── about-portrait.jpg  # Home-page "About me" portrait
 ├── industries-lab.jpg  # Home-page Industries band photo
 ├── software-portrait.jpg # 01 · "Who you’d be working with" portrait
+├── blueprint-desk.jpg  # 01 · Hero background (Safar Safarov, Unsplash)
+├── blueprint-code.jpg  # 01 · Blueprint band background (Rahul Mishra, Unsplash)
+├── work-desk.jpg       # 01 · "At the desk" row (1 of 3)
+├── work-lab.jpg        # 01 · "At the desk" row (2 of 3)
+├── work-cafe.jpg       # 01 · "At the desk" row (3 of 3)
 ├── og.png              # 1200×630 social preview card
 ├── robots.txt          # Crawler rules + sitemap pointer
 ├── sitemap.xml         # Six URLs
