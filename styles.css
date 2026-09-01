@@ -800,10 +800,6 @@ body.rails-dark .rail::after{background:#9aa6bb;}
 }
 /* The closing call to action reuses the .who grid, so its type has to be set
    here rather than inherited from the centred .contact-block. */
-.cta-copy .num{
-  display:block;font-family:var(--font-mono);color:var(--accent);
-  font-size:.95rem;margin-bottom:1rem;
-}
 .cta-copy h2{
   color:var(--ink);font-size:clamp(1.9rem,4.2vw,2.9rem);
   letter-spacing:-.025em;line-height:1.08;margin-bottom:1.1rem;
