@@ -11,8 +11,7 @@ portfolio/
 ├── index.html          # Home (hero + about + 3 disciplines + featured work)
 ├── software.html       # 01 · Software engineering — eight pillars in a white
 │                       #      accordion band, each opening into named practices;
-│                       #      then selected work, a stack accordion, and the
-│                       #      portrait band
+│                       #      then a stack accordion and the closing ask
 ├── ai.html             # 02 · AI engineering (ML, DL, GenAI, RAG)
 ├── chemistry.html      # 03 · Chemistry MS (battery, hydrogen, drugs)
 ├── about.html          # 04 · Story, education, self-learning, experience
@@ -24,7 +23,7 @@ portfolio/
 ├── hero-1..3.jpg       # Hero slideshow frames, shared by home and 01 (2400px)
 ├── about-portrait.jpg  # Home-page "About me" portrait
 ├── industries-lab.jpg  # Home-page Industries band photo
-├── software-portrait.jpg # 01 · "Who you’d be working with" portrait
+├── software-portrait.jpg # 01 · Portrait beside the closing ask
 ├── work-desk.jpg       # 01 · Pillar band intro photo
 ├── work-lab.jpg        # 01 · Stack section photo (1 of 2)
 ├── work-cafe.jpg       # 01 · Stack section photo (2 of 2)
